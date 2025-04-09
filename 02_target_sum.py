@@ -6,19 +6,18 @@ Given a list of numbers, return whether any two sums to k. For example, given
 
 Bonus: Can you do this in one pass?
 """
-from typing import List
 
 
-def check_target_sum(arr: List[int], target: int) -> bool:
-    '''find couple that sums to target'''
+def check_target_sum(a: list, k: int):
     seen = set()
-    for item in arr:
-        if target - item in seen:
+    for i in a:
+        if (k - i) in seen:
             return True
-        seen.add(item)
+        seen.add(i)
     return False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print(check_target_sum([], 17))
     print(check_target_sum([10, 15, 3, 7], 17))
     print(check_target_sum([10, 15, 3, 4], 17))
