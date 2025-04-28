@@ -34,6 +34,15 @@ void addTail(List& l, Node* p) {
     }
 }
 
+void addHead(List& l, Node* p) {
+    if (l.pHead == nullptr) {
+        l.pHead = l.pTail = nullptr;
+    }else {
+        l.pHead->pNext = p;
+        l.pHead = p;
+    }
+}
+
 void printList(List l) {
     Node* p = l.pHead;
     while(p != nullptr) {
@@ -42,6 +51,13 @@ void printList(List l) {
     }
 }
 
+void printList(List l) {
+    Node* p = l.pHead;
+    while(p != nullptr) {
+      cout << p->data << " " << endl;
+      p = p->pNext;  
+    }
+}
 /*
     Tim gia tri x?
     Input:
@@ -57,13 +73,30 @@ bool Search(List l, int x) {
     Node* p = l.pHead;
     while(p!=nullptr) {
         if (p->data == x) {
-            cout << "Tim thay x" << x << endl;
             return true;
         }
         p = p->pNext;
 
     }
     cout << "Khong tim thay x" << endl;
+    return false;
+}
+
+/*
+    Tim gia tri x
+    input:
+      x: int gia tri can tim
+      l: List 
+*/
+
+bool Search(List l,int x) {
+    Node* p = l.pHead;
+    while (p != nullptr) {
+        if (p->data == x) {
+            return true;
+        }
+        p = p->pNext;
+    }
     return false;
 }
 
