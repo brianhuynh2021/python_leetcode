@@ -30,7 +30,7 @@ def insertion_sort(arr: list)-> list:
 def triplet_sum(arr: list)-> list:
     result = []
     # Sort the arr
-    insertion_sort(arr)
+    print("sorted number is: ",insertion_sort(arr))
     n = len(arr)
     for i in range(n):
         if i > 0 and arr[i] == arr[i-1]:
@@ -50,13 +50,12 @@ def triplet_sum(arr: list)-> list:
                 result.append([arr[i], arr[j], arr[k]])
                 j+=1
                 k-=1
-                
-                
+                      
     return result
     
 
 if __name__ == '__main__':
     nums = [-1, 0, 1, 2, -1, -4]
     print('Original nums: ', nums)
-    print("Sorted nums: ", insertion_sort(nums.copy()))
+    # print("Sorted nums: ", insertion_sort(nums.copy()))
     print('Triplet sum is: ', triplet_sum(nums))
