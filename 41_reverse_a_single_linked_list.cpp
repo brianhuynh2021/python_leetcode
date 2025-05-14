@@ -33,6 +33,7 @@ void addTail(List& l, Node* p) {
         l.pTail = p;
     }
 }
+
 void addHead(List& l, Node* p){
     if (l.pHead == nullptr) {
         l.pHead = p;
@@ -62,7 +63,7 @@ void reverseList(List l, List& result){
     }
 }
 
-// Main to test
+
 int main() {
     List l;
     initList(l);
