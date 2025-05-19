@@ -46,7 +46,7 @@ def top_k_frequent_elements(nums: list, k: int)-> list:
     result = [item[0] for item in sorted_item[:k]]
     return result
 
-# Optimize method:
+# Optimize method: using heap
 def top_k_frequent_elements_optimize(nums, k):
     import heapq
     result = []
