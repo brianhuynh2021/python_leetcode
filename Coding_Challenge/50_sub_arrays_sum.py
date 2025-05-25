@@ -50,7 +50,7 @@ def subarray_sum(nums: list[int], k: int) -> int:
 
 
 if __name__ == "__main__":
-    nums = [1, 2, 3, 1, 1]
+    nums = [1, 2, 3]
     k = 3
     result = subarray_sum(nums, k)
     print(f"Subarray to sum of {nums} to k {k} is {result}")
