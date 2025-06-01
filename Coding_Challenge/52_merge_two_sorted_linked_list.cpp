@@ -8,7 +8,7 @@ struct ListNode {
     int val;            // Giá trị lưu trong node
     ListNode* next;     // Con trỏ trỏ đến node kế tiếp trong danh sách
     // Constructor để khởi tạo node với giá trị x và next mặc định là nullptr
-    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {};
 };
 
 // Hàm gộp 2 danh sách đã sắp xếp theo thứ tự tăng dần
@@ -91,3 +91,52 @@ int main() {
 // g++ ten_file.cpp -o main/ten_file_execute
 
 // Cam on cac ban da theo doi 
+
+struct Node {
+    int val;
+    Node* next;
+    Node(int x): val(x), next(nullptr) {};
+};
+
+Node* mergeTwoLinkedLists(Node* l1, Node* l2) {
+    Node dummy(0);
+    Node* current = &dummy;
+    while(l1 && l2) {
+        if(l1->val < l2->val){
+            current->next = l1;
+            l1 = l1->next;
+        } else {
+            current->next = l2;
+            l2 = l2->next;
+        }
+        current = current->next;
+    }
+    current->next= (l1!=nullptr) ? l1: l2;
+    return dummy.next;
+}
+
+void printListNode(Node* head){
+    while(head != nullptr) {
+        cout << head->val << " ";
+        head = head->next;
+    }
+    cout << endl;
+};
+
+int main() {
+    Node* node1 = new Node(1);
+    Node* node2 = new Node(3);
+    Node* node3 = new Node(5);
+    node1->next = node2;
+    node2->next = node3;
+
+    Node* node4 = new Node(2);
+    Node* node5 = new Node(4);
+    Node* node6 = new Node(6);
+    node4->next = node5;
+    node5->next = node6;
+
+    Node* merged = mergeTwoLinkedLists(node1, node4);
+    printListNode(merged);
+    return 0
+}
