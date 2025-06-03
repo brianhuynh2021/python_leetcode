@@ -1,11 +1,14 @@
-class Animals:
-    def __init__(self, name):
+class Animals: # Ta bat dau voi class cha đầu tiên là Animals
+    def __init__(self, name): # Hàm khởi tạo init hay còn gọi constructor
         self.name = name # Khởi tạo name
-    def speak(self):
+
+    def speak(self): # Tao method speak
         print(f"{self.name} is making a sound")
-        
+
+# class Dog the hien tính kế thừa từ class Animals
 class Dog(Animals): # class Dog kế thừa tất cả các thuộc tính và method của Animals
-    pass
+    pass # bỏ pass ở đây python tự hiểu
+# Khi các bạn chay thì comment 1 trong 2 class lại
 
 # Vay muốn ghi đè hoặc thêm thuộc tính vào constructor/init thì làm sao? dùng
 # superclass(class cha/class built-in của Python) hay là Animals class
