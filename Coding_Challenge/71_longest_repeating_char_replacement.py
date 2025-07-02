@@ -24,9 +24,10 @@ def char_replacement(s: str, k: int)->int:
     max_len = 0 # The max_len of substring after replace k character(s)
     for right in range(len(s)):
         # Now we start to run the window from 0 to n-1 of the string
-        check_appear_count[s[right]] = check_appear_count.get(s[right], 0) + 1
+        char = s[right]
+        check_appear_count[char] = check_appear_count.get(char, 0) + 1
         # Start to put each character into the hashmap check_appear_count
-        max_count = max(max_count, check_appear_count[s[right]])
+        max_count = max(max_count, check_appear_count[char])
         # max_count we only compare and update with the next character
         needed_rep = (right - left + 1) - max_count
         # At the window how many character need to change after update max_count
