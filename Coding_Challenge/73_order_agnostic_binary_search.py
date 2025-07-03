@@ -4,6 +4,8 @@ from typing import List
 def order_agnostic_binary_search(arr: List[int], target: int)->bool:
     if not arr:
         return False
+    if arr[0] == arr[-1]:
+        return target == arr[0]
     n = len(arr)
     is_ascending = arr[0] < arr[-1]
     low = 0
@@ -13,10 +15,10 @@ def order_agnostic_binary_search(arr: List[int], target: int)->bool:
         if arr[mid] == target:
             return True
         if is_ascending:
-            if arr[mid] < target:
-               low = mid + 1
+            if arr[mid] > target:
+               high = mid - 1
             else:
-                high = mid - 1
+                low = mid + 1
         else:
             if arr[mid] < target:
                 high = mid - 1
