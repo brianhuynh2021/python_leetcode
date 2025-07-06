@@ -35,8 +35,18 @@ def count_ones(number: int)-> int:
         number //=2
     return count
     
+# Other version close to interview
+def count_ones(number: int)-> int:
+    count = 0
+    while number:
+        if number & 1:
+            count += 1
+        number >>= 1
+    return count
+        
 if __name__=='__main__':
     number = 25
+    count_ones(number)
     result = recursive_convert_dec_to_bin(number)
     print(result)
      
