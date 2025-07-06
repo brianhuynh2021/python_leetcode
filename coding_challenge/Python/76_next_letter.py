@@ -26,6 +26,14 @@ def recursive_convert_dec_to_bin(number: int):
     if number == 0:
         return ''
     return recursive_convert_dec_to_bin(number//2) + str(number%2)
+
+def count_ones(number: int)-> int:
+    count = 0
+    while number > 0:
+        if number % 2 == 1:
+            count += 1
+        number //=2
+    return count
     
 if __name__=='__main__':
     number = 25
