@@ -12,7 +12,9 @@ def triplet_sum_smaller(nums: List[int], target: int)->int:
             current_sum = nums[i] + nums[left] + nums[right]
             if current_sum < target:
                 count += right - left
-            right -= 1
+                left += 1
+            else:
+                right -= 1
     return count
 
 if __name__ == '__main__':
