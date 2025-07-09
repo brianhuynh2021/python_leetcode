@@ -30,4 +30,3 @@ def sub_arrays(nums: List[int], k: int)->List[List[int]]:
 if __name__ == '__main__':
     nums = [10, 5, 2, 6]
     print('Sub arrays are: ', sub_arrays(nums, 100))
-
