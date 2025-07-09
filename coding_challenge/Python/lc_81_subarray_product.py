@@ -28,6 +28,21 @@ def sub_arr_product(nums: list[int], target: int):
                 break
     return count
 
+def optimized_sub_arr_product(nums: list[int], target: int):
+    if not nums or target <= 1:
+        return 0
+    left = 0
+    n = len(nums)
+    count = 0
+    product = 1
+    for right in range(n):
+        product *= right
+        while product >= target and left <= right:
+            product //=nums[left]
+            left += 1
+        count += (right-left) + 1
+    return count
+
 if __name__=="__main__":
     nums = [10, 5, 2, 6]
     target = 100
