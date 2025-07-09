@@ -29,17 +29,17 @@ def brute_force_number_range(arr: list[int]):
         if arr[j] - arr[j - 1] == 1:
             sub_arr.append(arr[j])
         else:
-            result.append(sub_arr)
+            result.append(format_range(sub_arr))
             sub_arr = [arr[j]]
-    result.append(sub_arr)    
+    result.append(format_range(sub_arr))
     return result
 
-def format_range(arrs: list[list[int]])->list[str]:
-    number_range = [str(arr[0]) if len(arr) == 1 else f'{arr[0]}->{arr[-1]}' for arr in arrs]
-    return number_range
+
+def format_range(arr: list[int]) -> str:
+    return str(arr[0]) if len(arr) == 1 else f"{arr[0]}->{arr[-1]}"
+
 
 if __name__ == "__main__":
     arr = [0, 1, 2, 6, 7, 9]
     result = brute_force_number_range(arr)
-    format_result = format_range(result)
-    print(format_result)
+    print(result)
