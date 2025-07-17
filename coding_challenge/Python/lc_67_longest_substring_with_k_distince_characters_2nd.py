@@ -51,3 +51,29 @@ def count_distinct_chars_03(s: str)->int:
 assert brute_force_longest_substr_with_k(s="aa", k =1) == "aa"
 assert brute_force_longest_substr_with_k(s="a", k =10) == "a"
 assert brute_force_longest_substr_with_k(s="eceba", k =2) == "ece"
+
+def optimized_longest_substring_with_k_distinct(s: str, k: int)->str:
+    if not s:
+        raise ValueError('Input string must not be empty')
+    if k == 0:
+        return ''
+    n = len(s)
+    left = 0
+    max_len = 0
+    check_appear = {}
+    for right in range(n):
+        c = s[right]
+        check_appear[c] = check_appear.get(c, 0) + 1
+        while len(check_appear) > k: # Chỗ này người hoc cần hiểu nha
+            left_char = s[left]
+            check_appear[left_char] -= 1
+            if check_appear[left_char] == 0:
+                del check_appear[left_char]
+            left += 1
+        if right - left + 1 > max_len:
+            max_len = right - left + 1
+            start_index = left
+    return s[start_index:start_index+max_len]
+
+print(optimized_longest_substring_with_k_distinct('eceabaabce', 2))
+assert optimized_longest_substring_with_k_distinct('aa', 1) == 'aa'
