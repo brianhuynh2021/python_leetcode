@@ -38,4 +38,18 @@ def optimized_find_peak_element(nums: list[int]):
             high = mid
     return high
         
-            
+def optimized_find_peak_element(nums: list[int])->int:
+    n = len(nums)
+    if not nums or n < 3:
+        raise ValueError('Input array must not be empty or must be aleast 3 elements')
+    
+    low = 0
+    high =  n - 1
+    while low < high:
+        mid = (low + high)//2
+        if nums[mid] < nums[mid + 1]:
+            # Peak is the biggest one, so when nums[mid] < nums[mid + 1], we’re sure that mid and left side do not include peak
+            low = mid + 1
+        else: # nums[mid] > nums[mid + 1] it perhaps peak but not always
+            high = mid
+    return low

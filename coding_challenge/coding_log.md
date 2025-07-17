@@ -7,3 +7,13 @@
     - s = "eceba", k = 2 → "ece"
     - s = "aa", k = 1 → "aa"
 🗣️ Action: 15h42 – tự nói lớn + tự viết lại code hoàn chỉnh không nhìn lại
+
+📅 Date: 2025-07-17 (Thursday)
+✅ Problem: Peak element in mountain array
+🧠 Idea: 
+    - Brute force O(n): 2 vòng for tạo substring + đếm số lượng ký tự distinct bằng dict/set
+    - Optimized O(n): using binary search
+    🧪 Test:
+    - s = "eceba", k = 2 → "ece"
+    - s = "aa", k = 1 → "aa"
+🗣️ Action: 
