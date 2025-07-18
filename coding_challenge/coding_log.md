@@ -11,8 +11,8 @@
 📅 Date: 2025-07-17 (Thursday)
 ✅ Problem: Peak element in mountain array
 🧠 Idea: 
-    - Brute force O(n): 2 vòng for tạo substring + đếm số lượng ký tự distinct bằng dict/set
-    - Optimized O(n): using binary search
+    - Brute force O(n): Due to we iterate for loop until we find the item match the condition arr[i-1] < arr[i] > arr[i+1]
+    - Optimized O(logn): using binary search
     🧪 Test:
     - s = "eceba", k = 2 → "ece"
     - s = "aa", k = 1 → "aa"
