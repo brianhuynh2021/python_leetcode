@@ -38,4 +38,4 @@ def optimized_find_peak_element(nums: list[int])->int:
             high = mid
     return low
 print(optimized_find_peak_element([1, 3, 5, 7, 6, 4 , 2, 0]))
-print(optimized_find_peak_element([1, 3, 5, 7, 6, 4 , 2, 0]))
+print(optimized_find_peak_element([1, 8, 9, 11, 6, 4 , 2, 0]))

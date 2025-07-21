@@ -29,7 +29,7 @@ def brute_force_search_matrix(matrix: list[list[int]], target: int)->bool:
         return True
   return False
 
-def search_matrix_binary(matrix: list[list[int]], target: int) -> bool:
+def optimized_search_matrix_binary(matrix: list[list[int]], target: int) -> bool:
     """
     Optimized using Binary Search on virtual 1D array
     Time: O(log(m * n))
@@ -41,7 +41,7 @@ def search_matrix_binary(matrix: list[list[int]], target: int) -> bool:
     rows = len(matrix)
     cols = len(matrix[0])
     left = 0
-    right = rows * cols - 1
+    right = (rows * cols) - 1
 
     while left <= right:
         mid = (left + right) // 2
