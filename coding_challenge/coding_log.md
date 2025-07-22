@@ -18,7 +18,7 @@
     🧪 Test:
 🗣️ Action:
 
-📅 Date: 2025-07-21 (Thursday)
+📅 Date: 2025-07-21 (Mondy)
 ✅ Problem: Search targte in 2D array
 🧠 Idea: 
     - Brute force O(n^2): 2 for loops, for row in range(len(matrix)) - for val in row if item == target
@@ -28,5 +28,17 @@
         . len of matrix is: rows*colums
         . use binary search: get the mid position -> convert it into matrix position by get
           row = mid//cols, col = mid%cols ==> get mid_val and compare to target
-    🧪 Test:
-🗣️ Action: 
+🧪 Test:
+🗣️ Action:
+
+📅 Date: 2025-07-21 (Mondy)
+✅ Problem: Parentheses valid
+🧠 Idea: 
+    - Optimized O(logn): We apply stack LIFO, we initialize mapping of characters mapping = {')': '(', '}': '{', ']': '['}.
+    - Use for loop checking each item (if is is first open brackets: '({[' put them in stack)
+    - if not those open brackets, we have to check with current stack (if current stack is empty==> return False)
+      . if current stack is not empty for now
+      . top of stack: top = stack.pop()
+      . if mapping[c] != top return False
+    return not stack
+🧪 Test:
