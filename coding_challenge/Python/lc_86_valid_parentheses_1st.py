@@ -54,7 +54,7 @@ def is_valid(s: str) -> bool:
                 return True
     return False
 
-def valid_parentheses_brute(s: str)->bool:
+def valid_parentheses(s: str)->bool:
     stack = []
     mapping = {')': '(', '}': '{', ']': '['}  # 🔁 match closing to opening
     for c in s:
