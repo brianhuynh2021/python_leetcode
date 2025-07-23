@@ -53,3 +53,18 @@ def is_valid(s: str) -> bool:
             if is_valid(s[1:i]) and is_valid(s[i+1:]):
                 return True
     return False
+
+def valid_parentheses_brute(s: str)->bool:
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}  # 🔁 match closing to opening
+    for c in s:
+        if c in '({[':
+            stack.append(c)
+        else:
+            if not stack:
+                return False
+            else:
+                top = stack.pop()
+                if mapping[c] != top:
+                    return False
+    return not stack

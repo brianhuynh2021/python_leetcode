@@ -31,7 +31,7 @@
 🧪 Test:
 🗣️ Action:
 
-📅 Date: 2025-07-21 (Mondy)
+📅 Date: 2025-07-21 (Monday)
 ✅ Problem: Parentheses valid
 🧠 Idea: 
     - Optimized O(logn): We apply stack LIFO, we initialize mapping of characters mapping = {')': '(', '}': '{', ']': '['}.
@@ -41,4 +41,9 @@
       . top of stack: top = stack.pop()
       . if mapping[c] != top return False
     return not stack
-🧪 Test:
+
+📅 Date: 2025-07-23 (Monday)
+✅ Problem: Parentheses valid
+🧠 Idea/Notes: [] emty list would return False ==> return not []==> True
+example: stack = [1, 5, 4, 2] pop out a item
+         item_pop = stack.pop() ==> return 2
