@@ -81,3 +81,39 @@ example: stack = [1, 5, 4, 2] pop out a item
             prev = curr
             curr = next_node
        . return prev
+
+🗓️ Date: 2025-07-24 (Thurs)
+✅ Problem: Min Stack (Design Stack with getMin in O(1))
+🧠 Idea/Notes:
+
+   🙇 brute force approach:
+       . Use one list as stack
+       . getMin() = call min(stack) every time
+       . This is O(n), since min() must scan the list
+       . ❌ not acceptable for FAANG interview
+
+   🤔 optimize approach:
+       . Use 2 stacks: stack and min_stack
+       . push(x):
+           - stack.append(x)
+           - min_stack.append(min(x, min_stack[-1])) if min_stack else min_stack.append(x)
+       . pop():
+           - stack.pop(), min_stack.pop()
+       . top():
+           - return stack[-1]
+       . getMin():
+           - return min_stack[-1]
+       . ✅ All operations run in O(1)
+
+🧪 Sample dry run:
+
+    push(5)     stack: [5]        min_stack: [5]
+    push(2)     stack: [5, 2]     min_stack: [5, 2]
+    push(4)     stack: [5, 2, 4]  min_stack: [5, 2, 2]
+    push(1)     stack: [5, 2, 4, 1] min_stack: [5, 2, 2, 1]
+    pop()       stack: [5, 2, 4]  min_stack: [5, 2, 2]
+
+🎯 Key insight:
+   - min_stack mirrors stack and caches "minimum so far"
+   - getMin() just peeks min_stack[-1] → O(1)
+   - This uses extra O(n) space but achieves constant time min retrieval
