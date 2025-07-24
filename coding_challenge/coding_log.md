@@ -42,8 +42,42 @@
       . if mapping[c] != top return False
     return not stack
 
-📅 Date: 2025-07-23 (Monday)
+🗓️ Date: 2025-07-23 (Monday)
 ✅ Problem: Parentheses valid
 🧠 Idea/Notes: [] emty list would return False ==> return not []==> True
 example: stack = [1, 5, 4, 2] pop out a item
          item_pop = stack.pop() ==> return 2
+
+🗓️ Date: 2025-07-23 (Monday)
+✅ Problem: Reverse linked list
+🧠 Idea/Notes: 
+   🙇 brute force approach:
+       . Take all nodes into a list 
+       . Iterate the list from end to begin to get new linked list
+       . Return nodes[-1] (final item of list)
+    🤔 optimize approach
+       . use 2 pointers: prev = None, curr = head.
+       . Loop all nodes and point to prev until curr is None
+       . While curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+       . return prev
+
+🗓️ Date: 2025-07-23 (Monday)
+✅ Problem: Reverse linked list
+🧠 Idea/Notes: 
+   🙇 brute force approach:
+       . Take all nodes into a list 
+       . Iterate the list from end to begin to get new linked list
+       . Return nodes[-1] (final item of list)
+    🤔 optimize approach
+       . use 2 pointers: prev = None, curr = head.
+       . Loop all nodes and point to prev until curr is None
+       . While curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+       . return prev
