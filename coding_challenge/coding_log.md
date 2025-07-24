@@ -117,3 +117,7 @@ example: stack = [1, 5, 4, 2] pop out a item
    - min_stack mirrors stack and caches "minimum so far"
    - getMin() just peeks min_stack[-1] → O(1)
    - This uses extra O(n) space but achieves constant time min retrieval
+
+🗓️ Date: 2025-07-25 (Friday)
+✅ Problem: Redoing this Min Stack (Design Stack with getMin in O(1))
+🧠 Idea/Notes: using 2 pointers get the min_stack so later only O(1)
