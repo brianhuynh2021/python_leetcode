@@ -133,3 +133,15 @@ example: stack = [1, 5, 4, 2] pop out a item
         j+= 1
     . Out of the loop not found any greater than put it as 0
     ⛓️‍💥 Optimize: 
+    . Use stack 
+
+🗓️ Date: 2025-07-25 (Friday)
+✅ Problem: Fruits into basket
+🧠 Idea/Notes: 
+    ⛓️‍💥 Brute force: O(n^2)
+    . Get all sub_array by 2 for loop, each sub_array we get len(set(sub_array)). 
+        .If len(sub_array)<=2:
+            update max_len of sub_array compare with last sub_array
+    . Out of the loop return max_len
+    ⛓️‍💥 Optimize:
+

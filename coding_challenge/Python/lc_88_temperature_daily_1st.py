@@ -1,4 +1,4 @@
-def daily_temperatures_brute(temperatures: list[int]) -> list[int]:
+def daily_temperatures_brute(temperatures: list[int])->list[int]:
     """
     📌 Problem:
     Given a list of daily temperatures, return a list such that, for each day in the input,
@@ -39,3 +39,15 @@ def daily_temperatures_brute(temperatures: list[int]) -> list[int]:
             waits.append(0)
     return waits
 
+def daily_temperature_optimize(temperatures: list[int])->list[int]:
+    n = len(temperatures)
+    if not temperatures or n < 2:
+        raise ValueError(
+            "Temperatures must be a non-empty list with at least 2 days."
+        )
+    waits = []
+    for i in range(n):
+        while waits and temperatures[i+1] > temperatures[stack[-1]]:
+            waits.pop()
+        waits.append(i)
+    return waits
