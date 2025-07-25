@@ -1,7 +1,7 @@
-def daily_temperatures_brute(temperatures: list[int])-> list[int]:
+def daily_temperatures_brute(temperatures: list[int]) -> list[int]:
     """
     📌 Problem:
-    Given a list of daily temperatures, return a list such that, for each day in the input, 
+    Given a list of daily temperatures, return a list such that, for each day in the input,
     tells you how many days you would have to wait until a warmer temperature.
     If there is no future day for which this is possible, put 0 instead.
 
@@ -23,18 +23,19 @@ def daily_temperatures_brute(temperatures: list[int])-> list[int]:
     [1, 1, 4, 2, 1, 1, 0, 0]
     """
     n = len(temperatures)
-    if not temperatures or  n < 2:
-        raise ValueError('"Temperatures must be a non-empty list with at least 2 days."')
+    if not temperatures or n < 2:
+        raise ValueError(
+            "Temperatures must be a non-empty list with at least 2 days."
+        )
     waits = []
-    for i in range(n-1):
+    for i in range(n):
         j = i + 1
         while j < n:
             if temperatures[j] > temperatures[i]:
-                waits.append(j-i)
+                waits.append(j - i)
                 break
             j += 1
         else:
             waits.append(0)
     return waits
 
-print(daily_temperatures_brute([50, 55, 53, 60]))
