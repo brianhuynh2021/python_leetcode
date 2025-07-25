@@ -121,3 +121,15 @@ example: stack = [1, 5, 4, 2] pop out a item
 🗓️ Date: 2025-07-25 (Friday)
 ✅ Problem: Redoing this Min Stack (Design Stack with getMin in O(1))
 🧠 Idea/Notes: using 2 pointers get the min_stack so later only O(1)
+
+🗓️ Date: 2025-07-25 (Friday)
+✅ Problem: Daily temperatures
+🧠 Idea/Notes: 
+    ⛓️‍💥 Brute force: loop through all days, then compare the following day(s)'s temperature greater than the current day. Put it in waits [] result if not move to next day until it get the temperature greater than current day.
+        waits = []
+        if temperature[day[j]] > temperature[current[day]]:
+            wait.append(j-i)
+            break
+        j+= 1
+    . Out of the loop not found any greater than put it as 0
+    ⛓️‍💥 Optimize: 
