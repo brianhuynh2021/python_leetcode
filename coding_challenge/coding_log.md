@@ -145,3 +145,21 @@ example: stack = [1, 5, 4, 2] pop out a item
     . Out of the loop return max_len
     ⛓️‍💥 Optimize:
 
+🗓️ Date: 2025-07-27 (Sunday)
+✅ Problem: Daily temperatures
+🧠 Idea/Notes: 
+    ⛓️‍💥 Optimize: 
+    . Use stack:
+    We use a stack to keep track of the days that haven’t found a warmer day yet.
+    When we reach day i, we check whether the current temperature is warmer than the temperatures of the previous days stored in the stack.
+
+    If it is, then we know that those previous days have finally found a warmer day — which is today.
+
+    We pop that previous day off the stack (let’s call it prev_day), and we calculate:
+        waits[prev_day] = i - prev_day
+    This gives the number of days it took to find a warmer temperature.
+
+    ❗ If we accidentally write:
+        waits[prev_day] = i - stack[-1]
+    then we’re using the next day in the stack, not the one we just popped.
+    That’s a logic error — and I understand now why that was wrong.

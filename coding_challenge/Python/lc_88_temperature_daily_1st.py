@@ -45,9 +45,11 @@ def daily_temperature_optimize(temperatures: list[int])->list[int]:
         raise ValueError(
             "Temperatures must be a non-empty list with at least 2 days."
         )
-    waits = []
+    stack = []
+    waits = [0]*n
     for i in range(n):
-        while waits and temperatures[i+1] > temperatures[stack[-1]]:
-            waits.pop()
-        waits.append(i)
+        while stack and temperatures[i] > temperatures[stack[-1]]:
+            prev_day = stack.pop() # Xác định được ngày ấm hơn ngày trước đó nên lấy ngày đó ra
+            waits[prev_day] = i - prev_day # Cập nhât tại ngày trước đó sau bao nhiêu ngày ấm lên - cho stack[-1] là sai à
+        stack.append(i)
     return waits
