@@ -6,9 +6,9 @@ type of fruit per basket. You need to find the length of the longest
 subarray with at most 2 distinct fruits.
 '''
 
-def fruit_into_basket_brute(fruits: list[int])->int:
+def fruit_into_baskets_brute(fruits: list[int])->int:
     if not fruits:
-        raise ValueError('fruits must be not empty')
+        raise ValueError('Fruits must be not empty')
     n = len(fruits)
     max_len = 0
     for i in range (n):
@@ -20,4 +20,25 @@ def fruit_into_basket_brute(fruits: list[int])->int:
                 
     return max_len
 
-print(fruit_into_basket_brute([1, 2, 1, 2, 3]))
+print(fruit_into_baskets_brute([1, 2, 1, 2, 3]))
+
+def fruit_into_baskets_optimize(fruits: list[int])->int:
+    if not fruits:
+        raise ValueError('Fruits must be non-empty list')
+    n = len(fruits)
+    left = 0
+    fruit_count = {}
+    max_len = 0
+    for right in range(1,n):
+        fruit = fruits[right]
+        fruit_count[fruit] = fruit_count.get(fruit, 0) + 1
+        while len(fruit_count) > 2:
+            left_fruits = fruits[left]
+            fruit_count[left_fruits] -= 1
+            if fruit_count[left_fruits] == 0:
+                del fruit_count[left_fruits] # also can you pop method dictionary.pop('key)
+            left += 1
+        current_len = right - left + 1
+        if current_len > max_len:
+            max_len = current_len
+    return max_len    

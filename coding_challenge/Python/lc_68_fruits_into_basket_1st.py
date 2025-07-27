@@ -14,8 +14,8 @@ def total_fruits(fruits: list[int]) -> int:
             left_fruit = fruits[start]
             check_appear[left_fruit] -= 1
             if check_appear[left_fruit] == 0:
-                del check_appear[left_fruit]
-            start += 1
+                del check_appear[left_fruit] # or you can use pop built-in method                                # 
+            start += 1                       # by check_appear.pop('left_fruit')
 
         max_fruits = max(max_fruits, end - start + 1)
 
