@@ -163,3 +163,24 @@ example: stack = [1, 5, 4, 2] pop out a item
         waits[prev_day] = i - stack[-1]
     then we’re using the next day in the stack, not the one we just popped.
     That’s a logic error — and I understand now why that was wrong.
+
+🗓️ 2025-07-27
+✅ Problem: Evaluate Reverse Polish Notation
+🧠 Idea: Use a stack to evaluate expressions where operators come after operands (postfix/RPN).
+    💻 Edge Cases:
+        1. If tokens has only 1 element:
+            - If it is a valid integer (check via lstrip("-").isdigit()), return that value.
+            - Else, raise ValueError ("Invalid RPN: not enough operands").
+        2. If tokens is empty ([]), raise ValueError ("Invalid RPN: empty input").
+
+    💻 Main Loop:
+        - For each token `c` in tokens:
+            - If `c` is an operator ("+", "-", "*", "/"):
+                - Pop two values from the stack: `b`, then `a`
+                - Compute `a op b` with correct order
+                - Push the result back onto the stack
+            - Else:
+                - Convert `c` to int and push to the stack
+
+    💻 Final Step:
+        - After the loop, return stack[0] as the result
