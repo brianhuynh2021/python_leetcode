@@ -31,3 +31,22 @@ def detect_cycle_brute(head: Node) -> bool:
         visited_nodes.add(curr_node)
         curr_node = curr_node.next
     return False
+
+def detect_cycle_optimized(head: Node) -> bool:
+    """
+    Uses Floyd’s Tortoise and Hare algorithm to detect a cycle in a linked list.
+
+    Args:
+        head (Node): Head of the singly linked list.
+
+    Returns:
+        bool: True if a cycle exists, False otherwise.
+    """
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
