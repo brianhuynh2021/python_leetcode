@@ -11,26 +11,26 @@ Imagine you are given a list of strings like this:
 """
 
 
-def group_anagrams(items: list):
+def group_anagrams_brute(groups: list[str])->list[list[str]]:
+    """
+    Brute-force solution using dictionary to track processed anagram groups.
+    No use of visited[] array.
+    """
+    if not groups:
+        raise ValueError('Items list must not be emtpy')
     check_appear = {}
-    for item in items:
-        sorted_item = sorted(item)  # sorted luôn luôn trả về list => ['e', 'a', 't']
-        sorted_item = "".join(sorted_item)  # join lại để trả về string/item đã sắp xếp
-        if (
-            sorted_item not in check_appear
-        ):  # Đi kiểm tra xem sorted_item có trong dict hay không
-            check_appear[sorted_item] = [
-                item
-            ]  # Nếu chưa thì add key = list với item đó có rồi thì tiếp tục thêm phần tử vào dict
-        else:
-            check_appear[sorted_item].append(item)
-    print("Check appear", check_appear)
-    # Cuối cùng ta được {'aet': ['eat', 'tea', 'ate'], 'ant': ['tan', 'nat'], 'abt': ['bat']}
-    result = [value for value in check_appear.values()]  # Đi lấy value ra
+    result = []
+    n = len(groups)
+    for i in range(n):
+        key = ''.join(sorted(groups[i]))
+        if key in check_appear:
+            continue
+        sub_group = [groups[i]]
+        for j in range(i+1, n):
+            if ''.join(sorted(groups[j])) == key:
+                sub_group.append(groups[j])
+        check_appear[key] = True
+        result.append(sub_group)
     return result
 
-
-if __name__ == "__main__":
-    items = ["eat", "tea", "tan", "ate", "nat", "bat"]
-    result = group_anagrams(items)
-    print(f"Anagrams group are {result}")
+print(group_anagrams_brute(["eat", "tea", "tan", "ate", "nat", "bat"]))
