@@ -29,6 +29,36 @@ def merge_2_linked_list(l1, l2):
         curr = curr.next
     return dummy.next
 
+def merge_two_sorted_lists_no_dummy(l1, l2):
+    if not l1:
+        return l2
+    if not l2:
+        return l1
+
+    # Khởi tạo head: chọn node nhỏ hơn giữa l1 và l2
+    if l1.val < l2.val:
+        head = l1
+        l1 = l1.next
+    else:
+        head = l2
+        l2 = l2.next
+
+    tail = head
+
+    while l1 and l2:
+        if l1.val < l2.val:
+            tail.next = l1
+            l1 = l1.next
+        else:
+            tail.next = l2
+            l2 = l2.next
+        tail = tail.next
+
+    # Gắn phần còn lại
+    tail.next = l1 if l1 else l2
+
+    return head
+
 def merge_two_sorted_lists_optimized(l1: Node, l2: Node) -> Node:
     """
     Optimized in-place merge of two sorted linked lists.
