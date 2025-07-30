@@ -1,7 +1,7 @@
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val):
         self.val = val
-        self.next = next
+        self.next = None
 
 # Hàm gộp 2 danh sách liên kết đã sắp xếp
 def mergeTwoLists(l1, l2):
