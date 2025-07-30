@@ -184,3 +184,41 @@ example: stack = [1, 5, 4, 2] pop out a item
 
     💻 Final Step:
         - After the loop, return stack[0] as the result
+🗓️ 2025-07-30
+✅ Problem: Group Anagrams
+🧠 Idea: 
+    🙇 Brute-force approach:
+   - Duyệt từng từ `i` trong danh sách
+   - Với mỗi `i`, so sánh với các từ `j > i`
+   - Dùng `sorted()` để kiểm tra xem `word[j]` có phải hoán vị của `word[i]`
+   - Dùng `dict` (check_appear) để tránh xét lại cùng nhóm
+   - Độ phức tạp: **O(N² × K log K)**
+
+🤔 Optimized approach:
+   - Tạo `group_map = {}` dùng `dict` (hoặc `defaultdict`)
+   - Với mỗi từ:
+       - Tạo `key = ''.join(sorted(word))`
+       - Nếu key chưa có trong dict, khởi tạo list mới
+       - Append từ đó vào `group_map[key]`
+   - Trả về list của tất cả các value trong group_map
+   - Độ phức tạp: **O(N × K log K)**
+   🔧 Pseudo-code (optimized):
+    ```text
+    Function group_anagrams(words: List of strings) → List of List of strings
+
+    1. if words is empty:
+            return []
+    2. Initialize group_map = empty map
+    3. For each word in words:
+            key = sorted(word)
+            if not key in group_map:
+                group_map[key] = []
+            Append word to group_map[key]
+    4. Return group_map.values() as list of lists
+🧪 Complexity:
+	•	Time: O(N × K log K)
+	•	Space: O(N × K)
+
+💡 Insight:
+	•	Dùng sorted(word) để làm key thống nhất giữa các từ hoán vị
+	•	Không cần so sánh từng cặp, chỉ gom theo key
