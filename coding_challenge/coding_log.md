@@ -222,3 +222,28 @@ example: stack = [1, 5, 4, 2] pop out a item
 💡 Insight:
 	•	Dùng sorted(word) để làm key thống nhất giữa các từ hoán vị
 	•	Không cần so sánh từng cặp, chỉ gom theo key
+
+🗓️ 2025-08-01 (Friday)
+✅ Problem: Largest histogram
+🧠 Idea: 
+   🙇 Brute-force approach:
+    e use two nested loops to check every pair of indices `(start, end)`.  
+    For each range, we track the minimum height from `start` to `end`, and compute the rectangle area.  
+    If the area is greater than the current maximum, we update `max_area`.  
+    Finally, return the largest area found.
+
+    📋 Steps:
+
+    1. Initialize `max_area = 0`
+
+    2. Outer loop:
+        - For each `start` in `range(len(heights))`:
+            - Initialize `min_height = heights[start]`
+            - Inner loop:
+                - For each `end` in `range(start, len(heights))`:
+                    - Update `min_height = min(min_height, heights[end])`
+                    - Compute `width = end - start + 1`
+                    - Compute `area = min_height * width`
+                    - Update `max_area = max(max_area, area)`
+
+    3. Return `max_area`

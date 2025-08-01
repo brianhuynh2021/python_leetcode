@@ -12,12 +12,12 @@ class Solution:
         n = len(heights)
         # Outer loop: fix the start index of the rectangle
         for start in range(n):
-            min_heigh = heights[start]
+            min_height = heights[start]
             
             # Inner loop: fix the end index of the rectangle
             for end in range(start, n):
-                min_heigh = min(min_heigh, heights[end])
+                min_height = min(min_heigh, heights[end])
                 width = end - start + 1
-                area = min_heigh * width
+                area = min_height * width
                 max_area = max(max_area, area)
         return max_area
