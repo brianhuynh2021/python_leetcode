@@ -16,8 +16,24 @@ class Solution:
             
             # Inner loop: fix the end index of the rectangle
             for end in range(start, n):
-                min_height = min(min_heigh, heights[end])
+                min_height = min(min_height, heights[end])
                 width = end - start + 1
                 area = min_height * width
                 max_area = max(max_area, area)
+        return max_area
+    
+    def largest_rectangle_area_optimized(self, heights: list[int]) -> int:
+        if not heights:
+            raise ValueError('The heights bar must not be empty')
+        heights.append(0)
+        max_area = 0
+        stack = []
+        for i, h in enumerate(heights):
+            while stack and heights[stack[-1]] > h:
+                top_index = stack.pop()
+                height = heights[top_index]
+                width = i - stack[-1] - 1 if stack else i
+                area = height * width
+                max_area = max(max_area, area)
+            stack.append(i)
         return max_area

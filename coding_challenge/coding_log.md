@@ -234,16 +234,40 @@ example: stack = [1, 5, 4, 2] pop out a item
 
     📋 Steps:
 
-    1. Initialize `max_area = 0`
+        1. Initialize `max_area = 0`
 
-    2. Outer loop:
-        - For each `start` in `range(len(heights))`:
-            - Initialize `min_height = heights[start]`
-            - Inner loop:
-                - For each `end` in `range(start, len(heights))`:
-                    - Update `min_height = min(min_height, heights[end])`
-                    - Compute `width = end - start + 1`
-                    - Compute `area = min_height * width`
-                    - Update `max_area = max(max_area, area)`
+        2. Outer loop:
+            - For each `start` in `range(len(heights))`:
+                - Initialize `min_height = heights[start]`
+                - Inner loop:
+                    - For each `end` in `range(start, len(heights))`:
+                        - Update `min_height = min(min_height, heights[end])`
+                        - Compute `width = end - start + 1`
+                        - Compute `area = min_height * width`
+                        - Update `max_area = max(max_area, area)`
 
-    3. Return `max_area`
+        3. Return `max_area`
+
+    🙇 Optimized approach:
+    - Treat histogram as a window where each bar tries to **extend left/right** until blocked.
+    - Use a **monotonic increasing stack** to store indices.
+    - For each bar at index `i` with height `h`:
+        1. If `h >= heights[stack[-1]]`: push `i` (bar can still grow).
+        2. Else: pop from stack until top is lower than `h`, and for each popped:
+            - `height = heights[popped_index]`
+            - `width = i - stack[-1] - 1` (or `i` if stack is empty)
+            - `area = height * width` → update `max_area`
+
+    ### ⚙️ Steps:
+    - Append sentinel `0` to `heights` to force final area computation.
+    - Traverse all indices `i`, maintaining stack of increasing heights.
+    - Push `i` only **after popping all taller bars**.
+    - Return `max_area`.
+
+    ### 🧱 Key Insight:
+    - **Each pop** computes the max area for a bar **right before it gets blocked**.
+    - Stack keeps track of all bars that are still "open to grow".
+
+    ### 🧠 Tiny Habit:
+    > ❝ Don’t push `i` until you’ve popped all taller bars.  
+    > The right boundary (`i`) defines the end of extension for shorter bars. ❞
