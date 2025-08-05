@@ -92,3 +92,27 @@ remote_log = LogManager(RemoteLogger())
 console_log.do_log("User signed in")
 file_log.do_log("File uploaded")
 remote_log.do_log("Error sent to server")
+
+
+class Engine(ABC):
+    @abstractmethod
+    def run(self):
+        pass
+    
+    @abstractmethod
+    def re_charge(self):
+        pass
+    
+class Motorbik(Engine):
+    def run(self):
+        print("Vilocity max is 250 km/h")
+        
+    def re_charge(self):
+        print("Maximum 25 galons")
+        
+class Car(Engine):
+    def run(self):
+        print("Volocity max is 350km")
+        
+    def re_charge(self):
+        print("Maximum 35 galons")
