@@ -116,3 +116,58 @@ class Car(Engine):
         
     def re_charge(self):
         print("Maximum 35 galons")
+        
+class RemoteControl(ABC):
+    @abstractmethod
+    def turn_on(self):
+        pass
+    
+    @abstractmethod
+    def turn_off(self):
+        pass
+    
+    @abstractmethod
+    def change_channel(self, channel: int):
+        pass
+    
+class SamsungRemote(RemoteControl):
+    def turn_on(self):
+        print("Samsun TV is now On.")
+        
+    def turn_off(self):
+        print("Samsun TV is now off.")
+        
+    def change_channel(self, channel: int):
+        print(f"Samsung TV changed to channel {channel}.")
+        
+
+class SonyRemote(RemoteControl):
+    def turn_on(self):
+        print("Sony TV is powering up.")
+        
+    def turn_off(self):
+        print("Sony TV is now shutting down.")
+        
+    def change_channel(self, channel: int):
+        print(f"Sony TV switched to channel {channel}.")
+        
+class User:
+    def __init__(self, remote: RemoteControl):
+        self.remote = remote
+        
+    def watch_tv(self):
+        self.remote.turn_on()
+        self.remote.change_channel(5)
+        self.remote.turn_off()
+        
+samsung = SamsungRemote()
+sony = SonyRemote()
+
+user1 = User(samsung)
+user2 = User(sony)
+
+print("=== User with Samsum ===")
+user1.watch_tv()
+
+print("\n=== User with Sony ===")
+user2.watch_tv()
