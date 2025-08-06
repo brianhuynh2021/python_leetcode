@@ -19,7 +19,7 @@ Output: [4, 2, 4, -1, -1]
 4. return result
 '''
 
-def next_greater_element_brute(nums: list[int]) -> list[int]
+def next_greater_element_brute(nums: list[int]) -> list[int]:
     if not nums:
         raise ValueError("Array nums must not be empty")
     n = len(nums)
@@ -29,4 +29,18 @@ def next_greater_element_brute(nums: list[int]) -> list[int]
             if nums[j] > nums[i]:
                 result[i] = nums[j]
                 break
+    return result
+
+
+def next_greater_element_optimized(nums: list[int]) -> list[int]:
+    if not nums:
+        raise ValueError("Array nums must not be emtpy")
+    
+    stack = []
+    result = [-1]*len(nums)
+    for i, num in enumerate(nums):
+        while stack and num > nums[stack[-1]]:
+            index = stack.pop()
+            result[index] = num
+        stack.append(i)
     return result
