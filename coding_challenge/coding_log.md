@@ -257,7 +257,8 @@ example: stack = [1, 5, 4, 2] pop out a item
             - `height = heights[popped_index]`
             - `width = i - stack[-1] - 1` (or `i` if stack is empty)
             - `area = height * width` → update `max_area`
-
+    - Remember that left block is stack[-1] it always smaller than heights[pop_index] and heights[stack[-1]] > i
+    - Pay attention stack[-1] will get twice
     ### ⚙️ Steps:
     - Append sentinel `0` to `heights` to force final area computation.
     - Traverse all indices `i`, maintaining stack of increasing heights.
@@ -271,3 +272,11 @@ example: stack = [1, 5, 4, 2] pop out a item
     ### 🧠 Tiny Habit:
     > ❝ Don’t push `i` until you’ve popped all taller bars.  
     > The right boundary (`i`) defines the end of extension for shorter bars. ❞
+
+🗓️ 2025-08-07 (Thu)
+✅ Problem: Next greater element
+🧠 Idea: 
+   🙇 Brute-force approach:
+   - We use 2 for loops (i, j) if any value at index j > than value at i ==> Update result at that postion is value of index j
+   🙇 Optimized approach:
+   - use stack[] to keep index of greater element if there is any

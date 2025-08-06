@@ -31,10 +31,9 @@ def next_greater_element_brute(nums: list[int]) -> list[int]:
                 break
     return result
 
-
 def next_greater_element_optimized(nums: list[int]) -> list[int]:
     if not nums:
-        raise ValueError("Array nums must not be emtpy")
+        raise ValueError("Array nums must not be empty")
     
     stack = []
     result = [-1]*len(nums)
