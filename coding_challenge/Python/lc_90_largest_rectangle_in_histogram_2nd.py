@@ -44,4 +44,8 @@ def largest_rectangle_histogram(heights: list[int]):
         while stack and heights[stack[-1]] > h:
             top_index = stack.pop() # Determine this is the indexcố định height
             height = height[top_index] # get the height
-            width = i - stack[-1] - 1 #i - stack[-1] - 1 là để trừ đi 2 cột chắn (biên trái và phải)
+            width = i if not stack else i - stack[-1] - 1#i - stack[-1] - 1 là để trừ đi 2 cột chắn (biên trái và phải)
+            area = height * width
+            max_area = max(max_area, area)
+        stack.append(i)
+    return max_area
