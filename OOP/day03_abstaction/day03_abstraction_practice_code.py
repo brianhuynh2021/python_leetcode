@@ -171,3 +171,29 @@ user1.watch_tv()
 
 print("\n=== User with Sony ===")
 user2.watch_tv()
+
+import math
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+    
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+        
+    def area(self):
+        return self.length * self.width
+    
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+        
+    def area(self):
+        return math.pi*self.radius**2
+    
+shapes = [Rectangle(5, 3), Circle(4)]
+for shape in shapes:
+    print(f"Area: {shape.area():.2f}")
