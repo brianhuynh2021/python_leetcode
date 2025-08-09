@@ -42,5 +42,49 @@ def asteroid_collision_brute(asteroids: list[int]) -> list[int]:
             else:
                 i += 1
     return asteroids
-    
-asteroid_collision_brute([5, 10, -5])
+
+def asteroid_collision_brute_2nd(asteroids: list[int]) -> list[int]:
+    if not asteroids:
+        raise ValueError('The asteroids must not me empty')
+    hit = True
+    while hit:
+        hit = False
+        i = 0
+        while i < len(asteroids) - 1:
+            a = asteroids[i]
+            b = asteroids[i + 1]
+            if a > 0 and b < 0:
+                print(f"Found the hit {a} -> {b} <- index {i}")
+                if abs(a) > abs(b):
+                    asteroids.pop(i + 1)
+                if abs(a) < abs(b):
+                    asteroids.pop(i)
+                else:
+                    asteroids.pop(i + 1)
+                    asteroids.pop(i)
+                hit = True
+                break
+            else:
+                i += 1
+    return asteroids
+
+def asteroid_collision_optimized(asteroids: list[int]) -> list[int]:
+    if not asteroids:
+        raise ValueError('The asteroids must not be empty')
+    stack = [] # Save those index of positive asteroids
+    for i, asteroid in enumerate(asteroids):
+        while stack and asteroid < 0:
+            if abs(asteroids[stack[-1]]) > abs(asteroid):
+                asteroids.pop(i)
+                break
+            if abs(asteroids[stack[-1]]) < abs(asteroid):
+                asteroids.pop(stack[-1])
+                break
+            else:
+                asteroids.pop(i)
+                asteroids.pop(stack[-1])
+        if asteroid > 0:
+            stack.append(i)
+    return asteroids
+
+asteroid_collision_optimized([5, 10, -5])

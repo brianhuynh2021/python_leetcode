@@ -36,7 +36,7 @@ class Solution:
 
 def largest_rectangle_histogram(heights: list[int]):
     heights.append(0)
-    stack = []
+    stack = [] # This stack save those index of bars greater than them
     max_area = 0
     for i, h in enumerate(heights):
         while stack and heights[stack[-1]] > h:

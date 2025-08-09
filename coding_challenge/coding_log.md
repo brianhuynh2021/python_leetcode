@@ -279,4 +279,11 @@ example: stack = [1, 5, 4, 2] pop out a item
    🙇 Brute-force approach:
    - We use 2 for loops (i, j) if any value at index j > than value at i ==> Update result at that postion is value of index j
    🙇 Optimized approach:
-   - use stack[] to keep index of greater element if there is any
+   - use stack[] to keep index of greater element if there is any element greater than it we pop that index out and sitatimous (dong thoi) update result at that index in value of greater than
+
+🗓️ 2025-08-08 (Friday)
+✅ Problem: Asteroid collision
+🧠 Idea: 
+   🙇 Brute-force approach:
+      We use 2 for loops to do this by checking sequence of (i, j)
+   🙇 Optimized approach:

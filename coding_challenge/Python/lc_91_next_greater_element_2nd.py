@@ -14,7 +14,7 @@ def next_greater_element_optimized(nums: list[int]) -> list[int]:
     if not nums:
         raise ValueError('The nums must not be empty')
     result = len(nums)*[-1]
-    stack = []
+    stack = [] # This save those element that not greater than it
     for i, num in enumerate(nums):
         while stack and nums[stack[-1]] < num:
             pop_index = stack.pop()
