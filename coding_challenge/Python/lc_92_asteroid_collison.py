@@ -59,11 +59,11 @@ def asteroid_collision_brute_2nd(asteroids: list[int]) -> list[int]:
                     asteroids.pop(i + 1)
                 if abs(a) < abs(b):
                     asteroids.pop(i)
+                    i = max(i -1, 0)
                 else:
                     asteroids.pop(i + 1)
                     asteroids.pop(i)
-                hit = True
-                break
+                    i = max(i -1, 0)
             else:
                 i += 1
     return asteroids
@@ -71,20 +71,42 @@ def asteroid_collision_brute_2nd(asteroids: list[int]) -> list[int]:
 def asteroid_collision_optimized(asteroids: list[int]) -> list[int]:
     if not asteroids:
         raise ValueError('The asteroids must not be empty')
-    stack = [] # Save those index of positive asteroids
-    for i, asteroid in enumerate(asteroids):
-        while stack and asteroid < 0:
-            if abs(asteroids[stack[-1]]) > abs(asteroid):
-                asteroids.pop(i)
-                break
-            if abs(asteroids[stack[-1]]) < abs(asteroid):
-                asteroids.pop(stack[-1])
-                break
-            else:
-                asteroids.pop(i)
-                asteroids.pop(stack[-1])
-        if asteroid > 0:
-            stack.append(i)
-    return asteroids
+    pos = [] # Save those positive asteroids
+    out = []
+    for a in asteroids:
+        if a > 0:
+            pos.append(a)
+            continue
+        alive = True
+        while pos and pos[-1] < -a:
+            pos.pop()
+        
+        if pos and pos[-1] == -a:
+            pos.pop()
+            alive = False
+        elif pos and pos[-1] > -a:
+            alive = False
+        
+        if alive and not pos:
+            out.append(a)
+            
+    return out + pos
 
+def asteroid_collision_optimized(asteroids: list[int])->list[int]:
+    if not asteroids:
+        raise ValueError("The asteroids must not be ")
+    stack = [] # to handle exploded asteroid
+    for a in asteroids:
+        alive = True
+        while alive and stack and stack[-1] > 0 and a < 0:
+            if stack[-1] < -a:
+                stack.pop()
+            elif stack[-1] == -a:
+                stack.pop()
+                alive = False
+            else:
+                alive = False
+        if alive:
+            stack.append(a)
+    return stack
 asteroid_collision_optimized([5, 10, -5])

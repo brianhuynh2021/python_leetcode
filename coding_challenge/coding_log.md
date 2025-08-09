@@ -286,4 +286,41 @@ example: stack = [1, 5, 4, 2] pop out a item
 🧠 Idea: 
    🙇 Brute-force approach:
       We use 2 for loops to do this by checking sequence of (i, j)
+      result = [-1]*len(asteroids)
+      psudo code:
+      hit = True
+      while hit:
+        hit = False
+        for i in len(asteroids)
+            a = asteroid[i]
+            b = asteroid[i+1]
+            if a > 0 and  b < 0:
+                if abs(a) > abs(b):
+                    del asteroids[i+1]
+                if abs(a) < abs(b):
+                    del asteroids[i]
+                else:
+                    del both values
+                hit = True
+                break
+      return result
    🙇 Optimized approach:
+      stack = [] # This stack asteroid handle exploded asteroid
+      for a in steroids:
+        alive = True
+        while hit and stack and stack[-1] > 0 and a < 0;
+            if stack[-1] < -a:
+                stack.pop()
+            elif stack[-1] == -a:
+                stack.pop()
+                alive = False
+            else:
+                alive = False
+        if alive:
+            stack.append(a)
+    return stack
+            
+
+
+
+      
