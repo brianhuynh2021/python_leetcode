@@ -25,15 +25,16 @@ print(get_kth_largest_element([2, 5, 7, 8, 9], 4))
 
 from heapq import heappush, heappop
 
-def get_kth_largest_element(nums: list[int], k)->int
+def get_kth_largest_element(nums: list[int], k)->int:
     if not (1<= k <= len(nums)):
         raise ValueError('Invalid k')
     if not nums:
         raise ValueError('nums must not be empty')
     heap : list[int] = []
     for num in nums:
-        if len(heap) < k:
-            heappush(heap, num)
-        else:
+        heappush(heap, num)
+        if len(heap) > k:
             heappop(heap)
     return heap[0]
+
+print(get_kth_largest_element([2, 5, 7, 8, 9], 3))
