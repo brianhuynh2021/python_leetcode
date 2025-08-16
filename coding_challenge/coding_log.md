@@ -174,13 +174,13 @@ example: stack = [1, 5, 4, 2] pop out a item
         2. If tokens is empty ([]), raise ValueError ("Invalid RPN: empty input").
 
     💻 Main Loop:
-        - For each token `c` in tokens:
-            - If `c` is an operator ("+", "-", "*", "/"):
-                - Pop two values from the stack: `b`, then `a`
-                - Compute `a op b` with correct order
+        - For each token c in tokens:
+            - If c is an operator ("+", "-", "*", "/"):
+                - Pop two values from the stack: b, then a
+                - Compute a op b with correct order
                 - Push the result back onto the stack
             - Else:
-                - Convert `c` to int and push to the stack
+                - Convert c to int and push to the stack
 
     💻 Final Step:
         - After the loop, return stack[0] as the result
@@ -188,22 +188,22 @@ example: stack = [1, 5, 4, 2] pop out a item
 ✅ Problem: Group Anagrams
 🧠 Idea: 
     🙇 Brute-force approach:
-   - Duyệt từng từ `i` trong danh sách
-   - Với mỗi `i`, so sánh với các từ `j > i`
-   - Dùng `sorted()` để kiểm tra xem `word[j]` có phải hoán vị của `word[i]`
-   - Dùng `dict` (check_appear) để tránh xét lại cùng nhóm
+   - Duyệt từng từ i trong danh sách
+   - Với mỗi i, so sánh với các từ j > i
+   - Dùng sorted() để kiểm tra xem word[j] có phải hoán vị của word[i]
+   - Dùng dict (check_appear) để tránh xét lại cùng nhóm
    - Độ phức tạp: **O(N² × K log K)**
 
 🤔 Optimized approach:
-   - Tạo `group_map = {}` dùng `dict` (hoặc `defaultdict`)
+   - Tạo group_map = {} dùng dict (hoặc defaultdict)
    - Với mỗi từ:
-       - Tạo `key = ''.join(sorted(word))`
+       - Tạo key = ''.join(sorted(word))
        - Nếu key chưa có trong dict, khởi tạo list mới
-       - Append từ đó vào `group_map[key]`
+       - Append từ đó vào group_map[key]
    - Trả về list của tất cả các value trong group_map
    - Độ phức tạp: **O(N × K log K)**
    🔧 Pseudo-code (optimized):
-    ```text
+    text
     Function group_anagrams(words: List of strings) → List of List of strings
 
     1. if words is empty:
@@ -227,51 +227,51 @@ example: stack = [1, 5, 4, 2] pop out a item
 ✅ Problem: Largest histogram
 🧠 Idea: 
    🙇 Brute-force approach:
-    e use two nested loops to check every pair of indices `(start, end)`.  
-    For each range, we track the minimum height from `start` to `end`, and compute the rectangle area.  
-    If the area is greater than the current maximum, we update `max_area`.  
+    e use two nested loops to check every pair of indices (start, end).  
+    For each range, we track the minimum height from start to end, and compute the rectangle area.  
+    If the area is greater than the current maximum, we update max_area.  
     Finally, return the largest area found.
 
     📋 Steps:
 
-        1. Initialize `max_area = 0`
+        1. Initialize max_area = 0
 
         2. Outer loop:
-            - For each `start` in `range(len(heights))`:
-                - Initialize `min_height = heights[start]`
+            - For each start in range(len(heights)):
+                - Initialize min_height = heights[start]
                 - Inner loop:
-                    - For each `end` in `range(start, len(heights))`:
-                        - Update `min_height = min(min_height, heights[end])`
-                        - Compute `width = end - start + 1`
-                        - Compute `area = min_height * width`
-                        - Update `max_area = max(max_area, area)`
+                    - For each end in range(start, len(heights)):
+                        - Update min_height = min(min_height, heights[end])
+                        - Compute width = end - start + 1
+                        - Compute area = min_height * width
+                        - Update max_area = max(max_area, area)
 
-        3. Return `max_area`
+        3. Return max_area
 
     🙇 Optimized approach:
     - Treat histogram as a window where each bar tries to **extend left/right** until blocked.
     - Use a **monotonic increasing stack** to store indices.
-    - For each bar at index `i` with height `h`:
-        1. If `h >= heights[stack[-1]]`: push `i` (bar can still grow).
-        2. Else: pop from stack until top is lower than `h`, and for each popped:
-            - `height = heights[popped_index]`
-            - `width = i - stack[-1] - 1` (or `i` if stack is empty)
-            - `area = height * width` → update `max_area`
+    - For each bar at index i with height h:
+        1. If h >= heights[stack[-1]]: push i (bar can still grow).
+        2. Else: pop from stack until top is lower than h, and for each popped:
+            - height = heights[popped_index]
+            - width = i - stack[-1] - 1 (or i if stack is empty)
+            - area = height * width → update max_area
     - Remember that left block is stack[-1] it always smaller than heights[pop_index] and heights[stack[-1]] > i
     - Pay attention stack[-1] will get twice
     ### ⚙️ Steps:
-    - Append sentinel `0` to `heights` to force final area computation.
-    - Traverse all indices `i`, maintaining stack of increasing heights.
-    - Push `i` only **after popping all taller bars**.
-    - Return `max_area`.
+    - Append sentinel 0 to heights to force final area computation.
+    - Traverse all indices i, maintaining stack of increasing heights.
+    - Push i only **after popping all taller bars**.
+    - Return max_area.
 
     ### 🧱 Key Insight:
     - **Each pop** computes the max area for a bar **right before it gets blocked**.
     - Stack keeps track of all bars that are still "open to grow".
 
     ### 🧠 Tiny Habit:
-    > ❝ Don’t push `i` until you’ve popped all taller bars.  
-    > The right boundary (`i`) defines the end of extension for shorter bars. ❞
+    > ❝ Don’t push i until you’ve popped all taller bars.  
+    > The right boundary (i) defines the end of extension for shorter bars. ❞
 
 🗓️ 2025-08-07 (Thu)
 ✅ Problem: Next greater element
@@ -319,8 +319,44 @@ example: stack = [1, 5, 4, 2] pop out a item
         if alive:
             stack.append(a)
     return stack
+🗓️ 2025-08-16 (Saturday)
+✅ Problem: Heap - Top K elements
+🧠 Idea:            
+    🙇 Brute-force approach:
+
+        💡 Sorted all elements in ascending or descending order, then select the top k items.
+        📄 Psuedo code:
+            1. Import heap functions: from heapq import heappush, heappop
+            2. Initialize an empty heap: heap = []
+            3. For each element in elements:
+
+            heappush(heap, element)
+            If len(heap) > k:
+
+                heappop(heap)
+            4. Return heap (contains the top k largest elements)
+🗓️ 2025-08-16 (Saturday)
+✅ Problem: Kth Largest Element
+🧠 Idea:
+    🙇 Edge cases:
+            . k <= 0 → invalid, return [] or raise ValueError.
+            . k > len(elements) → cannot get kth element, return [] or raise ValueError.
+            . elements is empty → return [] or raise ValueError.          
+    🙇 Brute-force approach:
+        💡 Complexity:
+            Big O(nlogn) for sorting elements
+
+        📄 Pseudo code:
+            1. Sort all elements in descending order.
+            2. Return elements[k-1] because index start 0
+    🙇 Brute-force approach:
+        💡 Complexity:
+            O(nlogk)
+        💡 Pseudo code:
+            1. Import heap functions: from heap import heappush, heappop
+            2.Initialize empty heap: heap = []
+            3. for each element in elements:
+                If len(heap) > k:
+                 heappop(heap)
+            4. Return heap[0]
             
-
-
-
-      
