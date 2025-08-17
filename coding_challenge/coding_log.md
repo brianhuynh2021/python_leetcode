@@ -360,3 +360,19 @@ example: stack = [1, 5, 4, 2] pop out a item
                  heappop(heap)
             4. Return heap[0]
             
+elements)
+🗓️ 2025-08-16 (Sunday)
+✅ Problem: Isomorphic of two strings
+   Giving 2 strings, check are they isomorphic
+🧠 Idea:
+    🙇 Edge cases: if len(s) != len(t) return 
+    False
+    🙇 Brute Force Approach:
+      . Complexity: O(n^2)
+      . Pseudo code:
+        1. For each i in range len(s):
+                For each j in range len(i):
+                    Check is s at (i, j) != t at (i, j)
+                    if not:
+                        return False
+        2. Return True
