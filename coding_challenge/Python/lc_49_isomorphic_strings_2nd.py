@@ -1,4 +1,4 @@
-def is_isomorphic(s: str, t: str)-> bool:
+def is_isomorphic_brute(s: str, t: str)-> bool:
     """
     Determines if two strings s and t are isomorphic.
 
@@ -29,26 +29,26 @@ def is_isomorphic(s: str, t: str)-> bool:
         print('Invalid strings to check isomorphic')
         return False
     
-    s_to_t = {} # Tao dictionary kieu du lieu kiem tra isomorphic
-    t_to_s = {}
-    
     for i in range(len(s)):
-        ch_s = s[i]
-        ch_t = t[i]
-        if ch_s not in s_to_t:
-            s_to_t[ch_s] = ch_t
-        else:
-            if s_to_t[ch_s] != ch_t:
-                return False
-            
-        if ch_t not in t_to_s:
-            t_to_s[ch_t] = ch_s
-        else:
-            if t_to_s[ch_t] != ch_s:
+        for j in range(i):
+            if (s[i] == s[j] != t[i]==t[j]):
                 return False
     return True
 
-if __name__=='__main__':
-    print(is_isomorphic('egg', 'add'))
-    print(is_isomorphic('foo', 'bar'))
-    print(is_isomorphic('title', 'paper'))
+def is_isomorphic_optimized(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        print('Invalid strings to check isomorphic')
+        return False
+    
+    s_to_t = {}
+    t_to_s = {}
+    for i in range(len(s)):
+        c_s = s[i]
+        c_t = t[i]
+        if c_s in s_to_t and s_to_t[c_s] != c_t:
+            return False
+        if c_t in t_to_s and t_to_s[c_t] != c_s:
+            return False
+        s_to_t[c_s] = c_t
+        t_to_s[c_t] = c_s
+    return True
