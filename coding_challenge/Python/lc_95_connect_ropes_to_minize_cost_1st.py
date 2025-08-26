@@ -52,11 +52,14 @@ def min_cost_ropes_optimized(ropes: list[int])-> int:
     if n <= 1:
         return 0
     heapify(ropes)
-    total = 0
+
     while n > 1:
         a = heappop(ropes)
         b = heappop(ropes)
         cost = a + b
         heappush(ropes, cost)
+        n -= 1
     
-    return total
+    return ropes[0]
+
+print("hello", min_cost_ropes_optimized([4, 6, 8, 1, 13]))

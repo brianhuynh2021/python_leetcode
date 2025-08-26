@@ -406,3 +406,33 @@ elements)
     4. Compute cost of 2 min_heap
     5. Push cost back to the heap
     6. Do it until get only one item of the heap
+
+🗓️ 2025-08-25 (Friday)
+✅ Problem: Median of number stream
+   Giving list of ropes with multiple length. Giving back minimum sum of all of it each connect is 2 ropes
+🧠 Idea:
+ 💡 Brute force + Recursion:
+    Pseudo code:
+    For i in range(len(ropes)):
+      For each j in range(i+1, len(ropes))
+        merge = ropes[i] + ropes[j]
+        next_stage = []
+        for k in range(n):
+            Check k # i and k # j:
+                Copy all the rest ropes to new_stage
+                new_stage.rope[k]
+        new_stage.append(merge)
+
+        now recurve new_stage
+        total = merged + def_min_cost_ropes(new_stage)
+        if total < best:
+            best = total
+    return total
+
+    💡 Optimized:
+    1. We create new heap base on list of ropes
+    2. The pop 2 times to get (2 min_heap)
+    3. Compute the merge of 2 min_heap
+    4. Compute cost of 2 min_heap
+    5. Push cost back to the heap
+    6. Do it until get only one item of the heap
