@@ -4,7 +4,7 @@ class Node:
         self.next = None
         
 def print_link_list(head: Node):
-    while head != None:
+    while head:
         print(f'{head.val}->', end='')
         head = head.next
     print('None')

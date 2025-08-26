@@ -15,5 +15,16 @@ def remove_duplicate(nums):
             nums[position] = nums[i]
     print(nums)
     return position + 1
-result = remove_duplicate([0, 0, 1, 1, 1, 2, 3, 3, 4])
+nums = [0, 0, 1, 1, 1, 2, 3, 3, 4]
+k = remove_duplicate(nums)
+print(k)
+print(nums[:k])
+def remove_duplicate_bruteforce(nums):
+    result = []
+    for x in nums:
+        if x not in result:   # O(n) lookup each time!
+            result.append(x)
+    return result
+
+result = remove_duplicate_bruteforce([0, 0, 1, 1, 1, 2, 3, 3, 4])
 print(result)

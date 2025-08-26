@@ -14,4 +14,4 @@ def find_largest_duplicate(nums: list) -> int:
             return sorted_nums[i]
     return -1
 
-print(find_largest_duplicate([1, 3, 5, 7, 9, 6, 8, 8, 8, 7]))
+print(find_largest_duplicate([1, 3, 5, 7,7, 9, 6, 8, 8, 8, 7]))
