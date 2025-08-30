@@ -24,7 +24,9 @@
 ---
 
 📅 Date: 2025-07-21 (Mondy)
+
 ✅ Problem: Search targte in 2D array
+
 🧠 Idea:
 
     - Brute force O(n^2): 2 for loops, for row in range(len(matrix)) - for val in row if item == target
@@ -37,7 +39,9 @@
 
 ---
 📅 Date: 2025-07-21 (Monday)
+
 ✅ Problem: Parentheses valid
+
 🧠 Idea:
 
     - Optimized O(logn): We apply stack LIFO, we initialize mapping of characters mapping = {')': '(', '}': '{', ']': '['}.
