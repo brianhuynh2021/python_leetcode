@@ -3,24 +3,30 @@
 🧠 Idea: 
     - Brute force O(n³): 2 vòng for tạo substring + đếm số lượng ký tự distinct bằng dict/set
     - Optimized O(n): sliding window + dict tần suất, shrink khi len(dict) > k, update max_len nếu right - left + 1 lớn hơn cũ
+
     🧪 Test:
     - s = "eceba", k = 2 → "ece"
     - s = "aa", k = 1 → "aa"
+
 🗣️ Action: 15h42 – tự nói lớn + tự viết lại code hoàn chỉnh không nhìn lại
+
+---
 
 📅 Date: 2025-07-17 (Thursday)
 ✅ Problem: Peak element in mountain array
 🧠 Idea: 
-    - Brute force O(n): Due to we iterate for loop until we find the item match the condition arr[i-1] < arr[i] > arr[i+1] we can get the target
+    - Brute force O(n):
+
+    Due to we iterate for loop until we find the item match the condition arr[i-1] < arr[i] > arr[i+1] we can get the target
     - Optimized O(logn): using binary search
         . check nums[i] < nums[i+1] ==> surely the peak is on right side ==> drop all left side
         . high index = mid
-    🧪 Test:
-🗣️ Action:
+---
 
 📅 Date: 2025-07-21 (Mondy)
 ✅ Problem: Search targte in 2D array
-🧠 Idea: 
+🧠 Idea:
+
     - Brute force O(n^2): 2 for loops, for row in range(len(matrix)) - for val in row if item == target
     - Optimized O(logn): We treat 2D with 1D array due to all end elemetn of each rows will lower than next row's element
         . rows = len(matrix)
@@ -28,12 +34,12 @@
         . len of matrix is: rows*colums
         . use binary search: get the mid position -> convert it into matrix position by get
           row = mid//cols, col = mid%cols ==> get mid_val and compare to target
-🧪 Test:
-🗣️ Action:
 
+---
 📅 Date: 2025-07-21 (Monday)
 ✅ Problem: Parentheses valid
-🧠 Idea: 
+🧠 Idea:
+
     - Optimized O(logn): We apply stack LIFO, we initialize mapping of characters mapping = {')': '(', '}': '{', ']': '['}.
     - Use for loop checking each item (if is is first open brackets: '({[' put them in stack)
     - if not those open brackets, we have to check with current stack (if current stack is empty==> return False)
@@ -41,13 +47,35 @@
       . top of stack: top = stack.pop()
       . if mapping[c] != top return False
     return not stack
-
+---
 🗓️ Date: 2025-07-23 (Monday)
 ✅ Problem: Parentheses valid
-🧠 Idea/Notes: [] emty list would return False ==> return not []==> True
+🧠 Idea/Notes:
+
+[] emty list would return False ==> return not []==> True
 example: stack = [1, 5, 4, 2] pop out a item
          item_pop = stack.pop() ==> return 2
 
+---
+🗓️ Date: 2025-07-23 (Monday)
+✅ Problem: Reverse linked list
+🧠 Idea/Notes: 
+   🙇 brute force approach:
+
+       . Take all nodes into a list 
+       . Iterate the list from end to begin to get new linked list
+       . Return nodes[-1] (final item of list)
+    🤔 optimize approach
+       . use 2 pointers: prev = None, curr = head.
+       . Loop all nodes and point to prev until curr is None
+       . While curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+       . return prev
+
+---
 🗓️ Date: 2025-07-23 (Monday)
 ✅ Problem: Reverse linked list
 🧠 Idea/Notes: 
@@ -65,23 +93,7 @@ example: stack = [1, 5, 4, 2] pop out a item
             curr = next_node
        . return prev
 
-🗓️ Date: 2025-07-23 (Monday)
-✅ Problem: Reverse linked list
-🧠 Idea/Notes: 
-   🙇 brute force approach:
-       . Take all nodes into a list 
-       . Iterate the list from end to begin to get new linked list
-       . Return nodes[-1] (final item of list)
-    🤔 optimize approach
-       . use 2 pointers: prev = None, curr = head.
-       . Loop all nodes and point to prev until curr is None
-       . While curr:
-            next_node = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next_node
-       . return prev
-
+---
 🗓️ Date: 2025-07-24 (Thurs)
 ✅ Problem: Min Stack (Design Stack with getMin in O(1))
 🧠 Idea/Notes:
@@ -117,11 +129,12 @@ example: stack = [1, 5, 4, 2] pop out a item
    - min_stack mirrors stack and caches "minimum so far"
    - getMin() just peeks min_stack[-1] → O(1)
    - This uses extra O(n) space but achieves constant time min retrieval
-
+---
 🗓️ Date: 2025-07-25 (Friday)
 ✅ Problem: Redoing this Min Stack (Design Stack with getMin in O(1))
 🧠 Idea/Notes: using 2 pointers get the min_stack so later only O(1)
 
+---
 🗓️ Date: 2025-07-25 (Friday)
 ✅ Problem: Daily temperatures
 🧠 Idea/Notes: 
@@ -133,8 +146,9 @@ example: stack = [1, 5, 4, 2] pop out a item
         j+= 1
     . Out of the loop not found any greater than put it as 0
     ⛓️‍💥 Optimize: 
-    . Use stack 
+    . Use stack
 
+---
 🗓️ Date: 2025-07-25 (Friday)
 ✅ Problem: Fruits into basket
 🧠 Idea/Notes: 
@@ -145,6 +159,7 @@ example: stack = [1, 5, 4, 2] pop out a item
     . Out of the loop return max_len
     ⛓️‍💥 Optimize:
 
+---
 🗓️ Date: 2025-07-27 (Sunday)
 ✅ Problem: Daily temperatures
 🧠 Idea/Notes: 
@@ -164,6 +179,7 @@ example: stack = [1, 5, 4, 2] pop out a item
     then we’re using the next day in the stack, not the one we just popped.
     That’s a logic error — and I understand now why that was wrong.
 
+---
 🗓️ 2025-07-27
 ✅ Problem: Evaluate Reverse Polish Notation
 🧠 Idea: Use a stack to evaluate expressions where operators come after operands (postfix/RPN).
@@ -184,6 +200,8 @@ example: stack = [1, 5, 4, 2] pop out a item
 
     💻 Final Step:
         - After the loop, return stack[0] as the result
+
+---
 🗓️ 2025-07-30
 ✅ Problem: Group Anagrams
 🧠 Idea: 
@@ -223,6 +241,7 @@ example: stack = [1, 5, 4, 2] pop out a item
 	•	Dùng sorted(word) để làm key thống nhất giữa các từ hoán vị
 	•	Không cần so sánh từng cặp, chỉ gom theo key
 
+---
 🗓️ 2025-08-01 (Friday)
 ✅ Problem: Largest histogram
 🧠 Idea: 
@@ -273,14 +292,17 @@ example: stack = [1, 5, 4, 2] pop out a item
     > ❝ Don’t push i until you’ve popped all taller bars.  
     > The right boundary (i) defines the end of extension for shorter bars. ❞
 
+---
 🗓️ 2025-08-07 (Thu)
 ✅ Problem: Next greater element
 🧠 Idea: 
    🙇 Brute-force approach:
+
    - We use 2 for loops (i, j) if any value at index j > than value at i ==> Update result at that postion is value of index j
+
    🙇 Optimized approach:
    - use stack[] to keep index of greater element if there is any element greater than it we pop that index out and sitatimous (dong thoi) update result at that index in value of greater than
-
+---
 🗓️ 2025-08-08 (Friday)
 ✅ Problem: Asteroid collision
 🧠 Idea: 
@@ -304,7 +326,9 @@ example: stack = [1, 5, 4, 2] pop out a item
                 hit = True
                 break
       return result
+
    🙇 Optimized approach:
+
       stack = [] # This stack asteroid handle exploded asteroid
       for a in steroids:
         alive = True
@@ -319,6 +343,7 @@ example: stack = [1, 5, 4, 2] pop out a item
         if alive:
             stack.append(a)
     return stack
+---
 🗓️ 2025-08-16 (Saturday)
 ✅ Problem: Heap - Top K elements
 🧠 Idea:            
@@ -335,6 +360,8 @@ example: stack = [1, 5, 4, 2] pop out a item
 
                 heappop(heap)
             4. Return heap (contains the top k largest elements)
+
+---
 🗓️ 2025-08-16 (Saturday)
 ✅ Problem: Kth Largest Element
 🧠 Idea:
@@ -361,6 +388,8 @@ example: stack = [1, 5, 4, 2] pop out a item
             4. Return heap[0]
             
 elements)
+
+---
 🗓️ 2025-08-16 (Sunday)
 ✅ Problem: Isomorphic of two strings
    Giving 2 strings, check are they isomorphic
@@ -377,6 +406,7 @@ elements)
                         return False
         2. Return True
 
+---
 🗓️ 2025-08-22 (Friday)
 ✅ Problem: Correct ropes minimum ropes
    Giving list of ropes with multiple length. Giving back minimum sum of all of it each connect is 2 ropes
@@ -407,6 +437,7 @@ elements)
     5. Push cost back to the heap
     6. Do it until get only one item of the heap
 
+---
 🗓️ 2025-08-25 (Friday)
 ✅ Problem: Median of number stream
    Giving list of ropes with multiple length. Giving back minimum sum of all of it each connect is 2 ropes
@@ -437,6 +468,7 @@ elements)
     5. Push cost back to the heap
     6. Do it until get only one item of the heap
 
+---
 # 🗓️ 2025-08-31 (Sunday)
 ## ✅ Problem: Count Subarrays with Sum Equals K
 
@@ -465,7 +497,6 @@ elements)
         - `count = 0`
         - `count += 1 if sum == k else count`
     4. return `count`
----
 
   💡 **Optimized approach: Prefix Sum + HashMap**
 
