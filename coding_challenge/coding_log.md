@@ -436,3 +436,42 @@ elements)
     4. Compute cost of 2 min_heap
     5. Push cost back to the heap
     6. Do it until get only one item of the heap
+
+# 🗓️ 2025-08-31 (Sunday)
+## ✅ Problem: Count Subarrays with Sum Equals K
+
+### Description:
+**This problem asks us to find the number of continuous subarrays whose sum equals a target value `k`.**
+### 🧪 Edge Cases:
+    - **Empty input**: `nums = []`, `k = 0` → should return `0`
+    - **All elements are zero**: `nums = [0, 0, 0]`, `k = 0` → expect multiple valid subarrays
+    - **Negative numbers**: `nums = [1, -1, 2, -2, 3]`, `k = 0` → must still work correctly
+    - **Only one element**:
+    - `nums = [3]`, `k = 3` → return `1`
+    - `nums = [2]`, `k = 3` → return `0`
+    - **Large input size**: `nums` has 100,000 items → make sure optimized runs in O(n)
+🧠 Idea:
+ 💡 Brute force approach:
+    - **Time Complexity:** O(n)  
+    - **Space Complexity:** O(1)
+    ###Steps:
+    1. For each `i` in length of `nums`
+    2. Initialize `sum = 0`
+    3. For each `j` in length of `nums`
+        - `sum += nums[j]`
+        - `count = 0`
+        - `count += 1 if sum == k else count`
+    4. return `count`
+  💡 **Optimized approach: Prefix Sum + HashMap**
+      - **Time Complexity:** O(n)  
+      - **Space Complexity:** O(n)
+    ###Steps:
+    1. Initialize:
+      - `prefix_sum = 0`
+      - `count = 0`
+      - `prefix_count = defaultdict(int)`
+    2. Set `prefix_count[0] = 1` (handle subarrays starting at index 0)
+    3. Loop through each `num` in `nums`:
+      - `prefix_sum += num`
+      - `count += prefix_count[prefix_sum - k]` (check if previous prefix sum matches)
+      - `prefix_count[prefix_sum] += 1`
