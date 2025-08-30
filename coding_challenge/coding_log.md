@@ -451,7 +451,10 @@ elements)
     - `nums = [2]`, `k = 3` → return `0`
     - **Large input size**: `nums` has 100,000 items → make sure optimized runs in O(n)
 🧠 Idea:
+---
+
  💡 Brute force approach:
+
     - **Time Complexity:** O(n)  
     - **Space Complexity:** O(1)
     ###Steps:
@@ -462,9 +465,13 @@ elements)
         - `count = 0`
         - `count += 1 if sum == k else count`
     4. return `count`
+---
+
   💡 **Optimized approach: Prefix Sum + HashMap**
+
       - **Time Complexity:** O(n)  
       - **Space Complexity:** O(n)
+
     ###Steps:
     1. Initialize:
       - `prefix_sum = 0`
