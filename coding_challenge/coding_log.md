@@ -517,3 +517,23 @@ elements)
       - `prefix_sum += num`
       - `count += prefix_count[prefix_sum - k]` (check if previous prefix sum matches)
       - `prefix_count[prefix_sum] += 1`
+
+# 🗓️ 2025-09-06 (Friday)
+## ✅ Problem: Sliding Window Max
+
+### Description:
+    *Input:
+        nums = [1, 3, -1, -3, 5, 3, 6, 7]
+        k = 3
+    *Output:
+        [3, 3, 5, 5, 6, 7]
+### Solutions:
+    Brute force:
+        •	The current window
+        •	The maximum of the window
+        •	The result so far
+    Optimized:
+    	•	The index i and nums[i]
+        •	The deque content (indices and their values)
+        •	What we remove (either because it’s out of window or smaller than current)
+        •	What we append to result
