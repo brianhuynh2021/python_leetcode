@@ -16,44 +16,33 @@ Expected Output:
 '''
 from typing import List
 
-
 def sliding_window_max_brute(nums: List[int], k: int) -> List[int]:
     n = len(nums)
     if n == 0 or k == 0:
         return []
-    
     result = []
-    for i in range(n - k + 1):
+    for i in range(n-2):
         window = nums[i:i+k]
         max_value = max(window)
         result.append(max_value)
     return result
 
-from typing import List
 from collections import deque
 
-def sliding_window_max(nums: List[int], k: int) -> List[int]:
-    if not nums or k == 0:
-        return []
+import heapq
 
-    n = len(nums)
+def sliding_window_max_heap(nums, k):
+    max_heap = []
     result = []
-    dq = deque()  # stores indices
 
-    for i in range(n):
-        # Step 1: Remove indices outside the window
-        if dq and dq[0] < i - k + 1:
-            dq.popleft()
+    for i in range(len(nums)):
+        heapq.heappush(max_heap, (-nums[i], i))
 
-        # Step 2: Remove smaller values from back
-        while dq and nums[dq[-1]] < nums[i]:
-            dq.pop()
+        # remove max if it's outside window
+        while max_heap[0][1] <= i - k:
+            heapq.heappop(max_heap)
 
-        # Step 3: Add current index
-        dq.append(i)
-
-        # Step 4: Append max in window to result
         if i >= k - 1:
-            result.append(nums[dq[0]])
+            result.append(-max_heap[0][0])  # get max value
 
     return result
