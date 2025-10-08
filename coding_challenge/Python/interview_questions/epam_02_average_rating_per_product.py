@@ -1,4 +1,4 @@
-'''
+"""
 Problem
 
 Given ratings with product and rating, compute average rating per product. Sort by average desc then product asc.
@@ -9,7 +9,8 @@ ratings = [
 ]
 output:
 [('A', 4.0), ('B', 4.0)]
-'''
+"""
+
 
 def averate_rating(ratings: list):
     products = {}
@@ -21,7 +22,6 @@ def averate_rating(ratings: list):
         count[product] = count.get(product, 0) + 1
     result = []
     for p in products:
-        avg = products[p]/count[p]
+        avg = products[p] / count[p]
         result.append((p, avg))
     sorted(result, key=lambda x: (-x[1], x[0]), reverse=True)
-    

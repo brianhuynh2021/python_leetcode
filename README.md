@@ -7,7 +7,7 @@ A comprehensive repository for coding interview preparation, featuring solutions
 ```
 ├── coding_challenge/         # Core coding problems and solutions
 │   ├── Python/              # Python implementations (97+ problems)
-│   ├── C++/                 # C++ implementations 
+│   ├── C++/                 # C++ implementations
 │   └── coding_log.md        # Detailed problem-solving journal
 ├── OOP/                     # Object-Oriented Programming concepts
 │   ├── day01_intro/         # OOP fundamentals

@@ -91,7 +91,7 @@ class StackADT(ABC):
 class ArrayStack(StackADT):
     def __init__(self): self._a = []
     def push(self, x): self._a.append(x)
-    def pop(self): 
+    def pop(self):
         if not self._a: raise IndexError("empty")
         return self._a.pop()
     def peek(self): return self._a[-1] if self._a else None
@@ -127,10 +127,10 @@ State **RI** and **AF**.
 ---
 
 ## 📝 Quiz
-1) ADT vs data structure?  
-2) Why RI/AF?  
-3) Can one ADT have many implementations?  
-4) Stack law?  
+1) ADT vs data structure?
+2) Why RI/AF?
+3) Can one ADT have many implementations?
+4) Stack law?
 5) Why clients shouldn’t depend on representation?
 
 ---

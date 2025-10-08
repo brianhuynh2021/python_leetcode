@@ -1,4 +1,4 @@
-'''🚀  Phân tích đề (Problem Analysis)
+"""🚀  Phân tích đề (Problem Analysis)
 
 Giả sử đề như sau (rất phổ biến trong Leetcode):
 
@@ -7,7 +7,8 @@ arr = [1, 3, 8, 10, 15], key = 12 → Output: 10
 arr = [4, 6, 10], key = 7         → Output: 6
 arr = [4, 6, 10], key = 17        → Output: 10
 
-'''
+"""
+
 
 def brute_force_find_min_diff_element(nums: list[int], target: int) -> int:
     """
@@ -21,7 +22,7 @@ def brute_force_find_min_diff_element(nums: list[int], target: int) -> int:
     Returns:
         int: Element with minimum difference to the target
     """
-    min_diff = float('inf')
+    min_diff = float("inf")
     closest = nums[0]
 
     for num in nums:
@@ -32,19 +33,23 @@ def brute_force_find_min_diff_element(nums: list[int], target: int) -> int:
 
     return closest
 
+
 def test_brute_force_find_min_diff_element():
     assert brute_force_find_min_diff_element([4, 6, 10], 7) == 6
     assert brute_force_find_min_diff_element([1, 3, 8, 10, 15], 12) == 10
     assert brute_force_find_min_diff_element([1, 2, 3, 5], 4) == 3
     print("All test cases passed!")
+
+
 test_brute_force_find_min_diff_element()
 
-print("Test 1:", brute_force_find_min_diff_element([4, 6, 10], 7))          # 6
+print("Test 1:", brute_force_find_min_diff_element([4, 6, 10], 7))  # 6
 print("Test 2:", brute_force_find_min_diff_element([1, 3, 8, 10, 15], 12))  # 10
-print("Test 3:", brute_force_find_min_diff_element([1, 2, 3, 5], 4))        # 3
-print("Test 4:", brute_force_find_min_diff_element([1], 100))              # 1
+print("Test 3:", brute_force_find_min_diff_element([1, 2, 3, 5], 4))  # 3
+print("Test 4:", brute_force_find_min_diff_element([1], 100))  # 1
 
-def optimized_find_diff_element(nums: list[int], target)->int:
+
+def optimized_find_diff_element(nums: list[int], target) -> int:
     """
     Binary Search to find element with minimum difference to target
     Args:
@@ -59,7 +64,7 @@ def optimized_find_diff_element(nums: list[int], target)->int:
     closest_el = nums[0]
     closest_diff = abs(nums[0] - target)
     while low <= high:
-        mid = (low + high)//2
+        mid = (low + high) // 2
         current_diff = abs(nums[mid] - target)
         if current_diff < closest_diff or (
             current_diff == closest_diff and nums[mid] < closest_el
@@ -73,4 +78,3 @@ def optimized_find_diff_element(nums: list[int], target)->int:
         else:
             return nums[mid]
     return closest_el
-            

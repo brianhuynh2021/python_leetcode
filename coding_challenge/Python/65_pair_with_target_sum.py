@@ -60,6 +60,7 @@
 # 	•	Time: O(n) – Only one pass through the array
 # 	•	Space: O(n) – Set may grow up to n elements
 
+
 def pairs_with_target(arr: list[int], target):
     seen = set()
     for item in arr:
@@ -70,6 +71,7 @@ def pairs_with_target(arr: list[int], target):
             seen.add(item)
     return None
 
-if __name__=='__main__':
+
+if __name__ == "__main__":
     result = pairs_with_target([3, 5, 1, 7], 8)
     print(result)

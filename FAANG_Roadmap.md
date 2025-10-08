@@ -202,7 +202,7 @@ Roadmap này được thiết kế để chuẩn bị cho các vòng phỏng v�
 - [ ] **Time & Space Complexity**
   - Big O notation
   - Amortized analysis
-  
+
 - [ ] **Operating Systems**
   - Processes vs Threads
   - Memory management
@@ -349,10 +349,10 @@ class Database:
     def __init__(self):
         self.master = connect_to_master()
         self.slaves = [connect_to_slave(i) for i in range(3)]
-    
+
     def write(self, query):
         return self.master.execute(query)  # Chỉ write vào master
-    
+
     def read(self, query):
         slave = random.choice(self.slaves)  # Random slave
         return slave.execute(query)
@@ -542,16 +542,16 @@ Server 3 nhận 20% traffic
 def get_user(user_id):
     # 1. Check cache first
     user = cache.get(user_id)
-    
+
     if user:
         return user  # Cache hit ✅
-    
+
     # 2. Cache miss → Query database
     user = database.get(user_id)
-    
+
     # 3. Save to cache for next time
     cache.set(user_id, user, ttl=3600)
-    
+
     return user
 
 Ưu điểm:
@@ -568,10 +568,10 @@ Nhược điểm:
 def update_user(user_id, data):
     # 1. Write to cache FIRST
     cache.set(user_id, data)
-    
+
     # 2. Write to database
     database.update(user_id, data)
-    
+
     return True
 
 Ưu điểm:
@@ -588,10 +588,10 @@ Nhược điểm:
 def update_user(user_id, data):
     # 1. Write to cache only
     cache.set(user_id, data)
-    
+
     # 2. Async write to database (later)
     queue.add_task('write_to_db', user_id, data)
-    
+
     return True  # Fast response!
 
 Ưu điểm:
@@ -626,18 +626,18 @@ def upload_video(video_file):
     transcode_to_720p(video_file)      # 60 seconds
     transcode_to_1080p(video_file)     # 90 seconds
     send_notification(user)            # 1 second
-    
+
     return "Success"  # User waits 188 seconds! ❌
 
 # Asynchronous with Queue (GOOD):
 def upload_video(video_file):
     save_to_storage(video_file)        # 2 seconds
-    
+
     # Add tasks to queue
     queue.publish('thumbnail', video_file)
     queue.publish('transcode', video_file)
     queue.publish('notify', user)
-    
+
     return "Processing..."  # User waits only 2 seconds! ✅
 
 # Workers process in background
@@ -664,21 +664,21 @@ class CircuitBreaker:
         self.failure_count = 0
         self.failure_threshold = failure_threshold
         self.state = 'CLOSED'  # CLOSED, OPEN, HALF_OPEN
-    
+
     def call_service(self, service_func):
         if self.state == 'OPEN':
             return "Service unavailable"  # Fail fast
-        
+
         try:
             result = service_func()
             self.failure_count = 0  # Reset on success
             return result
         except Exception:
             self.failure_count += 1
-            
+
             if self.failure_count >= self.failure_threshold:
                 self.state = 'OPEN'  # Stop trying
-            
+
             raise
 
 # Usage
@@ -695,25 +695,25 @@ class OrderSaga:
     def execute_order(self, order):
         # Step 1: Reserve inventory
         inventory_reserved = self.reserve_inventory(order)
-        
+
         if not inventory_reserved:
             return "Failed"
-        
+
         # Step 2: Charge payment
         payment_charged = self.charge_payment(order)
-        
+
         if not payment_charged:
             self.rollback_inventory(order)  # Compensating transaction
             return "Failed"
-        
+
         # Step 3: Create shipment
         shipment_created = self.create_shipment(order)
-        
+
         if not shipment_created:
             self.rollback_payment(order)     # Compensate
             self.rollback_inventory(order)   # Compensate
             return "Failed"
-        
+
         return "Success"
 ```
 
@@ -1289,29 +1289,29 @@ class ConsistentHashRing:
         self.virtual_nodes = virtual_nodes
         self.ring = {}
         self.sorted_keys = []
-        
+
         for node in nodes:
             self.add_node(node)
-    
+
     def add_node(self, node):
         for i in range(self.virtual_nodes):
             virtual_key = f"{node}:{i}"
             hash_value = self._hash(virtual_key)
             self.ring[hash_value] = node
             bisect.insort(self.sorted_keys, hash_value)
-    
+
     def get_node(self, key):
         if not self.ring:
             return None
-        
+
         hash_value = self._hash(key)
         idx = bisect.bisect_right(self.sorted_keys, hash_value)
-        
+
         if idx == len(self.sorted_keys):
             idx = 0
-        
+
         return self.ring[self.sorted_keys[idx]]
-    
+
     def _hash(self, key):
         return int(hashlib.md5(key.encode()).hexdigest(), 16)
 
@@ -1352,25 +1352,25 @@ class SlidingWindowRateLimiter:
     def __init__(self, max_requests=100, window_size=60):
         self.max_requests = max_requests
         self.window_size = window_size
-    
+
     def is_allowed(self, user_id):
         now = time.time()
         window_start = now - self.window_size
-        
+
         key = f"rate_limit:{user_id}"
-        
+
         # Remove old entries
         redis_client.zremrangebyscore(key, 0, window_start)
-        
+
         # Count requests in current window
         request_count = redis_client.zcard(key)
-        
+
         if request_count < self.max_requests:
             # Add current request
             redis_client.zadd(key, {now: now})
             redis_client.expire(key, self.window_size)
             return True
-        
+
         return False
 
 rate_limiter = SlidingWindowRateLimiter(max_requests=10, window_size=60)
@@ -1378,10 +1378,10 @@ rate_limiter = SlidingWindowRateLimiter(max_requests=10, window_size=60)
 @app.get("/api/data")
 async def get_data(request: Request):
     user_id = request.client.host
-    
+
     if not rate_limiter.is_allowed(user_id):
         raise HTTPException(status_code=429, detail="Too many requests")
-    
+
     return {"data": "Your data here"}
 ```
 
@@ -1458,30 +1458,30 @@ class OrderService:
     def create_order(self, order_data):
         # Step 1: Reserve inventory
         inventory_reserved = self.inventory_client.reserve(order_data)
-        
+
         if not inventory_reserved:
             return {"status": "failed", "reason": "out of stock"}
-        
+
         # Step 2: Process payment via gRPC
         with grpc.insecure_channel('payment-service:50051') as channel:
             stub = PaymentServiceStub(channel)
-            
+
             payment_request = PaymentRequest(
                 order_id=order_data['id'],
                 amount=order_data['total'],
                 user_id=order_data['user_id']
             )
-            
+
             payment_response = stub.ProcessPayment(payment_request)
-            
+
             if not payment_response.success:
                 # Rollback inventory
                 self.inventory_client.release(order_data)
                 return {"status": "failed", "reason": "payment failed"}
-        
+
         # Step 3: Publish event
         self.kafka_producer.send('order-created', order_data)
-        
+
         return {"status": "success", "order_id": order_data['id']}
 ```
 
@@ -1768,7 +1768,7 @@ Be ready to:
 
 ### Monthly Milestones
 - **Month 1:** Solve 100 easy problems
-- **Month 2:** Solve 80 medium problems  
+- **Month 2:** Solve 80 medium problems
 - **Month 3:** Solve 20 hard problems
 - **Month 4:** Complete 5 system design cases
 - **Month 5:** Complete 10 system design cases

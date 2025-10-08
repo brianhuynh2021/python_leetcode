@@ -2,8 +2,8 @@
 #include <cstdint>    // for INT32_MAX
 
 /*
-Input: a positive integer n  
-Output: the number of 1 bits in the binary representation of n  
+Input: a positive integer n
+Output: the number of 1 bits in the binary representation of n
 */
 int countOne(int n) {
     int count = 0;
@@ -19,9 +19,9 @@ int countOne(int n) {
 }
 
 /*
-Input: a positive integer n  
-Output: the next greater integer with the same number of 1 bits in binary  
-If not found, return -1  
+Input: a positive integer n
+Output: the next greater integer with the same number of 1 bits in binary
+If not found, return -1
 */
 int getNextBrute(int n) {
     int count = countOne(n);
@@ -38,9 +38,9 @@ int getNextBrute(int n) {
 }
 
 /*
-Input: a positive integer n  
-Output: the previous smaller integer with the same number of 1 bits in binary  
-If not found, return -1  
+Input: a positive integer n
+Output: the previous smaller integer with the same number of 1 bits in binary
+If not found, return -1
 */
 int getPrevBrute(int n) {
     int count = countOne(n);

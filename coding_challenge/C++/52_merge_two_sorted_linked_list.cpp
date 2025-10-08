@@ -90,7 +90,7 @@ int main() {
 // Muon test C++ tren Vscode can bien dich sang file execute bang lenh
 // g++ ten_file.cpp -o main/ten_file_execute
 
-// Cam on cac ban da theo doi 
+// Cam on cac ban da theo doi
 
 struct Node {
     int val;

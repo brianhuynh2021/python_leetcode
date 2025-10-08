@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
-import base64, hashlib, hmac, json, struct, time, urllib.request
+import base64
+import hashlib
+import hmac
+import json
+import struct
+import time
+import urllib.request
 
 API_URL = "https://api.challenge.hennge.com/challenges/backend-recursion/004"
 TIME_STEP = 30
 DIGITS = 10
 SUFFIX = "HENNGECHALLENGE004"
 
+
 def totp_sha512(secret: bytes) -> str:
     counter = int(time.time()) // TIME_STEP
     msg = struct.pack(">Q", counter)
     hs = hmac.new(secret, msg, hashlib.sha512).digest()
     offset = hs[-1] & 0x0F
-    dbc = ((hs[offset] & 0x7F) << 24) | ((hs[offset+1]&0xFF) << 16) | ((hs[offset+2]&0xFF) << 8) | (hs[offset+3]&0xFF)
-    code = dbc % (10 ** DIGITS)
+    dbc = (
+        ((hs[offset] & 0x7F) << 24)
+        | ((hs[offset + 1] & 0xFF) << 16)
+        | ((hs[offset + 2] & 0xFF) << 8)
+        | (hs[offset + 3] & 0xFF)
+    )
+    code = dbc % (10**DIGITS)
     return str(code).zfill(DIGITS)
+
 
 def main():
     email = "huynh2102@gmail.com"
@@ -25,7 +38,7 @@ def main():
     payload = {
         "github_url": gist_url,
         "contact_email": email,
-        "solution_language": "python"
+        "solution_language": "python",
     }
     body = json.dumps(payload).encode("utf-8")
 
@@ -36,6 +49,7 @@ def main():
 
     with urllib.request.urlopen(req) as resp:
         print(resp.status, resp.read().decode())
+
 
 if __name__ == "__main__":
     main()

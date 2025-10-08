@@ -2,14 +2,17 @@
 
 from abc import ABC, abstractmethod
 
+
 # Easy Example
 class Vehicle:
     def drive(self):
         print("Driving...")
 
+
 class Car(Vehicle):
     def honk(self):
         print("Beep beep!")
+
 
 # Medium Example
 class Employee:
@@ -19,6 +22,7 @@ class Employee:
     def get_info(self):
         return f"Employee: {self.name}"
 
+
 class Developer(Employee):
     def __init__(self, name, language):
         super().__init__(name)
@@ -26,6 +30,7 @@ class Developer(Employee):
 
     def get_info(self):
         return f"Developer: {self.name}, Language: {self.language}"
+
 
 # Hard Example with Abstraction
 class User(ABC):
@@ -36,13 +41,16 @@ class User(ABC):
     def get_role(self):
         pass
 
+
 class AdminUser(User):
     def get_role(self):
         return "Admin"
 
+
 class CustomerUser(User):
     def get_role(self):
         return "Customer"
+
 
 # Usage
 if __name__ == "__main__":

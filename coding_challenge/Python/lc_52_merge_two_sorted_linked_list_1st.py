@@ -3,6 +3,7 @@ class ListNode:
         self.val = val
         self.next = None
 
+
 # Hàm gộp 2 danh sách liên kết đã sắp xếp
 def mergeTwoLists(l1, l2):
     dummy = ListNode(0)
@@ -20,12 +21,14 @@ def mergeTwoLists(l1, l2):
     current.next = l1 if l1 else l2
     return dummy.next
 
+
 # Hàm in danh sách
 def printList(head):
     while head:
-        print(head.val, end=' ')
+        print(head.val, end=" ")
         head = head.next
     print()
+
 
 # Hàm tạo danh sách từ list Python
 def buildList(values):
@@ -37,6 +40,7 @@ def buildList(values):
         tail.next = ListNode(val)
         tail = tail.next
     return head
+
 
 # MAIN: chạy test
 if __name__ == "__main__":

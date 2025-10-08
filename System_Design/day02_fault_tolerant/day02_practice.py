@@ -1,15 +1,17 @@
-```python
-import time
 import random
+import time
+
 
 class UploadError(Exception):
     pass
+
 
 def upload_to_storage(image_data):
     """Simulates a flaky upload process"""
     if random.random() < 0.6:
         raise UploadError("Simulated upload failure")
     return "Image uploaded successfully."
+
 
 def upload_with_retry(image_data, max_retries=3):
     backoff = 1
@@ -27,6 +29,7 @@ def upload_with_retry(image_data, max_retries=3):
             print(f"⏳ Backing off for {backoff} seconds...")
             time.sleep(backoff)
             backoff *= 2
+
 
 # Simulate test
 if __name__ == "__main__":

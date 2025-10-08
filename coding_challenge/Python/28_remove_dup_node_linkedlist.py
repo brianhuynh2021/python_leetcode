@@ -1,9 +1,11 @@
 # With set
 
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+
 
 def remove_duplicates(head):
     if not head:
@@ -21,12 +23,14 @@ def remove_duplicates(head):
             prev = current
         current = current.next
 
+
 def print_list(head):
     current = head
     while current:
         print(current.data, end=" ")
         current = current.next
     print()
+
 
 # Example usage
 head = Node(10)

@@ -1,14 +1,15 @@
 # Định nghĩa class Node (ListNode)
 class ListNode:
     def __init__(self, val):
-        self.val = val        # Giá trị của node
-        self.next = None      # Con trỏ đến node tiếp theo
+        self.val = val  # Giá trị của node
+        self.next = None  # Con trỏ đến node tiếp theo
+
 
 # Hàm xóa node thứ N từ cuối danh sách
 def remove_nth_from_end(head, n):
-    dummy = ListNode(0)       # Tạo node giả để đứng trước node head
-    dummy.next = head         # Nối dummy với head
-    slow = dummy              # slow và fast đều bắt đầu từ dummy
+    dummy = ListNode(0)  # Tạo node giả để đứng trước node head
+    dummy.next = head  # Nối dummy với head
+    slow = dummy  # slow và fast đều bắt đầu từ dummy
     fast = dummy
 
     # Bước 1: Cho fast đi trước n bước
@@ -25,7 +26,8 @@ def remove_nth_from_end(head, n):
     slow.next = to_delete.next  # Bỏ qua node cần xóa
 
     # Python không cần delete thủ công như C++
-    return dummy.next           # Trả về head mới (có thể đã thay đổi)
+    return dummy.next  # Trả về head mới (có thể đã thay đổi)
+
 
 # Hàm in toàn bộ danh sách
 def print_list(head):
@@ -33,6 +35,7 @@ def print_list(head):
         print(head.val, end=" ")
         head = head.next
     print()
+
 
 # Tạo danh sách: 1 → 2 → 3 → 4 → 5
 head = ListNode(1)

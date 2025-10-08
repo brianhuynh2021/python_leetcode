@@ -1,6 +1,6 @@
 """
 ✅ Problem Statement
-Given a list of tokens representing an arithmetic expression in 
+Given a list of tokens representing an arithmetic expression in
 Reverse Polish Notation, evaluate the expression.
 Example input:
     tokens = ["5", "1", "2", "+", "4", "*", "+", "3", "-"]
@@ -16,7 +16,8 @@ If it’s an operator (+, -, *, /),
 → then push the result back onto the stack.
 """
 
-def evaluate_reverse_polish_notation(tokens: list[str])->int:
+
+def evaluate_reverse_polish_notation(tokens: list[str]) -> int:
     if not tokens:
         raise ValueError("Token list must not be empty")
     n = len(tokens)
@@ -45,7 +46,7 @@ def evaluate_reverse_polish_notation(tokens: list[str])->int:
             if c.lstrip("-").isdigit():
                 stack.append(int(c))
             else:
-                raise ValueError(f'Invalid token {c}')
+                raise ValueError(f"Invalid token {c}")
     if stack != 1:
-        raise ValueError("Invalid RPN: leftover items in stack")   
+        raise ValueError("Invalid RPN: leftover items in stack")
     return stack[0]

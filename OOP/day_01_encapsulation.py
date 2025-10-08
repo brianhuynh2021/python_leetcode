@@ -1,4 +1,4 @@
-'''
+"""
 🔸1. Theory
 
 ENGLISH:
@@ -17,7 +17,8 @@ Encapsulation (tính đóng gói) là việc ẩn giấu dữ liệu nội bộ 
 ⸻
 🔸3. Code Example (Python)
 
-'''
+"""
+
 
 class BankAccount:
     def __init__(self, owner, balance):
@@ -37,10 +38,11 @@ class BankAccount:
     def get_balance(self):
         return self.__balance
 
+
 # Test
 acc = BankAccount("Brian", 1000)
 acc.deposit(500)
 print(acc.get_balance())  # ✅ 1500
-acc.withdraw(2000)        # ❌ Insufficient funds.
+acc.withdraw(2000)  # ❌ Insufficient funds.
 print(acc.get_balance())  # ✅ 1500
 # print(acc.__balance)    ❌ AttributeError – it's encapsulated!

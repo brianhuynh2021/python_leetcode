@@ -25,10 +25,12 @@
     ❌ Output: False (vì không đối xứng)
 """
 
+
 class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
+
 
 # -----------------------------------------
 # 🎯 Tạo linked list từ list Python
@@ -42,16 +44,18 @@ def build_linked_list(values):
         current = current.next
     return head
 
+
 # -----------------------------------------
 # 🔄 Đảo ngược linked list
 def reverse_linked_list(head):
     prev = None
     while head:
-        next_node = head.next      # Ghi nhớ node kế tiếp
-        head.next = prev           # Đảo chiều liên kết
-        prev = head                # Di chuyển prev về node hiện tại
-        head = next_node           # Sang node tiếp theo
+        next_node = head.next  # Ghi nhớ node kế tiếp
+        head.next = prev  # Đảo chiều liên kết
+        prev = head  # Di chuyển prev về node hiện tại
+        head = next_node  # Sang node tiếp theo
     return prev  # Trả về node đầu tiên sau khi đảo
+
 
 # -----------------------------------------
 # 💥 Kiểm tra Linked List có phải Palindrome
@@ -83,6 +87,7 @@ def is_palindrome(head):
 
     return True
 
+
 # -----------------------------------------
 # 🧪 Test
 if __name__ == "__main__":
@@ -93,4 +98,3 @@ if __name__ == "__main__":
     print(is_palindrome(build_linked_list([1, 2, 3])))
     print(is_palindrome(build_linked_list([1])))
     print(is_palindrome(build_linked_list([])))
-    

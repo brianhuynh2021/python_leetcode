@@ -1,10 +1,11 @@
 import unittest
-from lc_52_merge_two_sorted_linked_list_2nd import merge_two_sorted_lists_optimized
+
 
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 def merge_two_sorted_lists(l1: ListNode, l2: ListNode) -> ListNode:
     dummy = ListNode(-1)
@@ -21,6 +22,7 @@ def merge_two_sorted_lists(l1: ListNode, l2: ListNode) -> ListNode:
 
     tail.next = l1 if l1 else l2
     return dummy.next
+
 
 class TestMergeTwoSortedLists(unittest.TestCase):
     def list_to_linkedlist(self, lst):
@@ -64,6 +66,7 @@ class TestMergeTwoSortedLists(unittest.TestCase):
         l2 = self.list_to_linkedlist([2, 4, 6])
         result = merge_two_sorted_lists(l1, l2)
         self.assertEqual(self.linkedlist_to_list(result), [1, 2, 3, 4, 5, 6])
+
 
 if __name__ == "__main__":
     unittest.main()

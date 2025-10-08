@@ -1,4 +1,4 @@
-'''
+"""
 🧠 What is the “Top K Frequent Elements” Problem?
 
 You are given:
@@ -27,14 +27,16 @@ This is a common pattern in interviews. It tests:
 	•	Your ability to use hash maps (dictionaries)
 	•	Your understanding of sorting or heaps
 	•	Your skill in optimizing for performance (not just brute force)
-'''
+"""
+
 
 # Traditional method:
 def sort_result(items):
     sorted_items = sorted(items, key=lambda x: x[1], reverse=True)
     return sorted_items
-    
-def top_k_frequent_elements(nums: list, k: int)-> list:
+
+
+def top_k_frequent_elements(nums: list, k: int) -> list:
     result = []
     check_appear = {}
     for num in nums:
@@ -46,9 +48,11 @@ def top_k_frequent_elements(nums: list, k: int)-> list:
     result = [item[0] for item in sorted_item[:k]]
     return result
 
+
 # Optimize method: using heap
 def top_k_frequent_elements_optimize(nums, k):
     import heapq
+
     result = []
     check_appear = {}
     heap = []
@@ -62,13 +66,13 @@ def top_k_frequent_elements_optimize(nums, k):
     result = [num for freq, num in heap]
     return result
 
-if __name__=='__main__':
+
+if __name__ == "__main__":
     nums = [1, 1, 1, 2, 2, 3]
     k = 2
-    nums_1 = [1, 1, 1, 2, 2, 3, 3, 7, 7, 9, 4, 5,6]
+    nums_1 = [1, 1, 1, 2, 2, 3, 3, 7, 7, 9, 4, 5, 6]
     k_1 = 3
     result = top_k_frequent_elements(nums, k)
     result_1 = top_k_frequent_elements_optimize(nums_1, k_1)
-    print(f'Top {k} frequent elements: {result}')
-    print(f'Top {k_1} frequent elements: {result_1}')
-    
+    print(f"Top {k} frequent elements: {result}")
+    print(f"Top {k_1} frequent elements: {result_1}")

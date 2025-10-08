@@ -1,4 +1,4 @@
-def is_unique(char: str)-> bool:
+def is_unique(char: str) -> bool:
     seen = set()
     for c in char:
         if c in seen:

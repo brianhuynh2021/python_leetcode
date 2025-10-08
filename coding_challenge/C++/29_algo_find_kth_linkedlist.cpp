@@ -4,14 +4,14 @@ using namespace std;
 struct ListNode {
     int value;
     ListNode* next;
-    
+
     ListNode(int x) : value(x), next(nullptr) {}
 };
 
 ListNode* findKthToLast(ListNode* head, int k) {
     ListNode* fast = head;
     ListNode* slow = head;
-    
+
     // Move the fast pointer k steps ahead
     for (int i = 0; i < k; ++i) {
         if (!fast) {
@@ -19,13 +19,13 @@ ListNode* findKthToLast(ListNode* head, int k) {
         }
         fast = fast->next;
     }
-    
+
     // Move both pointers until fast reaches the end
     while (fast) {
         fast = fast->next;
         slow = slow->next;
     }
-    
+
     return slow;  // slow now points to the kth to last element
 }
 
@@ -39,12 +39,12 @@ int main() {
 
     int k = 2;
     ListNode* result = findKthToLast(head, k);
-    
+
     if (result) {
         cout << "The " << k << "th to last element is: " << result->value << endl;
     } else {
         cout << "List is too short." << endl;
     }
-    
+
     return 0;
 }

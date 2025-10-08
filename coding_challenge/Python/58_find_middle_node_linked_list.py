@@ -1,5 +1,5 @@
-# Bài toán “Middle of the Linked List” là một bài toán 
-# rất phổ biến và kinh điển khi làm việc với danh sách liên kết (linked list). 
+# Bài toán “Middle of the Linked List” là một bài toán
+# rất phổ biến và kinh điển khi làm việc với danh sách liên kết (linked list).
 # Cùng phân tích bài toán để hiểu rõ hơn nhé!
 
 # 🚩 Phân tích bài toán:
@@ -21,11 +21,13 @@
 
 # Khi con trỏ nhanh di chuyển tới cuối danh sách, con trỏ chậm sẽ nằm ngay tại nút giữa.
 
+
 class Node:
     def __init__(self, val: int):
         self.val = val
         self.next = None
-        
+
+
 def get_middle_node(head: Node):
     slow = head
     fast = head
@@ -34,13 +36,15 @@ def get_middle_node(head: Node):
         fast = fast.next.next
     return slow
 
+
 def print_linked_list(l):
     while l:
         print(f"{l.val}->", end="")
         l = l.next
-    print('None')
+    print("None")
 
-def build_linked_list(data = list[int])->Node:
+
+def build_linked_list(data=list[int]) -> Node:
     if not data:
         return None
     head = Node(data[0])
@@ -50,21 +54,22 @@ def build_linked_list(data = list[int])->Node:
         tail = tail.next
     return head
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     values = [1, 3, 5, 7, 9]
     head = build_linked_list(values)
-    
-    print('Danh sach lien ket don')
+
+    print("Danh sach lien ket don")
     print_linked_list(head)
-    
+
     middle = get_middle_node(head)
-    print('Nút giữa là: ', middle.val)
-    
+    print("Nút giữa là: ", middle.val)
+
     value_1 = [2, 4, 6, 8, 10, 12]
     head_1 = build_linked_list(value_1)
-    
-    print('Danh sach lien ket don')
+
+    print("Danh sach lien ket don")
     print_linked_list(head_1)
-    
+
     middle_1 = get_middle_node(head_1)
-    print('Nút giữa là: ', middle_1.val)
+    print("Nút giữa là: ", middle_1.val)

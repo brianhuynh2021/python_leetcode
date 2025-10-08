@@ -16,6 +16,7 @@ logs = [
 
 # [('2025-08-09', 1), ('2025-08-10', 1)]
 
+
 def daily_unique_user(logs):
     days = sorted({l["timestamp"][:10] for l in logs})
     res = []

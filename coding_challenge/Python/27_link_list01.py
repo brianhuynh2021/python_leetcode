@@ -2,7 +2,8 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        
+
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -25,8 +26,7 @@ class LinkedList:
         print("None")
 
 
-        
-link_list = LinkedList() 
+link_list = LinkedList()
 link_list.append_to_tail(5)
 link_list.append_to_tail(4)
 link_list.print_list()

@@ -72,6 +72,7 @@ def get_prev_number(number: int) -> int:
 def get_next_and_prev(number: int) -> tuple[int, int]:
     return get_next_number(number), get_prev_number(number)
 
+
 def test():
     n = 13948
     print("Original:", n, "->", bin(n)[2:])
@@ -83,5 +84,5 @@ def test():
     assert count_ones(prev) == count_ones(n)
 
 
-if __name__=='__main__':
+if __name__ == "__main__":
     test()

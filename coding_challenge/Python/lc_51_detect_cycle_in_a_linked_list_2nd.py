@@ -8,10 +8,12 @@ bị lặp vô hạn ⇒ gọi là có chu trình.
 Ví dụ có cycle:
 """
 
+
 class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
+
 
 def detect_cycle_brute(head: Node) -> bool:
     """
@@ -27,10 +29,11 @@ def detect_cycle_brute(head: Node) -> bool:
     curr_node = head
     while curr_node:
         if curr_node in visited_nodes:
-            return True # Cycle detected
+            return True  # Cycle detected
         visited_nodes.add(curr_node)
         curr_node = curr_node.next
     return False
+
 
 def detect_cycle_optimized(head: Node) -> bool:
     """

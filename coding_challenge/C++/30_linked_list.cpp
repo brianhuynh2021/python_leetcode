@@ -55,7 +55,7 @@ void printList(List l) {
     Node* p = l.pHead;
     while(p != nullptr) {
       cout << p->data << " " << endl;
-      p = p->pNext;  
+      p = p->pNext;
     }
 }
 /*
@@ -86,7 +86,7 @@ bool Search(List l, int x) {
     Tim gia tri x
     input:
       x: int gia tri can tim
-      l: List 
+      l: List
 */
 
 bool Search(List l,int x) {

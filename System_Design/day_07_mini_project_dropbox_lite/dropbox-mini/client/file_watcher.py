@@ -1,12 +1,12 @@
+import hashlib
 import os
 import time
-import hashlib
-import requests
-from pathlib import Path
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 from datetime import datetime
-from typing import Optional
+from pathlib import Path
+
+import requests
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
 
 
 class DropboxClient:

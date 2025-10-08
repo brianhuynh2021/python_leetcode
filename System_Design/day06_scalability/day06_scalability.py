@@ -1,5 +1,6 @@
 # Day 06 - Scalability Example Code
 
+
 # Simple Round Robin Load Balancer
 class LoadBalancer:
     def __init__(self, servers):
@@ -10,6 +11,7 @@ class LoadBalancer:
         server = self.servers[self.index]
         self.index = (self.index + 1) % len(self.servers)
         return server
+
 
 if __name__ == "__main__":
     servers = ["server1", "server2", "server3"]

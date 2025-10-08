@@ -6,4 +6,3 @@ def remove_duplicates(arr: list):
             seen.add(item)
             result.append(item)
     return result
-

@@ -7,6 +7,7 @@ class Car:
     def display_info(self):
         return f"{self.brand}-{self.year}-{self.mileage}"
 
+
 class Garage:
     def __init__(self, cars: list[dict]):
         self.list_cars = []
@@ -19,6 +20,7 @@ class Garage:
         for i, car in enumerate(self.list_cars):
             result.append(f"Car {i+1}: {car.display_info()}")
         return result
+
 
 class Student:
     def __init__(self, name, grade, age: int = 1):
@@ -39,7 +41,7 @@ class Student:
         if 0 < grade <= 100:
             self.__grade = grade
         else:
-            return 'Invalid grade'
+            return "Invalid grade"
 
     def update_grade(self):
         if self.__grade + 10 > 100:
@@ -54,11 +56,12 @@ class Student:
         if isinstance(name, str):
             self.name = name
 
+
 class StudentManager:
     def __init__(self, students: list[dict]):
         self.list_students = []
         for student in students:
-            new_student = Student(student['name'], student['grade'], student['age'])
+            new_student = Student(student["name"], student["grade"], student["age"])
             self.list_students.append(new_student)
 
     def show_top_student(self):
@@ -70,11 +73,12 @@ class StudentManager:
                 top_student = student
         return f"{top_student.get_name()} - {top_student.get_grade()}"
 
+
 def main():
     # Test Garage
     garage_data = [
         {"brand": "Toyota", "year": 2020, "mileage": 10000},
-        {"brand": "Honda", "year": 2019, "mileage": 15000}
+        {"brand": "Honda", "year": 2019, "mileage": 15000},
     ]
     garage = Garage(garage_data)
     print("\n🚗 Garage Test:")
@@ -95,10 +99,11 @@ def main():
     student_data = [
         {"name": "Alice", "grade": 85, "age": 18},
         {"name": "Bob", "grade": 92, "age": 19},
-        {"name": "Charlie", "grade": 78, "age": 20}
+        {"name": "Charlie", "grade": 78, "age": 20},
     ]
     manager = StudentManager(student_data)
     print("Top student:", manager.show_top_student())
+
 
 if __name__ == "__main__":
     main()

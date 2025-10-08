@@ -9,7 +9,7 @@ Given a list of numbers, return whether any two sums to k. For example, given
  #include <iostream>
  #include <unordered_set>
  using namespace std;
- 
+
  bool isTarget(int a[], int size, int k) {
      unordered_set<int> seen;
      for (int i = 0; i < size; i++) {
@@ -21,16 +21,16 @@ Given a list of numbers, return whether any two sums to k. For example, given
      }
      return false;
  }
- 
+
  int main() {
      int arr1[] = {};
      int arr2[] = {10, 15, 3, 7};
      int arr3[] = {10, 15, 3, 4};
- 
+
      cout << boolalpha;  // Print "true"/"false" instead of 1/0
      cout << isTarget(arr1, 0, 17) << endl;       // false
      cout << isTarget(arr2, 4, 17) << endl;       // true
      cout << isTarget(arr3, 4, 17) << endl;       // false
- 
+
      return 0;
  }

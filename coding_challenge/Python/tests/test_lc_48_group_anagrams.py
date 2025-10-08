@@ -1,4 +1,5 @@
 import unittest
+
 from lc_48_group_anagrams_2nd import group_anagrams_brute
 
 
@@ -8,8 +9,7 @@ class TestGroupAnagrams(unittest.TestCase):
         output = group_anagrams_brute(data)
         expected = [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
         self.assertEqual(
-            set(frozenset(g) for g in output),
-            set(frozenset(g) for g in expected)
+            set(frozenset(g) for g in output), set(frozenset(g) for g in expected)
         )
 
     def test_empty_input(self):
@@ -24,6 +24,5 @@ class TestGroupAnagrams(unittest.TestCase):
         output = group_anagrams_brute(data)
         expected = [["abc", "bca", "abc"]]
         self.assertEqual(
-            set(frozenset(g) for g in output),
-            set(frozenset(g) for g in expected)
+            set(frozenset(g) for g in output), set(frozenset(g) for g in expected)
         )

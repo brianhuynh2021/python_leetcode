@@ -1,4 +1,4 @@
-'''
+"""
 🔍 Problem Understanding
 You’re given a 2D matrix like this:
 [
@@ -15,17 +15,19 @@ Let’s clarify some assumptions first:
 	•	The first integer of each row is greater than the last integer of the previous row.
 
 This means the 2D matrix can be treated as a 1D sorted array, right?
-'''
+"""
 
-def brute_force_search_matrix(matrix: list[list[int]], target: int)->bool:
+
+def brute_force_search_matrix(matrix: list[list[int]], target: int) -> bool:
     for row in matrix:
         for val in row:
             if val == target:
                 return True
     return False
-  
-def optimzed_search_matrix(matrix: list[list[int]], target: int)->bool:
-    '''We treat the 2-D matrix as 1-D'''
+
+
+def optimzed_search_matrix(matrix: list[list[int]], target: int) -> bool:
+    """We treat the 2-D matrix as 1-D"""
     if not matrix or not matrix[0]:
         return False
     rows = len(matrix)
@@ -33,15 +35,14 @@ def optimzed_search_matrix(matrix: list[list[int]], target: int)->bool:
     left = 0
     right = (rows * cols) - 1
     while left <= right:
-        mid = (left + right)//2
-        row = mid//cols
-        col = mid%cols
+        mid = (left + right) // 2
+        row = mid // cols
+        col = mid % cols
         mid_val = matrix[row][col]
         if mid_val == target:
             return True
-        elif mid_val < target: # it mean target in right side
+        elif mid_val < target:  # it mean target in right side
             left = mid + 1
         else:
             right = mid - 1
     return False
-    

@@ -1,23 +1,25 @@
-'''
+"""
     🔍  Mô tả bài toán:
 
         Bạn được cho hai danh sách liên kết đơn: List A và List B.
-	    Nhiệm vụ là tìm nút giao nhau đầu tiên, nơi mà hai danh sách bắt đầu chia sẻ 
+	    Nhiệm vụ là tìm nút giao nhau đầu tiên, nơi mà hai danh sách bắt đầu chia sẻ
         cùng một chuỗi các nút (tức là hai con trỏ cùng trỏ tới cùng một node trong bộ nhớ).
     🧠 Ví dụ hình minh hoạ:
         List A: a1 → a2
                         ↘
                         c1 → c2 → c3
-                        ↗            
+                        ↗
         List B: b1 → b2 → b3
     Kết quả bạn cần trả về là node c1, vì từ đó trở đi hai danh sách có chung node.
-    
-'''
+
+"""
+
 
 class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
+
 
 # Hàm tìm node giao nhau giữa hai danh sách
 def find_intersection_linked_list(head_1, head_2):
@@ -36,15 +38,17 @@ def find_intersection_linked_list(head_1, head_2):
         p2 = p2.next if p2 else head_1
 
     # Trả về node giao nhau, hoặc None nếu không có giao nhau
-    return p1 # trả về p1 hay p2 đều được
+    return p1  # trả về p1 hay p2 đều được
+
 
 # Hàm in danh sách liên kết
 def print_list(head, label):
-    print(f"{label}: ", end='')
+    print(f"{label}: ", end="")
     while head:
-        print(head.val, end=' -> ')
+        print(head.val, end=" -> ")
         head = head.next
     print("None")
+
 
 # Hàm in kết quả node giao nhau
 def print_node(node):
@@ -53,7 +57,8 @@ def print_node(node):
     else:
         print("Không có node giao nhau.")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Tạo đoạn chung giữa hai danh sách: c1 -> c2 -> c3
     c1 = Node(8)
     c2 = Node(10)

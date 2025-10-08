@@ -116,6 +116,6 @@ print(acc.balance()) # 80
 ---
 
 ## ❓ Quick Q&A
-- **What is an RI?** The guard that keeps an object **always valid**.  
-- **Where do I enforce it?** End of `__init__` and after every mutator.  
+- **What is an RI?** The guard that keeps an object **always valid**.
+- **Where do I enforce it?** End of `__init__` and after every mutator.
 - **How do I enforce it?** Validate inputs, normalize, `_check_rep()`, and raise exceptions.

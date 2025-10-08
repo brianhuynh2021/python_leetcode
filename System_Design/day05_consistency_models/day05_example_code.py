@@ -3,10 +3,10 @@ Day 05 – Consistency Models: Quorum store + RYW session + G-Counter CRDT demo.
 Run directly: python day05_quorum_and_crdt.py
 """
 
-from dataclasses import dataclass
-from typing import Dict, Tuple, Optional, List
-import time
 import random
+import time
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Tuple
 
 # -----------------------------
 # Replica and Quorum primitives

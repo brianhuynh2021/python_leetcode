@@ -14,16 +14,19 @@ def total_fruits(fruits: list[int]) -> int:
             left_fruit = fruits[start]
             check_appear[left_fruit] -= 1
             if check_appear[left_fruit] == 0:
-                del check_appear[left_fruit] # or you can use pop built-in method                                # 
-            start += 1                       # by check_appear.pop('left_fruit')
+                del check_appear[
+                    left_fruit
+                ]  # or you can use pop built-in method                                #
+            start += 1  # by check_appear.pop('left_fruit')
 
         max_fruits = max(max_fruits, end - start + 1)
 
     return max_fruits
 
-if __name__=='__main__':
+
+if __name__ == "__main__":
     print(total_fruits([1, 2, 1, 2, 3]))  # ✅ Expected: 4
     print(total_fruits([1, 2, 3, 2, 2]))  # ✅ Expected: 4
     print(total_fruits([1, 2, 3, 4, 5]))  # ✅ Expected: 2
-    print(total_fruits([1, 1, 1, 1]))     # ✅ Expected: 4
-    print(total_fruits([]))              # ✅ Expected: 0
+    print(total_fruits([1, 1, 1, 1]))  # ✅ Expected: 4
+    print(total_fruits([]))  # ✅ Expected: 0

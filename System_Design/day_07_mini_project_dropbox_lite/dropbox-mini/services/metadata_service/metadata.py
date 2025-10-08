@@ -1,15 +1,16 @@
-from fastapi import FastAPI, Depends, HTTPException
+import os
+import sys
+from datetime import datetime
+from typing import List
+
+from fastapi import Depends, FastAPI, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from typing import List
-from datetime import datetime
-import sys
-import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from common.database import get_db
-from common.models import File, FileVersion, User
+from common.models import File, User
 from services.auth_service.auth import get_current_user
 
 app = FastAPI(title="Metadata Service", version="1.0.0")

@@ -22,19 +22,20 @@ If there’s a tie, we can return any closest one.
 Output: 1  or  3
 """
 
-def triplet_sum_closest_target(nums: list[int], target: int)->list:
+
+def triplet_sum_closest_target(nums: list[int], target: int) -> list:
     n = len(nums)
     if n < 3:
         return []
     nums.sort()
-    closest_sum = float('inf')
-    for i in range(n-2):
+    closest_sum = float("inf")
+    for i in range(n - 2):
         j = i + 1
-        k = n -1
+        k = n - 1
         while j < k:
             current_sum = nums[i] + nums[j] + nums[k]
-            if abs(current_sum-target) < abs(closest_sum-target):
+            if abs(current_sum - target) < abs(closest_sum - target):
                 closest_sum = current_sum
-            
+
     result = []
     return result

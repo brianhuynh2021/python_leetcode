@@ -46,16 +46,16 @@ A simplified Dropbox clone built with microservices architecture for learning sy
 ## 📋 System Design Highlights
 
 ### Functional Requirements
-✅ Upload/Download files  
-✅ File synchronization  
-✅ File sharing  
-✅ File versioning  
+✅ Upload/Download files
+✅ File synchronization
+✅ File sharing
+✅ File versioning
 
 ### Non-Functional Requirements
-✅ Scalability - Microservices architecture  
-✅ Reliability - Data redundancy with S3/MinIO  
-✅ Performance - Chunked transfer & CDN-ready  
-✅ Security - JWT authentication & encrypted storage  
+✅ Scalability - Microservices architecture
+✅ Reliability - Data redundancy with S3/MinIO
+✅ Performance - Chunked transfer & CDN-ready
+✅ Security - JWT authentication & encrypted storage
 
 ### Key Design Decisions
 
@@ -64,7 +64,7 @@ A simplified Dropbox clone built with microservices architecture for learning sy
    - Parallel upload/download
    - Efficient delta sync
 
-2. **Deduplication** 
+2. **Deduplication**
    - File-level hash checking
    - Shared storage for duplicate files
 

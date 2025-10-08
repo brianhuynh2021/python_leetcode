@@ -1,16 +1,15 @@
-from fastapi import FastAPI, Depends, HTTPException
+import os
+import sys
+
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from typing import List
-import io
-import sys
-import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from common.database import get_db
-from common.models import File, FileVersion, FileChunk, User
+from common.models import File, FileChunk, FileVersion, User
 from common.s3_client import s3_client
 from services.auth_service.auth import get_current_user
 

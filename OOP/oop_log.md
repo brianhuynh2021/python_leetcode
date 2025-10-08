@@ -43,4 +43,3 @@ class Car:
 
     def drive(self, km):
         self.mileage += km
-

@@ -1,6 +1,6 @@
 📅 Date: 2025-07-17 (Thursday)
 ✅ Problem: Longest Substring with K Distinct Characters
-🧠 Idea: 
+🧠 Idea:
     - Brute force O(n³): 2 vòng for tạo substring + đếm số lượng ký tự distinct bằng dict/set
     - Optimized O(n): sliding window + dict tần suất, shrink khi len(dict) > k, update max_len nếu right - left + 1 lớn hơn cũ
 
@@ -14,7 +14,7 @@
 
 📅 Date: 2025-07-17 (Thursday)
 ✅ Problem: Peak element in mountain array
-🧠 Idea: 
+🧠 Idea:
     - Brute force O(n):
 
     Due to we iterate for loop until we find the item match the condition arr[i-1] < arr[i] > arr[i+1] we can get the target
@@ -63,10 +63,10 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ Date: 2025-07-23 (Monday)
 ✅ Problem: Reverse linked list
-🧠 Idea/Notes: 
+🧠 Idea/Notes:
    🙇 brute force approach:
 
-       . Take all nodes into a list 
+       . Take all nodes into a list
        . Iterate the list from end to begin to get new linked list
        . Return nodes[-1] (final item of list)
     🤔 optimize approach
@@ -82,9 +82,9 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ Date: 2025-07-23 (Monday)
 ✅ Problem: Reverse linked list
-🧠 Idea/Notes: 
+🧠 Idea/Notes:
    🙇 brute force approach:
-       . Take all nodes into a list 
+       . Take all nodes into a list
        . Iterate the list from end to begin to get new linked list
        . Return nodes[-1] (final item of list)
     🤔 optimize approach
@@ -141,7 +141,7 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ Date: 2025-07-25 (Friday)
 ✅ Problem: Daily temperatures
-🧠 Idea/Notes: 
+🧠 Idea/Notes:
     ⛓️‍💥 Brute force: loop through all days, then compare the following day(s)'s temperature greater than the current day. Put it in waits [] result if not move to next day until it get the temperature greater than current day.
         waits = []
         if temperature[day[j]] > temperature[current[day]]:
@@ -149,15 +149,15 @@ example: stack = [1, 5, 4, 2] pop out a item
             break
         j+= 1
     . Out of the loop not found any greater than put it as 0
-    ⛓️‍💥 Optimize: 
+    ⛓️‍💥 Optimize:
     . Use stack
 
 ---
 🗓️ Date: 2025-07-25 (Friday)
 ✅ Problem: Fruits into basket
-🧠 Idea/Notes: 
+🧠 Idea/Notes:
     ⛓️‍💥 Brute force: O(n^2)
-    . Get all sub_array by 2 for loop, each sub_array we get len(set(sub_array)). 
+    . Get all sub_array by 2 for loop, each sub_array we get len(set(sub_array)).
         .If len(sub_array)<=2:
             update max_len of sub_array compare with last sub_array
     . Out of the loop return max_len
@@ -166,8 +166,8 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ Date: 2025-07-27 (Sunday)
 ✅ Problem: Daily temperatures
-🧠 Idea/Notes: 
-    ⛓️‍💥 Optimize: 
+🧠 Idea/Notes:
+    ⛓️‍💥 Optimize:
     . Use stack:
     We use a stack to keep track of the days that haven’t found a warmer day yet.
     When we reach day i, we check whether the current temperature is warmer than the temperatures of the previous days stored in the stack.
@@ -208,7 +208,7 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ 2025-07-30
 ✅ Problem: Group Anagrams
-🧠 Idea: 
+🧠 Idea:
     🙇 Brute-force approach:
    - Duyệt từng từ i trong danh sách
    - Với mỗi i, so sánh với các từ j > i
@@ -248,11 +248,11 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ 2025-08-01 (Friday)
 ✅ Problem: Largest histogram
-🧠 Idea: 
+🧠 Idea:
    🙇 Brute-force approach:
-    e use two nested loops to check every pair of indices (start, end).  
-    For each range, we track the minimum height from start to end, and compute the rectangle area.  
-    If the area is greater than the current maximum, we update max_area.  
+    e use two nested loops to check every pair of indices (start, end).
+    For each range, we track the minimum height from start to end, and compute the rectangle area.
+    If the area is greater than the current maximum, we update max_area.
     Finally, return the largest area found.
 
     📋 Steps:
@@ -293,13 +293,13 @@ example: stack = [1, 5, 4, 2] pop out a item
     - Stack keeps track of all bars that are still "open to grow".
 
     ### 🧠 Tiny Habit:
-    > ❝ Don’t push i until you’ve popped all taller bars.  
+    > ❝ Don’t push i until you’ve popped all taller bars.
     > The right boundary (i) defines the end of extension for shorter bars. ❞
 
 ---
 🗓️ 2025-08-07 (Thu)
 ✅ Problem: Next greater element
-🧠 Idea: 
+🧠 Idea:
    🙇 Brute-force approach:
 
    - We use 2 for loops (i, j) if any value at index j > than value at i ==> Update result at that postion is value of index j
@@ -309,7 +309,7 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ 2025-08-08 (Friday)
 ✅ Problem: Asteroid collision
-🧠 Idea: 
+🧠 Idea:
    🙇 Brute-force approach:
       We use 2 for loops to do this by checking sequence of (i, j)
       result = [-1]*len(asteroids)
@@ -350,7 +350,7 @@ example: stack = [1, 5, 4, 2] pop out a item
 ---
 🗓️ 2025-08-16 (Saturday)
 ✅ Problem: Heap - Top K elements
-🧠 Idea:            
+🧠 Idea:
     🙇 Brute-force approach:
 
         💡 Sorted all elements in ascending or descending order, then select the top k items.
@@ -372,7 +372,7 @@ example: stack = [1, 5, 4, 2] pop out a item
     🙇 Edge cases:
             . k <= 0 → invalid, return [] or raise ValueError.
             . k > len(elements) → cannot get kth element, return [] or raise ValueError.
-            . elements is empty → return [] or raise ValueError.          
+            . elements is empty → return [] or raise ValueError.
     🙇 Brute-force approach:
         💡 Complexity:
             Big O(nlogn) for sorting elements
@@ -390,7 +390,7 @@ example: stack = [1, 5, 4, 2] pop out a item
                 If len(heap) > k:
                  heappop(heap)
             4. Return heap[0]
-            
+
 elements)
 
 ---
@@ -398,7 +398,7 @@ elements)
 ✅ Problem: Isomorphic of two strings
    Giving 2 strings, check are they isomorphic
 🧠 Idea:
-    🙇 Edge cases: if len(s) != len(t) return 
+    🙇 Edge cases: if len(s) != len(t) return
     False
     🙇 Brute Force Approach:
       . Complexity: O(n^2)
@@ -491,7 +491,7 @@ elements)
 
  💡 Brute force approach:
 
-    - **Time Complexity:** O(n)  
+    - **Time Complexity:** O(n)
     - **Space Complexity:** O(1)
     ###Steps:
     1. For each `i` in length of `nums`
@@ -504,7 +504,7 @@ elements)
 
   💡 **Optimized approach: Prefix Sum + HashMap**
 
-      - **Time Complexity:** O(n)  
+      - **Time Complexity:** O(n)
       - **Space Complexity:** O(n)
 
     ###Steps:

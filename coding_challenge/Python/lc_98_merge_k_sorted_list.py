@@ -39,8 +39,9 @@ APPROACH 4: Sequential Merging
 - Simple but suboptimal time complexity
 """
 
-from typing import List, Optional, Tuple
 import heapq
+from typing import List, Optional, Tuple
+
 
 class ListNode:
     __slots__ = ("val", "next")
@@ -80,6 +81,7 @@ def merge_k_lists_bruteforce(lists: List[Optional[ListNode]]) -> Optional[ListNo
 
     return dummy.next
 
+
 def list_to_linked(lst: list[int]) -> Optional[ListNode]:
     """
     Convert a Python list to a linked list.
@@ -90,6 +92,7 @@ def list_to_linked(lst: list[int]) -> Optional[ListNode]:
         current.next = ListNode(val)
         current = current.next
     return dummy.next
+
 
 def linked_to_list(node: Optional[ListNode]) -> list[int]:
     """
@@ -104,18 +107,18 @@ def linked_to_list(node: Optional[ListNode]) -> list[int]:
 
 def merge_k_lists_heap(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
     heap: List[Tuple[int, int, ListNode]] = []
-    
+
     for idx, node in enumerate(lists):
         if node is not None:
             heapq.heappush(heap, (node.val, idx, node))
     dummy = ListNode(0)
     tail = dummy
-    
+
     while heap:
         val, idx, node = heapq.heappop(heap)
         tail.next = node
         tail = tail.next
-        
+
         if node.next is not None:
             heapq.heappush(heap, (node.next.val, idx, node.next))
     return dummy.next

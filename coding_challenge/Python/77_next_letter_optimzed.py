@@ -30,6 +30,7 @@ def get_next_larger(n: int) -> int:
 
     return n
 
+
 def get_prev_smaller(n: int) -> int:
     temp = n
     c0 = 0  # count of trailing 1s
@@ -81,7 +82,7 @@ def test_next_larger():
         print(f"Input     : {n} ({print_binary(n)})")
         print(f"Next      : {result} ({print_binary(result)})")
         print(f"Prev      : {prev_num} ({print_binary(prev_num)})")
-        print(f"---")
+        print("---")
 
 
 if __name__ == "__main__":

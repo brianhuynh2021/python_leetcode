@@ -1,17 +1,17 @@
+import uuid
+
+from common.database import Base
 from sqlalchemy import (
-    Column,
-    String,
     BigInteger,
     Boolean,
+    Column,
     DateTime,
-    Integer,
     ForeignKey,
+    Integer,
+    String,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
-import uuid
-from common.database import Base
 
 
 class User(Base):

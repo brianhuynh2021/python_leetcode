@@ -31,8 +31,12 @@ def triplet_sum_brute(nums: list[int], target) -> list:
                     unique_triplets.add(trip)
     result = sorted([list(t) for t in unique_triplets])
     return result
+
+
 nums = [-1, 0, 1, 2, -1, -4]
 print(triplet_sum_brute(nums, 0))
+
+
 def triplet_sum_optimized(nums: list[int], target) -> list:
     n = len(nums)
     if n < 3:
@@ -49,7 +53,7 @@ def triplet_sum_optimized(nums: list[int], target) -> list:
             elif sum > target:
                 r -= 1
             else:
-                seen.add(tuple((sorted_nums[i], sorted_nums[l],sorted_nums[r])))
+                seen.add(tuple((sorted_nums[i], sorted_nums[l], sorted_nums[r])))
                 l += 1
                 r -= 1
     result = sorted([list(t) for t in seen])

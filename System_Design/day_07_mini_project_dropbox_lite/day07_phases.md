@@ -1,6 +1,6 @@
 # 🗓️ Day 07 Mini Project — Fault-Tolerant File Storage System (Dropbox-like)
 
-This mini project demonstrates how to apply **fault tolerance, replication, stateless design, and background workers** to a real-world system.  
+This mini project demonstrates how to apply **fault tolerance, replication, stateless design, and background workers** to a real-world system.
 We’ll build the project step-by-step from a single-node MVP to a distributed, scalable system.
 
 ---

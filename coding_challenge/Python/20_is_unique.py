@@ -8,17 +8,7 @@
 # print(is_unique('helpoo'))
 
 
-
-
-
-
-
-
-
-
-
-
-def is_unique(s: str)-> bool:
+def is_unique(s: str) -> bool:
     seen = set()
     for c in s:
         if c in seen:
@@ -26,4 +16,5 @@ def is_unique(s: str)-> bool:
         seen.add(c)
     return False
 
-print(is_unique('helo'))
+
+print(is_unique("helo"))

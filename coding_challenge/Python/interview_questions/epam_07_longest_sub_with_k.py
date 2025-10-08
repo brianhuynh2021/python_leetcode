@@ -16,6 +16,7 @@ def longest_sub_with_k(words, k):
         max_len = max(max_len, end - start + 1)
     return max_len
 
+
 def longest_sub_with_k(words, k):
     if not words or k <= 0:
         return 0
@@ -35,4 +36,4 @@ def longest_sub_with_k(words, k):
         if end - start + 1 > max_len:
             max_len = end - start + 1
             start = start
-    return max_len, words[start:start + max_len]
+    return max_len, words[start : start + max_len]

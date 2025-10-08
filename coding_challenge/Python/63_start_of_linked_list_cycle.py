@@ -15,11 +15,14 @@ Thuật toán sử dụng:
     1. Dò xem có chu trình không bằng cách cho 2 con trỏ đi với tốc độ khác nhau.
     2. Khi gặp nhau, reset 1 con trỏ về đầu, đi từng bước cho đến khi gặp lại.
 """
+
+
 class Node:
-    def __init__(self, val:int):
+    def __init__(self, val: int):
         self.val = val
         self.next = None
-        
+
+
 def start_of_linked_list(head):
     slow = head
     fast = head
@@ -31,13 +34,14 @@ def start_of_linked_list(head):
             break  # phát hiện được linked list có chu trình (cycle)
     else:
         return None  # Không có chu trình
-    
+
     # Bước 2: Đặt lại slow về head để tìm node bắt đầu của chu trình
     slow = head
     while slow != fast:
         slow = slow.next
         fast = fast.next
     return slow  # slow (hoặc fast) đang trỏ tới node bắt đầu của chu trình
+
 
 def build_linked_list(values: list[int]):
     if not values:
@@ -49,12 +53,14 @@ def build_linked_list(values: list[int]):
         current = current.next  # Di chuyển con trỏ tới node mới
     return head
 
+
 def print_linked_list(head):
     current = head
     while current:
-        print(f"{current.val}->", end='')  # In giá trị node hiện tại
+        print(f"{current.val}->", end="")  # In giá trị node hiện tại
         current = current.next
-    print('None')  # Kết thúc danh sách
+    print("None")  # Kết thúc danh sách
+
 
 def create_cycle(head: Node, pos: int) -> Node:
     """
@@ -79,8 +85,9 @@ def create_cycle(head: Node, pos: int) -> Node:
 
     tail.next = cycle_entry
     return head
-    
-if __name__== '__main__':
+
+
+if __name__ == "__main__":
     print("Test: Start of Linked List Cycle")
 
     # Input: danh sách có chu trình, node cuối nối về node có giá trị 7 (index 2)

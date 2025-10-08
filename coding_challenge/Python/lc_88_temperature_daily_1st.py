@@ -1,4 +1,4 @@
-def daily_temperatures_brute(temperatures: list[int])->list[int]:
+def daily_temperatures_brute(temperatures: list[int]) -> list[int]:
     """
     📌 Problem:
     Given a list of daily temperatures, return a list such that, for each day in the input,
@@ -24,9 +24,7 @@ def daily_temperatures_brute(temperatures: list[int])->list[int]:
     """
     n = len(temperatures)
     if not temperatures or n < 2:
-        raise ValueError(
-            "Temperatures must be a non-empty list with at least 2 days."
-        )
+        raise ValueError("Temperatures must be a non-empty list with at least 2 days.")
     waits = []
     for i in range(n):
         j = i + 1
@@ -39,17 +37,20 @@ def daily_temperatures_brute(temperatures: list[int])->list[int]:
             waits.append(0)
     return waits
 
-def daily_temperature_optimize(temperatures: list[int])->list[int]:
+
+def daily_temperature_optimize(temperatures: list[int]) -> list[int]:
     n = len(temperatures)
     if not temperatures or n < 2:
-        raise ValueError(
-            "Temperatures must be a non-empty list with at least 2 days."
-        )
+        raise ValueError("Temperatures must be a non-empty list with at least 2 days.")
     stack = []
-    waits = [0]*n
+    waits = [0] * n
     for i in range(n):
         while stack and temperatures[i] > temperatures[stack[-1]]:
-            prev_day = stack.pop() # Xác định được ngày ấm hơn ngày trước đó nên lấy ngày đó ra
-            waits[prev_day] = i - prev_day # Cập nhât tại ngày trước đó sau bao nhiêu ngày ấm lên - cho stack[-1] là sai à
+            prev_day = (
+                stack.pop()
+            )  # Xác định được ngày ấm hơn ngày trước đó nên lấy ngày đó ra
+            waits[prev_day] = (
+                i - prev_day
+            )  # Cập nhât tại ngày trước đó sau bao nhiêu ngày ấm lên - cho stack[-1] là sai à
         stack.append(i)
     return waits

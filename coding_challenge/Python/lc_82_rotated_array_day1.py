@@ -1,4 +1,4 @@
-def brute_force_rotated_arr(nums: list[int], k=int)->bool:
+def brute_force_rotated_arr(nums: list[int], k=int) -> bool:
     for num in nums:
         if num == k:
             return True
@@ -30,7 +30,8 @@ def optimized_rotated_arr(nums: list[int], k: int) -> bool:
 
     return False
 
-print(optimized_rotated_arr([4,5,6,7,0,1,2], 0))  # ✅ True
-print(optimized_rotated_arr([4,5,6,7,0,1,2], 3))  # ❌ False
-print(optimized_rotated_arr([1,3], 3))            # ✅ True
-print(optimized_rotated_arr([3, 1], 3))           # ✅ True
+
+print(optimized_rotated_arr([4, 5, 6, 7, 0, 1, 2], 0))  # ✅ True
+print(optimized_rotated_arr([4, 5, 6, 7, 0, 1, 2], 3))  # ❌ False
+print(optimized_rotated_arr([1, 3], 3))  # ✅ True
+print(optimized_rotated_arr([3, 1], 3))  # ✅ True

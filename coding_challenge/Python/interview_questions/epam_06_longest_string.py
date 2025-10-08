@@ -8,10 +8,11 @@ def longest_string(words: list[str]):
             m = len(w)
     return [w for w in words if len(w) == m]
 
+
 def longest_string_other(words: list[str]):
     if not words:
         raise ValueError("Words must not be an empty list")
-    
+
     max_len = 0
     longest_word = []
     for w in words:

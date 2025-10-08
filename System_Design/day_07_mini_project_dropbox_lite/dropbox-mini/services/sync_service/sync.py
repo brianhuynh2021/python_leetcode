@@ -1,11 +1,11 @@
-from fastapi import FastAPI, Depends, HTTPException, WebSocket, WebSocketDisconnect
+import os
+import sys
+from datetime import datetime
+from typing import List
+
+from fastapi import Depends, FastAPI, WebSocket, WebSocketDisconnect
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from typing import List
-from datetime import datetime
-import json
-import sys
-import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 

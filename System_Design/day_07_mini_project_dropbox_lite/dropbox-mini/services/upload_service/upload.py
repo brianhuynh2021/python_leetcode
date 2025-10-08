@@ -1,18 +1,19 @@
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File as FastAPIFile
+import hashlib
+import os
+import sys
+
+from fastapi import Depends, FastAPI
+from fastapi import File as FastAPIFile
+from fastapi import HTTPException, UploadFile
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from typing import List, Optional
-import hashlib
-import uuid
-import sys
-import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from common.database import get_db
-from common.models import File, FileVersion, FileChunk, User
-from common.s3_client import s3_client
 from common.config import Config
+from common.database import get_db
+from common.models import File, FileChunk, FileVersion, User
+from common.s3_client import s3_client
 from services.auth_service.auth import get_current_user
 
 app = FastAPI(title="Upload Service", version="1.0.0")

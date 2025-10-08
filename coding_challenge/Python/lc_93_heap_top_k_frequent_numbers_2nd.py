@@ -1,5 +1,5 @@
-from heapq import heappush, heappop
 from collections import Counter
+from heapq import heappop, heappush
 
 
 def find_top_k_elment_heap(nums: list[int], k):
@@ -7,7 +7,7 @@ def find_top_k_elment_heap(nums: list[int], k):
         raise ValueError("k must be positive")
     if not nums:
         return []
-    
+
     freq = Counter(nums)
     heap = []
     for num, f in freq.items():

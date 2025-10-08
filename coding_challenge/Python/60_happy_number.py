@@ -11,7 +11,7 @@
     - Lặp lại quá trình: lấy từng chữ số, bình phương lên, cộng lại thành số mới
     - Nếu kết thúc ở 1 → số hạnh phúc ✅
     - Nếu lặp lại vô hạn (xuất hiện chu trình) → không hạnh phúc ❌
-    - Dùng fast/slow pointer để phát hiện chu trình 
+    - Dùng fast/slow pointer để phát hiện chu trình
     (giống detect cycle in linked list)
 
 📦 Ví dụ:
@@ -19,18 +19,20 @@
     123 → 1²+2²+3²=14 → 17 → 50 → ... → quay lại → ❌ Not Happy
 """
 
-def get_next_number(n: int)->int:
+
+def get_next_number(n: int) -> int:
     sum_of_squares = 0
     while n > 0:
-        digit = n%10 # chia lay phan don vi
+        digit = n % 10  # chia lay phan don vi
         sum_of_squares += digit**2
-        n = n// 10 # sau khi duoc tong o tren loai don vi lay tiep các so con lại
+        n = n // 10  # sau khi duoc tong o tren loai don vi lay tiep các so con lại
     return sum_of_squares
 
-def is_happy_number(n: int)->bool:
+
+def is_happy_number(n: int) -> bool:
     """
-        Kiểm tra n có phải là số hạnh phúc (happy_number) không.
-        Dùng kỹ thuật slow/fast pointer để phát hiện chu trình.
+    Kiểm tra n có phải là số hạnh phúc (happy_number) không.
+    Dùng kỹ thuật slow/fast pointer để phát hiện chu trình.
     """
     slow = n
     fast = get_next_number(n)
@@ -42,7 +44,8 @@ def is_happy_number(n: int)->bool:
         fast = get_next_number(get_next_number(fast))
     return fast == 1
 
-if __name__=='__main__':
+
+if __name__ == "__main__":
     test_cases = [1, 3, 19, 56, 123, 87]
     for n in test_cases:
         result = is_happy_number(n)

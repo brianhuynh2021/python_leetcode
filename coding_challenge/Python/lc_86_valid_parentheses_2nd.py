@@ -1,8 +1,8 @@
-def valid_parentheses(s: str)->bool:
+def valid_parentheses(s: str) -> bool:
     stack = []
-    mapping = {')':'(', '}':'{', ']':'['}
+    mapping = {")": "(", "}": "{", "]": "["}
     for c in s:
-        if c in '({[':
+        if c in "({[":
             stack.append(c)
         else:
             if not stack:
@@ -12,6 +12,7 @@ def valid_parentheses(s: str)->bool:
                 if mapping[c] != top:
                     return False
     return not stack
+
 
 assert valid_parentheses("()") == True
 assert valid_parentheses("()[]{}") == True

@@ -1,4 +1,4 @@
-def brute_force_dutch_flag(nums: list[int])->None:
+def brute_force_dutch_flag(nums: list[int]) -> None:
     """
     Sorts an array containing only 0s, 1s, and 2s in-place using a brute force approach.
 
@@ -37,15 +37,16 @@ def brute_force_dutch_flag(nums: list[int])->None:
     for _ in range(count1):
         nums[i] = 1
         i += 1
-    
+
     for _ in range(count2):
         nums[i] = 2
         i += 1
-        
-def optimized_dutch_flag(nums: list[int])->None:
+
+
+def optimized_dutch_flag(nums: list[int]) -> None:
     """
     Sorts an array containing only 0s, 1s, and 2s using the Dutch National Flag algorithm (Dijkstra's 3-way partitioning).
-    
+
     This optimized solution runs in a single pass with constant space.
 
     Parameters
@@ -57,7 +58,7 @@ def optimized_dutch_flag(nums: list[int])->None:
     -------
     None
         The list is sorted in-place.
-    
+
     Example
     -------
     >>> nums = [2, 0, 2, 1, 1, 0]
@@ -75,7 +76,7 @@ def optimized_dutch_flag(nums: list[int])->None:
             mid += 1
         elif nums[mid] == 1:
             mid += 1
-        else: # nums[mid] == 2
+        else:  # nums[mid] == 2
             nums[high], nums[mid] = nums[mid], nums[high]
             mid += 1
             high -= 1

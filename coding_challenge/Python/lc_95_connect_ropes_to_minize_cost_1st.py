@@ -31,7 +31,9 @@ def min_cost_bruteforce_loops_trace(ropes, depth=0):
                     next_state.append(ropes[k])
             next_state.append(merged)
 
-            print(f"{indent}  pick ({ropes[i]}, {ropes[j]}) -> merged={merged}, next={next_state}")
+            print(
+                f"{indent}  pick ({ropes[i]}, {ropes[j]}) -> merged={merged}, next={next_state}"
+            )
 
             future = min_cost_bruteforce_loops_trace(next_state, depth + 1)
             total = merged + future
@@ -44,10 +46,13 @@ def min_cost_bruteforce_loops_trace(ropes, depth=0):
     print(f"{indent}=> best for {ropes} = {best}")
     return best
 
+
 min_cost_bruteforce_loops_trace([4, 6, 8])
 
 from heapq import heapify, heappop, heappush
-def min_cost_ropes_optimized(ropes: list[int])-> int:
+
+
+def min_cost_ropes_optimized(ropes: list[int]) -> int:
     n = len(ropes)
     if n <= 1:
         return 0
@@ -59,7 +64,8 @@ def min_cost_ropes_optimized(ropes: list[int])-> int:
         cost = a + b
         heappush(ropes, cost)
         n -= 1
-    
+
     return ropes[0]
+
 
 print("hello", min_cost_ropes_optimized([4, 6, 8, 1, 13]))

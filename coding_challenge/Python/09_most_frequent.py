@@ -1,5 +1,3 @@
-
-
 def most_frequent_num(nums):
     if not nums:  # Check if the list is empty
         return None  # or raise ValueError("List is empty")
@@ -24,5 +22,6 @@ def most_frequent_num(nums):
         return majority_element
     else:
         return None  # or any specific value indicating no majority was found
+
 
 result = most_frequent_num([2, 3, 3, 4, 4, 4, 5, 5, 5, 6, 5])

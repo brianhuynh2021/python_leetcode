@@ -1,8 +1,10 @@
 # day07_ri_examples_en.py
 # Super-simple examples of Representation Invariant (RI).
 
+
 class Interval:
     """RI: always ensure start <= end."""
+
     def __init__(self, start: float, end: float):
         # Validate input so we never enter an invalid state
         if start > end:
@@ -28,6 +30,7 @@ class Interval:
 
 class BankAccount:
     """RI: balance >= 0 (no negative balances)."""
+
     def __init__(self, owner: str, balance: float = 0.0):
         if balance < 0:
             raise ValueError("initial balance must be >= 0")
@@ -63,7 +66,7 @@ class BankAccount:
 def _demo():
     print("== Demo Interval ==")
     iv = Interval(0, 10)
-    print("length:", iv.length())   # 10
+    print("length:", iv.length())  # 10
     iv.move(5)
     print("length after move:", iv.length())  # 10
 
@@ -72,6 +75,7 @@ def _demo():
     acc.deposit(50)
     acc.withdraw(70)
     print("balance:", acc.balance())  # 80
+
 
 if __name__ == "__main__":
     _demo()

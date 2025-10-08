@@ -5,12 +5,14 @@
 # Input: Head of a singly linked list.
 # Output: Head of the rearranged linked list.
 
+
 class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
-        
-def find_middle_node(head: Node)->Node:
+
+
+def find_middle_node(head: Node) -> Node:
     # Use two pointers, slow and fast, to find the middle node of the linked list
     if not head:
         return None
@@ -23,7 +25,8 @@ def find_middle_node(head: Node)->Node:
     # slow now points to the middle node
     return slow
 
-def reverse_linked_list(head: Node)->Node:
+
+def reverse_linked_list(head: Node) -> Node:
     # Reverse the linked list starting from head
     if not head:
         return None
@@ -31,38 +34,43 @@ def reverse_linked_list(head: Node)->Node:
     current = head
     while current:
         next_node = current.next  # Store next node
-        current.next = prev       # Reverse current node's pointer
-        prev = current            # Move prev to current
-        current = next_node       # Move to next node
+        current.next = prev  # Reverse current node's pointer
+        prev = current  # Move prev to current
+        current = next_node  # Move to next node
     # prev is new head of reversed list
     return prev
 
-def rearrange_linked_list(head: Node)->Node:
+
+def rearrange_linked_list(head: Node) -> Node:
     # Rearrange the linked list by alternating nodes from start and end
     if not head or not head.next:
         return head
-    
+
     # Find the middle of the linked list
     middle = find_middle_node(head)
     # Reverse the second half of the list starting from middle
     second_half = reverse_linked_list(middle)
-    
+
     first = head
     second = second_half
-    
+
     # Merge nodes from first half and reversed second half alternately
     while second.next:
         temp1 = first.next  # Store next node of first half
-        temp2 = second.next # Store next node of second half
-        
-        first.next = second # Link current node of first half to current node of second half
-        second.next = temp1 # Link current node of second half to next node of first half
-        
-        first = temp1       # Move to next node in first half
-        second = temp2      # Move to next node in second half
-        
+        temp2 = second.next  # Store next node of second half
+
+        first.next = (
+            second  # Link current node of first half to current node of second half
+        )
+        second.next = (
+            temp1  # Link current node of second half to next node of first half
+        )
+
+        first = temp1  # Move to next node in first half
+        second = temp2  # Move to next node in second half
+
     return head
-    
+
 
 def build_linked_list(values):
     if not values:
@@ -74,6 +82,7 @@ def build_linked_list(values):
         current = current.next
     return head
 
+
 def print_linked_list(head):
     result = []
     while head:
@@ -81,7 +90,8 @@ def print_linked_list(head):
         head = head.next
     print(" → ".join(result))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print("Test: Rearranging linked list")
     values = [1, 2, 3, 4, 5, 6]
     head = build_linked_list(values)

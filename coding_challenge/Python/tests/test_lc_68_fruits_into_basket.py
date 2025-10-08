@@ -1,5 +1,6 @@
 import unittest
-from lc_68_fruits_into_basket_2nd import fruit_into_baskets_brute, fruit_into_baskets_optimize
+
+from lc_68_fruits_into_basket_2nd import fruit_into_baskets_brute
 
 
 class TestFruitIntoBasket(unittest.TestCase):

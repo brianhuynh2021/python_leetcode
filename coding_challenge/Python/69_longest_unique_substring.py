@@ -33,12 +33,13 @@ def longest_unique_substring(s: str) -> str:
             max_start = start
 
     # Return the longest substring found
-    return s[max_start:max_start + max_len]
+    return s[max_start : max_start + max_len]
+
 
 if __name__ == "__main__":
     # Test cases to verify the implementation
     print(longest_unique_substring("abcabcbb"))  # Expected: "abc"
-    print(longest_unique_substring("bbbbb"))     # Expected: "b"
-    print(longest_unique_substring("pwwkew"))    # Expected: "wke"
-    print(longest_unique_substring(""))          # Expected: ""
-    print(longest_unique_substring("dvdf"))      # Expected: "vdf"
+    print(longest_unique_substring("bbbbb"))  # Expected: "b"
+    print(longest_unique_substring("pwwkew"))  # Expected: "wke"
+    print(longest_unique_substring(""))  # Expected: ""
+    print(longest_unique_substring("dvdf"))  # Expected: "vdf"

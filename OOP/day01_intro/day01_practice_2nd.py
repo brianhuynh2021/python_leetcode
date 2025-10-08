@@ -6,6 +6,8 @@ class Car:
 
     def display_info(self):
         print(f"{self.brand}-{self.year}-{self.mileage}")
+
+
 class Garage:
     def __init__(self, cars: list[dict]):
         self.list_cars = []
@@ -19,8 +21,9 @@ class Garage:
             print(f"Car {i+1}: ", end="")
             car.display_info()
 
+
 class Student:
-    def __init__(self, name, grade, age:int = 1):
+    def __init__(self, name, grade, age: int = 1):
         self.name = name
         self.__grade = grade
         self.__age = age
@@ -30,33 +33,34 @@ class Student:
 
     def take_exam(self):
         print(f"{self.name} is taking an exam.")
-    
+
     def get_grade(self):
         return self.__grade
-    
+
     def set_grade(self, grade):
         self.__grade = grade
-    
+
     def update_grade(self):
         if self.__grade + 10 > 100:
             self.__grade = 100
         else:
             self.__grade += 10
-            
+
     def get_name(self):
         return self.name
-    
+
     def set_name(self, name):
         if isinstance(name, str):
             self.name = name
+
 
 class StudentManager:
     def __init__(self, students: list[dict]):
         self.list_students = []
         for student in students:
-            new_student = Student(student['name'], student['grade'], student['age'])
-            self.list_students.append(new_student)   
-    
+            new_student = Student(student["name"], student["grade"], student["age"])
+            self.list_students.append(new_student)
+
     def show_top_student(self):
         if not self.list_students:
             return "No students available"
@@ -64,10 +68,12 @@ class StudentManager:
         for student in self.list_students[1:]:
             if student.get_grade() > top_student.get_grade():
                 top_student = student
-        return f"{top_student.get_name()} - {top_student.get_grade()}"    
+        return f"{top_student.get_name()} - {top_student.get_grade()}"
+
+
 if __name__ == "__main__":
     s = Student("Brian", 34, 10)
-    
+
     s.study()
     s.take_exam()
     # 🔹 Test Student
@@ -84,7 +90,7 @@ if __name__ == "__main__":
     student_data = [
         {"name": "Alice", "grade": 85, "age": 18},
         {"name": "Bob", "grade": 92, "age": 19},
-        {"name": "Charlie", "grade": 78, "age": 20}
+        {"name": "Charlie", "grade": 78, "age": 20},
     ]
     manager = StudentManager(student_data)
     print("Top student:", manager.show_top_student())

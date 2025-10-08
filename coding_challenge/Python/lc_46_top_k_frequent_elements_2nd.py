@@ -32,10 +32,13 @@ Note:
 This is a brute-force solution. For optimized performance, consider using a hash map and min-heap or bucket sort.
 """
 
-def top_k_frequent_elment_brute(nums: list[int], k: int)->list[int]:
+
+def top_k_frequent_elment_brute(nums: list[int], k: int) -> list[int]:
     if not nums or k <= 0:
-        raise ValueError('Input must be a list of integer numbers or k must be greater than 0')
-    
+        raise ValueError(
+            "Input must be a list of integer numbers or k must be greater than 0"
+        )
+
     distinct_nums = set(nums)
     n = len(nums)
     result = []
@@ -49,8 +52,10 @@ def top_k_frequent_elment_brute(nums: list[int], k: int)->list[int]:
     result.sort(reverse=True)
     return [item[1] for item in result[:k]]
 
+
 import heapq
 from collections import Counter
+
 
 def top_k_frequent_elements_heap(nums: list[int], k: int) -> list[int]:
     """

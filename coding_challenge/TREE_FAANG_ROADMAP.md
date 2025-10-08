@@ -193,10 +193,10 @@ lc_226_invert_tree.py
 def dfs(node):
     if not node:
         return base_case
-    
+
     left = dfs(node.left)
     right = dfs(node.right)
-    
+
     return combine(node.val, left, right)
 ```
 
@@ -205,7 +205,7 @@ def dfs(node):
 def iterative_dfs(root):
     if not root:
         return
-    
+
     stack = [root]
     while stack:
         node = stack.pop()
@@ -223,7 +223,7 @@ from collections import deque
 def bfs(root):
     if not root:
         return
-    
+
     queue = deque([root])
     while queue:
         node = queue.popleft()
@@ -239,7 +239,7 @@ def bfs(root):
 def inorder(node):
     if not node:
         return []
-    
+
     return inorder(node.left) + [node.val] + inorder(node.right)
 ```
 
@@ -247,19 +247,19 @@ def inorder(node):
 ```python
 def max_path_sum(root):
     max_sum = float('-inf')
-    
+
     def dfs(node):
         nonlocal max_sum
         if not node:
             return 0
-        
+
         left = max(0, dfs(node.left))
         right = max(0, dfs(node.right))
-        
+
         max_sum = max(max_sum, node.val + left + right)
-        
+
         return node.val + max(left, right)
-    
+
     dfs(root)
     return max_sum
 ```
@@ -268,14 +268,14 @@ def max_path_sum(root):
 ```python
 def find_parent(root, target):
     parent = {}
-    
+
     def dfs(node, par=None):
         if not node:
             return
         parent[node] = par
         dfs(node.left, node)
         dfs(node.right, node)
-    
+
     dfs(root)
     return parent
 ```

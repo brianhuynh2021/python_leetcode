@@ -16,6 +16,7 @@ K = 2
 
 # {'A': [{'category': 'A', 'name': 'i2', 'price': 50}, {'category': 'A', 'name': 'i4', 'price': 30}], 'B': [{'category': 'B', 'name': 'i3', 'price': 20}]}
 
+
 def top_k_per_category(items, k):
     result = {}
     cats = {item["category"] for item in items}
@@ -24,6 +25,7 @@ def top_k_per_category(items, k):
         arr.sort(key=lambda x: x["price"], reverse=True)
         result[cat] = arr[:k]
     return result
+
 
 def topk_per_category_bruteforce(items, k=2):
     res = {}

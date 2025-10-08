@@ -1,4 +1,4 @@
-def is_isomorphic_brute(s: str, t: str)-> bool:
+def is_isomorphic_brute(s: str, t: str) -> bool:
     """
     Determines if two strings s and t are isomorphic.
 
@@ -25,21 +25,22 @@ def is_isomorphic_brute(s: str, t: str)-> bool:
         >>> isIsomorphic("ab", "aa")
         False
     """
-    if len(s) != len(t): # Kiem tra xem len cua 2 chuoi co bang nhau khong
-        print('Invalid strings to check isomorphic')
+    if len(s) != len(t):  # Kiem tra xem len cua 2 chuoi co bang nhau khong
+        print("Invalid strings to check isomorphic")
         return False
-    
+
     for i in range(len(s)):
         for j in range(i):
-            if (s[i] == s[j] != t[i]==t[j]):
+            if s[i] == s[j] != t[i] == t[j]:
                 return False
     return True
 
+
 def is_isomorphic_optimized(s: str, t: str) -> bool:
     if len(s) != len(t):
-        print('Invalid strings to check isomorphic')
+        print("Invalid strings to check isomorphic")
         return False
-    
+
     s_to_t = {}
     t_to_s = {}
     for i in range(len(s)):

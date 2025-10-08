@@ -25,9 +25,9 @@ def optimized_number_range(arr: list[int]) -> list[str]:
     # Iterate through the array to detect breaks in consecutive sequences
     for i in range(1, n):
         # Current number is not consecutive with previous → end current range
-        if arr[i] != arr[i-1] + 1:
+        if arr[i] != arr[i - 1] + 1:
             # Format and add the range to result: "n" if single, "start->end" if range
-            end = arr[i-1]
+            end = arr[i - 1]
             result.append(str(start) if start == end else f"{start}->{end}")
             # Start a new range
             start = arr[i]
@@ -36,6 +36,7 @@ def optimized_number_range(arr: list[int]) -> list[str]:
     # Format and add the range to result: "n" if single, "start->end" if range
     result.append(str(start) if start == end else f"{start}->{end}")
     return result
+
 
 if __name__ == "__main__":
     # Example input

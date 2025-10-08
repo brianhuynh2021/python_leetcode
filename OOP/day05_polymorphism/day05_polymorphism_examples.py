@@ -1,7 +1,8 @@
 # day05_polymorphism_examples.py
 
-from abc import ABC, abstractmethod
 import math
+from abc import ABC, abstractmethod
+
 
 # -------------------------
 # Easy — Duck Typing
@@ -10,9 +11,11 @@ class Dog:
     def speak(self):
         print("Woof!")
 
+
 class Cat:
     def speak(self):
         print("Meow!")
+
 
 def make_sound(animal):
     animal.speak()
@@ -26,12 +29,14 @@ class Shape(ABC):
     def area(self) -> float:
         pass
 
+
 class Circle(Shape):
     def __init__(self, r: float):
         self.r = r
 
     def area(self) -> float:
-        return math.pi * self.r ** 2
+        return math.pi * self.r**2
+
 
 class Rectangle(Shape):
     def __init__(self, l: float, w: float):
@@ -48,9 +53,11 @@ class NotificationSender:
     def send(self, message: str) -> None:
         raise NotImplementedError
 
+
 class EmailSender(NotificationSender):
     def send(self, message: str) -> None:
         print(f"Email: {message}")
+
 
 class SlackSender(NotificationSender):
     def send(self, message: str) -> None:
@@ -69,13 +76,16 @@ class Uploader(ABC):
     def upload(self, file: str) -> None:
         pass
 
+
 class LocalUploader(Uploader):
     def upload(self, file: str) -> None:
         print(f"Uploading {file} to local storage")
 
+
 class S3Uploader(Uploader):
     def upload(self, file: str) -> None:
         print(f"Uploading {file} to S3")
+
 
 class GoogleDriveUploader(Uploader):
     def upload(self, file: str) -> None:
@@ -94,21 +104,27 @@ class MediaPlayer(ABC):
     def play(self) -> None:
         pass
 
+
 class AudioPlayer(MediaPlayer):
     def __init__(self, song: str) -> None:
         self.song = song
+
     def play(self) -> None:
         print(f'Playing song: "{self.song}"')
+
 
 class VideoPlayer(MediaPlayer):
     def __init__(self, video: str) -> None:
         self.video = video
+
     def play(self) -> None:
         print(f'Playing video: "{self.video}"')
+
 
 class LiveStreamPlayer(MediaPlayer):
     def __init__(self, channel: int) -> None:
         self.channel = channel
+
     def play(self) -> None:
         print(f"Playing live channel: {self.channel}")
 
@@ -132,5 +148,9 @@ if __name__ == "__main__":
         process_upload(u, "photo.jpg")
 
     # Exercise demo
-    for p in [AudioPlayer("Shape of You"), VideoPlayer("Hello TV"), LiveStreamPlayer(5)]:
+    for p in [
+        AudioPlayer("Shape of You"),
+        VideoPlayer("Hello TV"),
+        LiveStreamPlayer(5),
+    ]:
         p.play()

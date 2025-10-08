@@ -1,18 +1,19 @@
-from fastapi import FastAPI, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from pydantic import BaseModel, EmailStr
-from passlib.context import CryptContext
-from jose import JWTError, jwt
-from datetime import datetime, timedelta
-from sqlalchemy.orm import Session
-import sys
 import os
+import sys
+from datetime import datetime, timedelta
+
+from fastapi import Depends, FastAPI, HTTPException
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+from pydantic import BaseModel, EmailStr
+from sqlalchemy.orm import Session
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
+from common.config import Config
 from common.database import get_db
 from common.models import User
-from common.config import Config
 
 app = FastAPI(title="Auth Service", version="1.0.0")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

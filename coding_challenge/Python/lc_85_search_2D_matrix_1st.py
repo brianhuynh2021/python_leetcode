@@ -1,4 +1,4 @@
-'''
+"""
 🔍 Problem Understanding
 You’re given a 2D matrix like this:
 [
@@ -15,19 +15,21 @@ Let’s clarify some assumptions first:
 	•	The first integer of each row is greater than the last integer of the previous row.
 
 This means the 2D matrix can be treated as a 1D sorted array, right?
-'''
+"""
 
-def brute_force_search_matrix(matrix: list[list[int]], target: int)->bool:
-  '''
-  Brute force solution: check each element one by one
-  Time: O(m*n)
-  Space: O(1)
-  '''
-  for row in matrix:
-    for val in row:
-      if val == target:
-        return True
-  return False
+
+def brute_force_search_matrix(matrix: list[list[int]], target: int) -> bool:
+    """
+    Brute force solution: check each element one by one
+    Time: O(m*n)
+    Space: O(1)
+    """
+    for row in matrix:
+        for val in row:
+            if val == target:
+                return True
+    return False
+
 
 def optimized_search_matrix_binary(matrix: list[list[int]], target: int) -> bool:
     """
@@ -57,22 +59,22 @@ def optimized_search_matrix_binary(matrix: list[list[int]], target: int) -> bool
             right = mid - 1
 
     return False
-  
-def run_tests_binary():
-    print("Test 1:", search_matrix_binary([
-        [1, 3, 5, 7],
-        [10, 11, 16, 20],
-        [23, 30, 34, 60]
-    ], 3))  # Expected: True
 
-    print("Test 2:", search_matrix_binary([
-        [1, 3, 5, 7],
-        [10, 11, 16, 20],
-        [23, 30, 34, 60]
-    ], 13))  # Expected: False
+
+def run_tests_binary():
+    print(
+        "Test 1:",
+        search_matrix_binary([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 3),
+    )  # Expected: True
+
+    print(
+        "Test 2:",
+        search_matrix_binary([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 13),
+    )  # Expected: False
 
     print("Test 3:", search_matrix_binary([[1]], 1))  # Expected: True
     print("Test 4:", search_matrix_binary([[1]], 2))  # Expected: False
+
 
 if __name__ == "__main__":
     run_tests_binary()

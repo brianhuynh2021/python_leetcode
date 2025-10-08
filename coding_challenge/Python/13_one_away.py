@@ -1,5 +1,5 @@
-# '''One Away: There are three types of edits that can be performed on strings: 
-# insert a character, remove a character, or replace a character. Given two strings, 
+# '''One Away: There are three types of edits that can be performed on strings:
+# insert a character, remove a character, or replace a character. Given two strings,
 # write a function to check if they are one edit (or zero edits) away.
 # EXAMPLE
 # pale, ple -> true pales, pale -> true pale, bale -> true pale, bake -> false'''
@@ -44,7 +44,7 @@
 #       if diff_count > 1:
 #           return False
 #       j += 1
-    
+
 #     else:
 #       i += 1
 #       j += 1
@@ -55,7 +55,6 @@
 # print(one_away('pales', 'pale'))  # True
 # print(one_away('pale', 'bale'))  # True
 # print(one_away('pale', 'bake'))  # False
-
 
 
 def one_away(s1: str, s2: str) -> bool:
@@ -91,9 +90,10 @@ def one_away(s1: str, s2: str) -> bool:
             print("Insert")
         else:
             print("Delete a character")
-  
-print(one_away("pale", "ple"))     # Insert
-print(one_away("pale", "bale"))    # Change
-print(one_away("pale", "pales"))   # Insert
-print(one_away("pale", "bake"))    # False
-print(one_away("pale", "pale"))    # Not change anything
+
+
+print(one_away("pale", "ple"))  # Insert
+print(one_away("pale", "bale"))  # Change
+print(one_away("pale", "pales"))  # Insert
+print(one_away("pale", "bake"))  # False
+print(one_away("pale", "pale"))  # Not change anything

@@ -4,7 +4,10 @@ def kth_largest_element(nums, k):
     sorted_nums = sorted(nums)
     return sorted_nums[-k]
 
+
 from heapq import heappush, heappushpop
+
+
 def kth_largest_element_optimized(nums, k):
     if not nums or not (0 < k <= len(nums)):
         raise ValueError("Not Valid")
@@ -15,4 +18,3 @@ def kth_largest_element_optimized(nums, k):
         else:
             heappushpop(heap, num)
     return heap[0]
-    

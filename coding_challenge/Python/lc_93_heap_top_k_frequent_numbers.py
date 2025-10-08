@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 from typing import List, Tuple
 
 
@@ -21,7 +21,7 @@ def top_k_frequent_bruteforce(nums: List[int], k: int) -> List[int]:
     # Use libary Counter to count key and time appear of each item
     freq = Counter(nums)
     items = sorted(freq.items(), key=lambda kv: kv[1], reverse=True)
-    
+
     return [num for num, _ in items[:k]]
 
 

@@ -30,6 +30,7 @@ def has_cycle(head):
     print("==> Khong co chu trinh")
     return False
 
+
 a = Node(1)
 b = Node(2)
 c = Node(3)

@@ -1,4 +1,4 @@
-def is_isomorphic(s: str, t: str)-> bool:
+def is_isomorphic(s: str, t: str) -> bool:
     """
     Determines if two strings s and t are isomorphic.
 
@@ -25,13 +25,13 @@ def is_isomorphic(s: str, t: str)-> bool:
         >>> isIsomorphic("ab", "aa")
         False
     """
-    if len(s) != len(t): # Kiem tra xem len cua 2 chuoi co bang nhau khong
-        print('Invalid strings to check isomorphic')
+    if len(s) != len(t):  # Kiem tra xem len cua 2 chuoi co bang nhau khong
+        print("Invalid strings to check isomorphic")
         return False
-    
-    s_to_t = {} # Tao dictionary kieu du lieu kiem tra isomorphic
+
+    s_to_t = {}  # Tao dictionary kieu du lieu kiem tra isomorphic
     t_to_s = {}
-    
+
     for i in range(len(s)):
         ch_s = s[i]
         ch_t = t[i]
@@ -40,7 +40,7 @@ def is_isomorphic(s: str, t: str)-> bool:
         else:
             if s_to_t[ch_s] != ch_t:
                 return False
-            
+
         if ch_t not in t_to_s:
             t_to_s[ch_t] = ch_s
         else:
@@ -48,7 +48,8 @@ def is_isomorphic(s: str, t: str)-> bool:
                 return False
     return True
 
-if __name__=='__main__':
-    print(is_isomorphic('egg', 'add'))
-    print(is_isomorphic('foo', 'bar'))
-    print(is_isomorphic('title', 'paper'))
+
+if __name__ == "__main__":
+    print(is_isomorphic("egg", "add"))
+    print(is_isomorphic("foo", "bar"))
+    print(is_isomorphic("title", "paper"))

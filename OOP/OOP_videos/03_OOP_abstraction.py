@@ -9,21 +9,25 @@
 
 from abc import ABC, abstractmethod
 
+
 # Định nghĩa một lớp trừu tượng Animal
 class Animal(ABC):
     @abstractmethod
     def speak(self):
         pass
 
+
 # Lớp Dog kế thừa từ Animal và cài đặt lại phương thức speak()
 class Dog(Animal):
     def speak(self):
         return "Gâu gâu!"
 
+
 # Lớp Cat kế thừa từ Animal và cài đặt lại phương thức speak()
 class Cat(Animal):
     def speak(self):
         return "Meo meo!"
+
 
 # Tạo danh sách các đối tượng động vật
 animals = [Dog(), Cat()]
@@ -37,25 +41,30 @@ for animal in animals:
 # Ứng dụng thực tế: hệ thống thanh toán
 # =========================
 
+
 # Lớp trừu tượng Payment
 class Payment(ABC):
     @abstractmethod
     def pay(self, amount):
         pass
 
+
 # Cổng thanh toán bằng Momo
 class MomoPayment(Payment):
     def pay(self, amount):
         return f"Momo: Đã thanh toán {amount} VND"
+
 
 # Cổng thanh toán bằng Paypal
 class PaypalPayment(Payment):
     def pay(self, amount):
         return f"Paypal: Đã thanh toán {amount} USD"
 
+
 # Hàm xử lý thanh toán mà không quan tâm chi tiết bên trong
 def process_payment(payment_method: Payment, amount):
     print(payment_method.pay(amount))
+
 
 # Gọi thử
 process_payment(MomoPayment(), 150000)
@@ -76,23 +85,28 @@ process_payment(PaypalPayment(), 20)
 # 2. Code business không bị phụ thuộc vào thư viện cụ thể
 # 3. Dễ test/mock khi viết unit test
 
+
 # Ví dụ khái niệm:
 class Storage(ABC):
     @abstractmethod
     def save(self, data):
         pass
 
+
 class S3Storage(Storage):
     def save(self, data):
         return f"Đã lưu vào Amazon S3: {data}"
+
 
 class LocalStorage(Storage):
     def save(self, data):
         return f"Đã lưu vào ổ đĩa local: {data}"
 
+
 # Hàm dùng abstraction thay vì gắn cứng vào hệ thống cụ thể
 def backup_data(storage: Storage, data):
     print(storage.save(data))
+
 
 # Dễ dàng thay đổi backend lưu trữ:
 backup_data(S3Storage(), "database dump")

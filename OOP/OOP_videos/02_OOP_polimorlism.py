@@ -12,17 +12,20 @@
 # Dog/Cat Polymorphism Example
 # =========================
 
+
 # Định nghĩa lớp Dog với phương thức speak()
 class Dog:
     # Hàm speak() trả về tiếng kêu của chó
     def speak(self):
         return "Gâu gâu!"
 
+
 # Định nghĩa lớp Cat với phương thức speak()
 class Cat:
     # Hàm speak() trả về tiếng kêu của mèo
     def speak(self):
         return "Meo meo!"
+
 
 # Tạo một danh sách chứa các đối tượng Dog và Cat
 animals = [Dog(), Cat()]
@@ -40,6 +43,7 @@ for animal in animals:
 # Import các lớp cần thiết để tạo lớp trừu tượng
 from abc import ABC, abstractmethod
 
+
 # Định nghĩa lớp trừu tượng PaymentMethod
 class PaymentMethod(ABC):
     # Định nghĩa phương thức trừu tượng pay()
@@ -47,11 +51,13 @@ class PaymentMethod(ABC):
     def pay(self, amount):
         pass
 
+
 # Định nghĩa lớp StripePayment kế thừa PaymentMethod
 class StripePayment(PaymentMethod):
     # Cài đặt phương thức pay() cho Stripe
     def pay(self, amount):
         return f"[Stripe] Paid {amount} USD"
+
 
 # Định nghĩa lớp MomoPayment kế thừa PaymentMethod
 class MomoPayment(PaymentMethod):
@@ -59,10 +65,12 @@ class MomoPayment(PaymentMethod):
     def pay(self, amount):
         return f"[Momo] Paid {amount} VND"
 
+
 # Hàm xử lý thanh toán, không cần biết cổng nào cụ thể
 def process_payment(method: PaymentMethod, amount):
     # Gọi phương thức pay() của đối tượng method
     print(method.pay(amount))
+
 
 # Tạo đối tượng StripePayment và gọi process_payment
 process_payment(StripePayment(), 100)
@@ -75,6 +83,7 @@ process_payment(MomoPayment(), 500000)
 # hệ thống thông báo email, SMS, ...
 # =========================
 
+
 # Định nghĩa lớp trừu tượng Notifier
 class Notifier(ABC):
     # Định nghĩa phương thức trừu tượng send()
@@ -82,11 +91,13 @@ class Notifier(ABC):
     def send(self, message):
         pass
 
+
 # Định nghĩa lớp EmailNotifier kế thừa Notifier
 class EmailNotifier(Notifier):
     # Cài đặt phương thức send() cho email
     def send(self, message):
         return f"[Email] {message}"
+
 
 # Định nghĩa lớp SMSNotifier kế thừa Notifier
 class SMSNotifier(Notifier):
@@ -94,11 +105,13 @@ class SMSNotifier(Notifier):
     def send(self, message):
         return f"[SMS] {message}"
 
+
 # Định nghĩa lớp PushNotifier kế thừa Notifier
 class PushNotifier(Notifier):
     # Cài đặt phương thức send() cho Push notification
     def send(self, message):
         return f"[Push] {message}"
+
 
 # Hàm gửi thông báo cho tất cả các loại notifier
 def notify_all(message, notifiers):
@@ -106,12 +119,11 @@ def notify_all(message, notifiers):
     for notifier in notifiers:
         print(notifier.send(message))
 
-# Gọi hàm notify_all để gửi thông báo qua email, SMS và push
-notify_all("System maintenance at 2AM", [
-    EmailNotifier(),
-    SMSNotifier(),
-    PushNotifier()
-])
 
-#Test từng phần từ cơ bản đến nâng cao
+# Gọi hàm notify_all để gửi thông báo qua email, SMS và push
+notify_all(
+    "System maintenance at 2AM", [EmailNotifier(), SMSNotifier(), PushNotifier()]
+)
+
+# Test từng phần từ cơ bản đến nâng cao
 # Tiếp tục cho các ví dụ khác

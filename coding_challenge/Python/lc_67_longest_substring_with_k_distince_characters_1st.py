@@ -1,4 +1,4 @@
-def get_longest_substring_k_distinct(s: str, k: int)->int:
+def get_longest_substring_k_distinct(s: str, k: int) -> int:
     start = 0
     check_appear = {}
     max_len = 0
@@ -15,7 +15,8 @@ def get_longest_substring_k_distinct(s: str, k: int)->int:
         max_len = max(max_len, end - start + 1)
     return max_len
 
-if __name__=='__main__':
-    s = 'Huynh'
+
+if __name__ == "__main__":
+    s = "Huynh"
     k = 3
-    print(get_longest_substring_k_distinct(s,k))
+    print(get_longest_substring_k_distinct(s, k))

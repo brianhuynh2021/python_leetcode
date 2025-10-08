@@ -92,10 +92,10 @@ def postorder(node):
   Level                  Problem                      Skill
   ---------------------- ---------------------------- -------------------
   Easy                   LC 104. Maximum Depth of     DFS
-                         Binary Tree                  
+                         Binary Tree
 
   Medium                 LC 102. Binary Tree Level    BFS
-                         Order Traversal              
+                         Order Traversal
 
   Hard                   LC 297. Serialize &          Tree + String
                          Deserialize Binary Tree      encoding
