@@ -58,6 +58,12 @@ def preorder_traversal(root):
     preorder_traversal(root.left)
     preorder_traversal(root.right)
 
+def inorder_traversal(root):
+    if not root:
+        return
+    inorder_traversal(root.left)
+    print(root.val, end=' ')
+    inorder_traversal(root.right)
 
 if __name__ == "__main__":
     root = build_tree([1, 2, 3, 4, 5, None, 6])
