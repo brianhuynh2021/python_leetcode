@@ -65,6 +65,29 @@ def inorder_traversal(root):
     print(root.val, end=' ')
     inorder_traversal(root.right)
 
+def postorder_traversal(root):
+    if not root:
+        return
+    postorder_traversal(root.left)
+    postorder_traversal(root.right)
+    print(root.val, end=' ')
+
+def level_order_traversal(root):
+    """Level Order Traversal using BFS with deque"""
+    from collections import deque
+    if not root:
+        return
+    queue = deque([root])
+    
+    while queue:
+        node = queue.popleft()
+        print(node.val, end=' ')
+        
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    
 if __name__ == "__main__":
     root = build_tree([1, 2, 3, 4, 5, None, 6])
     print_tree(root)
@@ -74,4 +97,16 @@ if __name__ == "__main__":
     print("\n\n=== Preorder Traversal ===")
     print("Preorder: ", end="")
     preorder_traversal(root)
+    
+    print("\n\n=== Inorder Traversal ===")
+    print("Inorder: ", end="")
+    inorder_traversal(root)
+    
+    print("\n\n=== Postorder Traversal ===")
+    print("Postorder: ", end="")
+    postorder_traversal(root)
+    
+    print("\n\n=== Level Order Traversal ===")
+    print("Level Order: ", end="")
+    level_order_traversal(root)
     print("\n")
