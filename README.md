@@ -120,20 +120,12 @@ Output: [3,3,5,5,6,7]
 
 ## 🎯 Key Features
 
-- **97+ LeetCode Problems**: Comprehensive coverage of common interview patterns
 - **Dual Language Support**: Python and C++ implementations
 - **Progressive Learning**: Problems organized by difficulty and concept
 - **Detailed Logging**: Problem-solving thought process documented
 - **Test Coverage**: Unit tests for validation
 - **Visual Aids**: Flow diagrams for complex algorithms
 - **System Design**: Scalability and architecture concepts
-
-## 📈 Progress Tracking
-
-Track your progress using the learning logs:
-- `coding_challenge/coding_log.md` - Daily problem-solving sessions
-- `OOP/oop_log.md` - Object-oriented programming concepts
-- `system_design/system_design_log.md` - System design patterns
 
 ## 🤝 Contributing
 
