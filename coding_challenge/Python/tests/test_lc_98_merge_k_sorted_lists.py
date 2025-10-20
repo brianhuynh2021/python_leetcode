@@ -1,6 +1,6 @@
 import unittest
 
-from lc_98_merge_k_sorted_list import (
+from coding_challenge.Python.lc_98_merge_k_sorted_list_01 import (
     linked_to_list,
     list_to_linked,
     merge_k_lists_bruteforce,
