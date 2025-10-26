@@ -1,0 +1,7 @@
+- To rename an column in SQL
+syntax: ALTER TABLE <table name> RENAME COLUMN <column name> TO <new column name>
+ex: ALTER TABLE user RENAME COLUMN password  TO password_hash
+
+
+-- CREATE DATABASE:
+Syntax: CREATE DATABASE intelligent_docs OWNER postgres;

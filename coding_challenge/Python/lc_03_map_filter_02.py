@@ -27,3 +27,6 @@ evens_list = list(evens)
 
 print(squared_list)  # Output: [1, 4, 9, 16, 25]
 print(evens_list)  # Output: [2, 4]
+
+
+def 

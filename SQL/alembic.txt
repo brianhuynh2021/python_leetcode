@@ -1,0 +1,14 @@
+-- run last alembic file 
+syntax: alembic upgrade head
+
+-- Downgrade one revision
+syntax: alembic downgrade -1
+
+-- Downgrade to a specific revision
+syntax: alembic downgrade 12344
+
+-- Downgrade to base (reset everything)
+syntax: alembic downgrade base
+
+-- apply current change:
+syntax: alembic revision --autogenerate -m "add chunk unique constraint"
