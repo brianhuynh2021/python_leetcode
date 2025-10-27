@@ -21,14 +21,14 @@
     - Level Order Traversal
 
 #### Problems to Solve:
-- [ ] LC 144: Binary Tree Preorder Traversal
-- [ ] LC 94: Binary Tree Inorder Traversal
-- [ ] LC 145: Binary Tree Postorder Traversal
-- [ ] LC 102: Binary Tree Level Order Traversal ⭐⭐
-- [ ] LC 104: Maximum Depth of Binary Tree
-- [ ] LC 226: Invert Binary Tree
-- [ ] LC 100: Same Tree
-- [ ] LC 101: Symmetric Tree ⭐⭐
+- [x] LC 144: Binary Tree Preorder Traversal
+- [x] LC 94: Binary Tree Inorder Traversal
+- [x] LC 145: Binary Tree Postorder Traversal
+- [x] LC 102: Binary Tree Level Order Traversal ⭐⭐
+- [x] LC 104: Maximum Depth of Binary Tree
+- [x] LC 226: Invert Binary Tree
+- [x] LC 100: Same Tree
+- [x] LC 101: Symmetric Tree ⭐⭐
 
 **Practice Files to Create:**
 ```
@@ -51,9 +51,9 @@ lc_226_invert_tree.py
 - Insert, Search, Delete operations
 
 #### Problems to Solve:
-- [ ] LC 98: Validate Binary Search Tree ⭐⭐⭐
-- [ ] LC 700: Search in a Binary Search Tree
-- [ ] LC 701: Insert into a Binary Search Tree
+- [x] LC 98: Validate Binary Search Tree ⭐⭐⭐
+- [x] LC 700: Search in a Binary Search Tree
+- [x] LC 701: Insert into a Binary Search Tree
 - [ ] LC 450: Delete Node in a BST ⭐⭐
 - [ ] LC 230: Kth Smallest Element in a BST ⭐⭐⭐
 - [ ] LC 235: Lowest Common Ancestor of BST ⭐⭐
