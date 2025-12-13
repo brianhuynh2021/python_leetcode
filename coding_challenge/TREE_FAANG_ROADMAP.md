@@ -54,10 +54,10 @@ lc_226_invert_tree.py
 - [x] LC 98: Validate Binary Search Tree ⭐⭐⭐
 - [x] LC 700: Search in a Binary Search Tree
 - [x] LC 701: Insert into a Binary Search Tree
-- [ ] LC 450: Delete Node in a BST ⭐⭐
-- [ ] LC 230: Kth Smallest Element in a BST ⭐⭐⭐
-- [ ] LC 235: Lowest Common Ancestor of BST ⭐⭐
-- [ ] LC 108: Convert Sorted Array to BST
+- [x] LC 450: Delete Node in a BST ⭐⭐
+- [x] LC 230: Kth Smallest Element in a BST ⭐⭐⭐
+- [x] LC 235: Lowest Common Ancestor of BST ⭐⭐
+- [x] LC 108: Convert Sorted Array to BST
 - [ ] LC 501: Find Mode in Binary Search Tree
 - [ ] LC 99: Recover Binary Search Tree
 
