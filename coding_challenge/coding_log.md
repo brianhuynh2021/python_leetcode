@@ -537,3 +537,44 @@ elements)
         •	The deque content (indices and their values)
         •	What we remove (either because it’s out of window or smaller than current)
         •	What we append to result
+---
+📅 Date: 2025-12-14 (Sunday)
+
+✅ Problem: Merge Sorted Array (merge nums2 into nums1 in-place)
+
+🧠 Idea:
+
+🙇 Brute force approach #1 (easy):
+	•	Copy all valid elements into a new list, then sort
+	•	Example:
+	•	merged = nums1[:m] + nums2
+	•	merged.sort()
+	•	copy merged back to nums1
+	•	Complexity:
+	•	Time: O((m+n) log(m+n))
+	•	Space: O(m+n) (because we built merged)
+
+🙇 Brute force approach #2 (standard merge but extra memory):
+	•	Use two pointers to merge into a new array result, then copy back to nums1
+	•	Complexity:
+	•	Time: O(m+n)
+	•	Space: O(m+n)
+
+🤔 Optimized approach (FAANG expected):
+	•	Key insight: nums1 has buffer at the end, so we fill from the back to avoid shifting
+	•	Use 3 pointers:
+	•	i = m-1 (last valid in nums1)
+	•	j = n-1 (last in nums2)
+	•	k = m+n-1 (write position)
+	•	While i>=0 and j>=0:
+	•	place bigger one into nums1[k], move pointer
+	•	After that, only need to copy remaining nums2 (if any)
+	•	Complexity:
+	•	Time: O(m+n)
+	•	Space: O(1)
+
+🧪 Test:
+	•	nums1 = [1,2,3,0,0,0], m=3; nums2=[2,5,6], n=3 → [1,2,2,3,5,6]
+	•	nums1 = [1], m=1; nums2=[], n=0 → [1]
+	•	nums1 = [0], m=0; nums2=[1], n=1 → [1]
+	•	nums1 = [4,5,6,0,0,0], m=3; nums2=[1,2,3], n=3 → [1,2,3,4,5,6]
