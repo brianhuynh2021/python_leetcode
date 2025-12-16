@@ -19,7 +19,7 @@ Given a string s containing only the characters ()[]{}, determine if the input s
 """
 
 
-def valid_parentheses_brute(s: str) -> bool:
+def valid_parentheses_optimized(s: str) -> bool:
     stack = []
     mapping = {")": "(", "}": "{", "]": "["}  # 🔁 match closing to opening
     for c in s:
@@ -34,10 +34,11 @@ def valid_parentheses_brute(s: str) -> bool:
     return not stack
 
 
-assert valid_parentheses_brute("()") == True
-assert valid_parentheses_brute("({[]})") == True
-assert valid_parentheses_brute("([)]") == False
-assert valid_parentheses_brute("{[}") == False
+assert valid_parentheses_optimized("()") == True
+assert valid_parentheses_optimized("({[]})") == True
+assert valid_parentheses_optimized("([)]") == False
+assert valid_parentheses_optimized("{[}") == False
+
 
 
 def valid_parentheses_replace(s: str) -> bool:
@@ -60,7 +61,7 @@ def is_valid(s: str) -> bool:
 
 def valid_parentheses(s: str) -> bool:
     stack = []
-    mapping = {")": "(", "}": "{", "]": "["}  # 🔁 match closing to opening
+    mapping = {")": "(", "}": "{", "]": "["}
     for c in s:
         if c in "({[":
             stack.append(c)
@@ -72,3 +73,23 @@ def valid_parentheses(s: str) -> bool:
                 if mapping[c] != top:
                     return False
     return not stack
+
+def valid_parentheses_2(s: str) -> bool:
+    if not s:
+        return True
+    for i in range(1, len(s), 2):
+        if (s[0], s[i]) in [("(", ")"), ("[", "]"), ("{", "}")]:
+            if valid_parentheses_2(s[1:i]) and valid_parentheses_2(s[i + 1 :]):
+                return True
+    return False
+
+def valid_parentheses_3(s: str) -> bool:
+    if len(s) % 2 == 1:
+        return False
+    prev = None
+    while s != prev:
+        prev = s
+        s = (s.replace("[]", "")
+             .replace("{}", "")
+             .replace("()", ""))
+    return s == ""

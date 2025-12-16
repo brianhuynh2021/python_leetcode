@@ -1,7 +1,9 @@
 from typing import List
 
 
-def merge_two_sorted_arrays_brute_force(nums1: List[int],m: int, nums2: List[int], n: int)-> None:
+def merge_two_sorted_arrays_brute_force(
+    nums1: List[int], m: int, nums2: List[int], n: int
+) -> None:
     """
     Merge two sorted arrays in-place into nums1.
 
@@ -16,8 +18,10 @@ def merge_two_sorted_arrays_brute_force(nums1: List[int],m: int, nums2: List[int
     while p1 < m and p2 < n:
         if nums1[p1] <= nums2[p2]:
             tmp.append(nums1[p1])
+            p1 += 1
         else:
             tmp.append(nums2[p2])
+            p2 += 1
             
     while p1 < m:
         tmp.append(nums1[p1])
@@ -30,12 +34,14 @@ def merge_two_sorted_arrays_brute_force(nums1: List[int],m: int, nums2: List[int
     for idx in range(m + n):
         nums1[idx] = tmp[idx]
     
-def merge_two_sorted_arrs_brute_force(nums1: List[int], m: int, nums2: List[int], n: int)-> None:
+
+def merge_two_sorted_arrs_brute_force(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
     for idx in range(n):
         nums1[m + idx] = nums2[idx]
     nums1.sort()
 
-def merge_two_sorted_arrs_optimzed(nums1: List[int], m: int, nums2: List[int], n: int)-> None:
+
+def merge_two_sorted_arrs_optimzed(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
     i = m - 1
     j = n - 1
     k = m + n - 1
@@ -43,14 +49,39 @@ def merge_two_sorted_arrs_optimzed(nums1: List[int], m: int, nums2: List[int], n
     while i >= 0 and j >= 0:
         if nums1[i] < nums2[j]:
             nums1[k] = nums2[j]
-            i -= 1
+            j -= 1
         else:
             nums1[k] = nums1[i]
-            j -= 1
+            i -= 1
         k -= 1
     while j >= 0:
         nums1[k] = nums2[j]
         j -= 1
         k -= 1
             
-        
+
+def merge_two_sorted_arrays_optimized_01(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    """
+    Merge two sorted arrays in-place into nums1 using an optimized approach.
+
+    This function merges nums2 into nums1 starting from the end of both arrays,
+    which allows us to avoid overwriting elements in nums1 that have not yet been
+    processed. This approach has a time complexity of O(m + n) and a space complexity
+    of O(1).
+    """
+    p1 = m - 1
+    p2 = n - 1
+    p = m + n - 1
+    while p1 >= 0 and p2 >= 0:
+        if nums1[p1] < nums2[p2]:
+            nums1[p] = nums2[p2]
+            p2 -= 1
+        else:
+            nums1[p] = nums1[p1]
+            p1 -= 1
+        p -= 1
+    
+    while p2 >= 0:
+        nums1[p] = nums2[p2]
+        p2 -= 1
+        p -= 1
