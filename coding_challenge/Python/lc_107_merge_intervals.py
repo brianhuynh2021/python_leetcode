@@ -34,17 +34,35 @@
         [[1, 5]]
 """
 
-def merge_intervals_brute_force(intervals: list[tuple[int, int]]) -> list[list[int]]:
-    n = len(intervals)
-    for i in range(n):
-        for j in range(i + 1, n):
-            a, b = intervals[i] # intervals[i][0], intervals[i][1]
-            c, d = intervals[j] # intervals[j][0], intervals[j][1]
-            left = max(a, c)
-            right = min(b, d)
-            if left > right:
-                continue
-            # overlap dont need to else
-            merged = 
-            
-    return intervals
+def merge_intervals_brute_force(
+    intervals: list[tuple[int, int]],
+) -> list[list[int]]:
+    work = list(intervals)
+
+    changed = True
+    while changed:
+        changed = False
+        n = len(work)
+
+        for i in range(n):
+            a, b = work[i]
+            for j in range(i + 1, n):
+                c, d = work[j]
+
+                left = max(a, c)
+                right = min(b, d)
+                if left > right:
+                    continue
+
+                merged = (min(a, c), max(b, d))
+                work.pop(j)
+                work.pop(i)
+                work.append(merged)
+
+                changed = True
+                break
+
+            if changed:
+                break
+
+    return [[s, e] for s, e in work]
