@@ -43,3 +43,24 @@ class LinkedList:
         self.head = head
         
     def insert_at_end(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+        
+    def print_nodes(self):
+        current_node = self.head
+        while current_node:
+            print(current_node.data, end=" -> ")
+            current_node = current_node.next
+        print("None")
+        
+ll = LinkedList()
+ll.insert_at_end(2)
+ll.insert_at_end(4)
+ll.insert_at_end(6)
+ll.print_nodes()
