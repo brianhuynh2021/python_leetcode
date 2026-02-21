@@ -58,3 +58,9 @@ def merge_intervals_brute_force(intervals: list[tuple[int, int]]) -> list[tuple[
                 break
             
     return intervals
+
+def merge_intervals_optimized(intervals: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    if not intervals:
+        return []
+    intervals.sort(key=lambda x: x[0])
+    
