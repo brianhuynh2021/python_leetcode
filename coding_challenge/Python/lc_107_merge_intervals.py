@@ -63,4 +63,4 @@ def merge_intervals_optimized(intervals: list[tuple[int, int]]) -> list[tuple[in
     if not intervals:
         return []
     intervals.sort(key=lambda x: x[0])
-    
+    d
