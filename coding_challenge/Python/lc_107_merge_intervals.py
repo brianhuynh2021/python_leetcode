@@ -63,4 +63,12 @@ def merge_intervals_optimized(intervals: list[tuple[int, int]]) -> list[tuple[in
     if not intervals:
         return []
     intervals.sort(key=lambda x: x[0])
-    d
+    merged = [intervals[0]] # Get first intervals
+    
+    for start, end in intervals[1:]:
+        last_end = merged[-1][1]
+        if start <= last_end:
+            merged[-1] = (merged[-1][0], max(last_end, end))
+        else:
+            merged.append((start, end))
+    return merged
