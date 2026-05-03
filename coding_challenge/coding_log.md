@@ -578,3 +578,56 @@ elements)
 	•	nums1 = [1], m=1; nums2=[], n=0 → [1]
 	•	nums1 = [0], m=0; nums2=[1], n=1 → [1]
 	•	nums1 = [4,5,6,0,0,0], m=3; nums2=[1,2,3], n=3 → [1,2,3,4,5,6]
+---
+🗓️ Date: 2026-05-03 (Sunday)
+✅ Problem: Insert Interval
+🧠 Idea/Notes:
+    🙇 Simple approach: Sorting + merge
+        . Add new_interval into intervals
+        . Sort intervals by start value
+        . Create result = []
+        . Loop through each current interval
+        . If result is empty OR last interval in result does not overlap with current:
+            result.append(current)
+        . Else:
+            merge them by updating the end:
+            result[-1][1] = max(result[-1][1], current[1])
+        . Return result
+
+    🤔 Key idea:
+        . Since intervals may overlap after adding new_interval, sort first
+        . Then merge intervals one by one
+        . Two intervals overlap when:
+            result[-1][1] >= current[0]
+
+    💻 Code detail:
+        . intervals = intervals + [new_interval]
+          This creates a new list and does not mutate the original outer list
+
+        . intervals = sorted(intervals, key=lambda x: x[0])
+          Sort by start time
+
+    🤔 Optimized approach:
+        . Since intervals are already sorted and non-overlapping, we do not need to sort again
+        . Add all intervals that end before new_interval starts
+        . Merge all intervals that overlap with new_interval
+        . Add the merged new_interval into result
+        . Add the remaining intervals after new_interval
+
+    🧪 Test:
+        intervals = [[1, 3], [6, 9]]
+        new_interval = [2, 5]
+        output = [[1, 5], [6, 9]]
+
+        intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]]
+        new_interval = [4, 8]
+        output = [[1, 2], [3, 10], [12, 16]]
+
+    ⏱️ Complexity:
+        . Sorting + merge approach:
+            Time: O(n log n) because of sorting
+            Space: O(n) for result
+        . Optimized approach:
+            Time: O(n)
+            Space: O(n) for result
+---
