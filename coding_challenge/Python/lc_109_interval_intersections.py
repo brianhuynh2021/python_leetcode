@@ -8,6 +8,33 @@
 from typing import List
 
 class Solution:
+    # Cách 1: Brute Force
+    def intervalIntersectionBruteForce(
+        self,
+        firstList: List[List[int]],
+        secondList: List[List[int]]
+    ) -> List[List[int]]:
+        
+        result = []
+        
+        for interval1 in firstList:
+            a_start, a_end = interval1
+            
+            for interval2 in secondList:
+                b_start, b_end = interval2
+                
+                # Intersection = đoạn bắt đầu muộn hơn và kết thúc sớm hơn
+                left = max(a_start, b_start)
+                right = min(a_end, b_end)
+                
+                # Nếu left <= right thì có giao
+                if left <= right:
+                    result.append([left, right])
+        
+        return result
+    
+    
+    # Cách 2: Optimized - Two Pointers
     def intervalIntersection(
         self,
         firstList: List[List[int]],
