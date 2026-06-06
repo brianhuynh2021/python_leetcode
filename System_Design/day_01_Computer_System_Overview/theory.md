@@ -1,0 +1,1 @@
+App --> NIC (network) --> System call --> Kernel --> Hardware

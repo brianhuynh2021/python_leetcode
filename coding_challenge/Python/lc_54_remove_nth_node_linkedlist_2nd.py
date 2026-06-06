@@ -53,7 +53,7 @@
 #     def __init__(self, val):
 #         self.val = val
 #         self.next = None
-        
+
 # class Solution:
 #     def remove_nth_node(head: Node, index: int):
 #         if index == 0:
@@ -61,54 +61,66 @@
 
 #         dummy_node = Node(-1)
 #         dummy_node.next = head
-        
+
 #         prev = dummy_node
 #         for _ in range(index):
 #             prev = prev.next
 #         prev.next = prev.next.next
-        
+
 #         return dummy.next
-    
+
 #     def print_node(head: Node):
 #         curr = head
 #         values = []
-        
+
 #         while curr:
 #             values.append(str(curr.val))
 #             curr = curr.next
 #         print(" ->".join(values))
-        
+
+
 class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
-        
+
+
 class Solution:
     def remove_nth_node_from_end(self, head: Node, n: int) -> Node:
         if head is None:
             return None
         len_node = 0
-        current = head # assign current to head
-        
+        current = head  # assign current to head
+
         while current:
             len_node += 1
             current = current.next
-        
+
         dummy = Node(-1)
         dummy.next = head
         steps = len_node - n
         current = dummy
         for i in range(steps):
             current = current.next
-            
+
         current.next = current.next.next
-        
+
         return dummy.next
-    
+
+
 def build_linked_list(values: list) -> Node:
-    if len(values) == 0:
+    if not values:
         return None
     head = Node(values[0])
     current = head
-    
-    
+    for value in values[1:]:
+        current.next = Node(value)
+        current = current.next
+    return head
+
+def print_linked_list(head: Node)-> None:
+    curr = head
+    values = []
+    while curr:
+        values.append(str(curr.val))
+        curr = curr.next
