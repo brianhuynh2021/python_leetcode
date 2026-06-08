@@ -60,6 +60,21 @@ class Solution:
                 free_time.append([prev_end, curr_start])
         return free_time
     
+    def employee_free_time_optimized(self, schedule: list) -> list:
+        employee_time = [time for employee in schedule for time in employee]
+        employee_time.sort(key=lambda x: x[0])
+        
+        busy_time = []
+        for time in employee_time:
+            if not busy_time:
+                busy_time.append(time)
+            last = busy_time[-1]
+            if time[0] <= last[1]:
+                last[1] = max(last[1], time[1])
+            else:
+                busy_time.append(time)
+            
+    
 solution = Solution()
 schedule = [
     [[1, 3], [6, 7]],
